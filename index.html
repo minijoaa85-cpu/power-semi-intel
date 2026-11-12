@@ -28,7 +28,7 @@
         <div>
           <div class="flex items-center gap-2 flex-wrap">
             <h1 class="text-base font-bold text-white tracking-tight">전력반도체 Process Architecture 인텔리전스</h1>
-            <button id="open-version-modal-btn" type="button" class="text-[10px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 transition cursor-pointer flex items-center gap-1"><i class="fa-solid fa-code-branch text-[9px]"></i> v2.5 (히스토리 보기)</button>
+            <button id="open-version-modal-btn" type="button" class="text-[10px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 transition cursor-pointer flex items-center gap-1"><i class="fa-solid fa-code-branch text-[9px]"></i> v2.6</button>
           </div>
           <p class="text-xs text-slate-400">GaN · SiC · SJ MOSFET · UD SGT | Ron,sp-BV 한계선 | 신뢰성·패키징 | 다분기 재무 & WSTS</p>
         </div>
@@ -60,6 +60,10 @@
 
         <button id="export-csv-btn" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5">
           <i class="fa-solid fa-download"></i> CSV
+        </button>
+
+        <button id="open-history-hub-btn" class="text-xs bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2 rounded-lg font-semibold transition flex items-center gap-1.5 shadow-md shadow-indigo-600/30">
+          <i class="fa-solid fa-clock-rotate-left"></i> 히스토리
         </button>
       </div>
     </div>
@@ -570,19 +574,49 @@
     </div>
   </div>
 
-  <!-- VERSION HISTORY MODAL -->
+  <!-- VERSION HISTORY & DOCS HUB MODAL -->
   <div id="version-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl overflow-y-auto max-h-[85vh]">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
       <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
         <h3 class="text-sm font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-code-branch text-emerald-400"></i> 대시보드 버전 히스토리 & 로드맵
+          <i class="fa-solid fa-clock-rotate-left text-indigo-400"></i> 대시보드 업데이트 히스토리 & 발표자료 (v0.1 ~ v2.6)
         </h3>
         <button id="close-version-modal-btn" class="text-slate-400 hover:text-white text-sm p-1"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div id="version-history-list" class="space-y-3 text-xs"></div>
-      <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
-        <span class="font-semibold text-slate-300">예정 로드맵:</span> v2.2 Part Number 데이터시트 DB → v2.3 공정 단면·마스크 스텝 → v2.4 특허·8인치 Fab 타임라인 → v2.5 AI 한국어 자동 요약
+
+      <!-- Slides Download & Owner-only Doc Panel -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5 text-xs">
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5">
+          <div class="font-bold text-white mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-file-powerpoint text-amber-400"></i> 팀 공유용 슬라이드 다운로드
+          </div>
+          <p class="text-[11px] text-slate-400 mb-2.5">버전별 한 문장 요약 장표 포함 (PDF / PPT)</p>
+          <div class="flex flex-wrap gap-2">
+            <a href="https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pdf" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-semibold inline-flex items-center gap-1 text-[11px]">
+              <i class="fa-solid fa-file-pdf"></i> PDF 다운
+            </a>
+            <a href="https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pptx" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-semibold inline-flex items-center gap-1 text-[11px]">
+              <i class="fa-solid fa-file-powerpoint"></i> PPT 다운
+            </a>
+            <a href="https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/edit" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium inline-flex items-center gap-1 text-[11px] border border-slate-700">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 보기
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-slate-950 border border-amber-500/30 rounded-xl p-3.5">
+          <div class="font-bold text-white mb-1 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-amber-400"></i> 상세 운영 문서 (Doc)</span>
+            <span class="text-[10px] bg-amber-500/15 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30">소유자 전용</span>
+          </div>
+          <p class="text-[11px] text-slate-400 mb-2.5">관리자 본인 계정으로만 열람·다운로드 가능합니다.</p>
+          <a href="https://docs.google.com/document/d/1nJ7UzElVtGY6qCFUozDXkWkHVw8hcfWt0LjOREWMu6E/edit" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg font-semibold inline-flex items-center gap-1.5 text-[11px] border border-amber-500/30">
+            <i class="fa-solid fa-file-lines"></i> Google Doc 열기 (관리자 전용)
+          </a>
+        </div>
       </div>
+
+      <div id="version-history-list" class="space-y-2.5 text-xs"></div>
     </div>
   </div>
 
@@ -698,14 +732,7 @@
         { "family": "GaN-on-Si (Industry)", "from": "6인치 Discrete", "to": "8인치 E-mode / DrGaN", "gain": "웨이퍼 단가 ~25% 절감 목표, 300mm/200mm CMOS 호환 집적" }
       ],
       "version_prev": "v2.1",
-      "versionHistory": [
-        { "version": "v2.5", "date": "2026-11-12", "title": "Gemini AI 한국어 실무 자동 요약 파이프라인 통합 완료", "changes": ["무료 Gemini API 연동 영문 논문/뉴스 한국어 자동 요약 및 스펙 추출", "API 키 미설정 시에도 기본 키워드 파서로 무중단 동작"] },
-        { "version": "v2.4", "date": "2026-11-12", "title": "핵심 특허 트래커 & 8인치 Fab 증설 타임라인", "changes": ["SJ/SGT/GaN 핵심 미국 특허 테이블(Google Patents 연동) 추가", "Infineon·STMicro·onsemi·Rohm 8인치 Fab 증설 타임라인 추가"] },
-        { "version": "v2.3", "date": "2026-11-12", "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰", "changes": ["SJ MOSFET / UD SGT / GaN HEMT / SiC Trench 단면 구조도(SVG) 추가", "소자별 마스크 수(Mask Count), 핵심 단위공정 순서, 공정 난제 비교 UI 구현"] },
-        { "version": "v2.2", "date": "2026-11-12", "title": "선진사 양산 Part Number 데이터시트 DB & 세대별 진화 계보", "changes": ["Infineon CoolMOS 8 / CoolGaN, onsemi DFN5, Navitas GaNFast 양산 스펙표 추가", "선진사 세대별(Gen-to-Gen) 개선율 계보 카드 추가"] },
-        { "version": "v2.1", "date": "2026-11-12", "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이", "changes": ["100V / 650V / 1200V+ 내압대별 다중 FOM 비교 차트 추가", "Baliga Ron,sp-BV 차트 자사 목표 소자(★) 실시간 오버레이 추가", "버전 히스토리 모달 구축"] },
-        { "version": "v2.0", "date": "2026-11-12", "title": "GitHub Pages 자동 수집 파이프라인 & 5대 탭 구축", "changes": ["arXiv + RSS 주간 자동 수집 파이프라인 연동", "Baliga 한계선 차트, 공정 매트릭스, 신뢰성/패키징, 다분기 WSTS·재무 구현"] }
-      ],
+      "versionHistory": [{"version": "v2.6", "date": "2026-11-12", "title": "히스토리 허브 · 슬라이드 PDF/PPT 다운로드 · 소유자 전용 Doc 연동", "changes": ["상단 CSV 버튼 옆에 히스토리 버튼 신설 (v0.1~v2.6 전체 이력 한눈에 보기)", "Google Slides PDF / PPTX 원클릭 다운로드 및 소유자 전용 Google Doc 링크 통합"]}, {"version": "v2.5", "date": "2026-11-12", "title": "무료 Gemini AI 한국어 실무 자동 요약 완성", "changes": ["GitHub Secrets 무료 Gemini API 키 연동으로 영문 논문·뉴스 한국어 실무 자동 요약 구현"]}, {"version": "v2.4", "date": "2026-11-12", "title": "핵심 특허 트래커 & 글로벌 8인치 Fab 증설 타임라인", "changes": ["Google Patents 원문 연동 공정 특허 트래커 및 선진사 8인치 Fab 투자 타임라인 추가"]}, {"version": "v2.3", "date": "2026-11-12", "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰", "changes": ["SJ MOSFET·UD SGT·GaN HEMT·SiC Trench 단면 구조도(SVG), 마스크 수, 단위공정 난제 비교기 구현"]}, {"version": "v2.2", "date": "2026-11-12", "title": "양산 Part Number 데이터시트 DB & 세대별 진화 계보", "changes": ["Infineon CoolMOS 8·CoolGaN·onsemi·Navitas 양산 Part Number 스펙표 및 Gen-to-Gen 계보 추가"]}, {"version": "v2.1", "date": "2026-11-12", "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이", "changes": ["100V/650V/1200V+ 다중 FOM 비교 차트 및 Baliga 한계선 자사 목표 스펙 오버레이(★) 추가"]}, {"version": "v2.0", "date": "2026-11-12", "title": "GitHub Pages 자동 수집 파이프라인 구축", "changes": ["arXiv·RSS 주간 자동 수집기와 GitHub Actions를 연동해 공유 가능한 고정 웹 URL 오픈"]}, {"version": "v1.1", "date": "2026-11-12", "title": "주별 데이터 관리 & JSON/CSV 백업 기능 탑재", "changes": ["주차별 드롭다운 전환, 신규 항목 등록 모달, localStorage 저장 및 JSON/CSV 추출 구현"]}, {"version": "v1.0", "date": "2026-11-12", "title": "초기 인터랙티브 대시보드 구축", "changes": ["종합 브리핑·선진사 동향·논문 아카이브·수익성 벤치마크 4개 탭 단일 HTML 대시보드 구현"]}, {"version": "v0.1", "date": "2026-11-12", "title": "기획 초안 & 대화형 요구사항 설문", "changes": ["SJ MOSFET·UD SGT·GaN 실무에 맞춘 4대 대시보드 영역 기획 및 대화형 설문 웹앱 제작"]}],
       "fomBenchmarks": [
         { "name": "100V NL-SGTMOS (IEEE EDL)", "voltageClass": "100V", "tech": "SGT", "bv": 100, "ron_sp": 4.57, "ron_qg": 34.1, "ron_qgd": 11.2, "bfom": 2.19 },
         { "name": "150V Floating-P SGT", "voltageClass": "100V", "tech": "SGT", "bv": 150, "ron_sp": 1.12, "ron_qg": 18.5, "ron_qgd": 5.4, "bfom": 20.1 },
@@ -1405,7 +1432,7 @@
     });
 
     const verModal = document.getElementById('version-modal');
-    document.getElementById('open-version-modal-btn').addEventListener('click', () => {
+    function openHistoryModal() {
       const hist = appData.versionHistory || FALLBACK_DATA.versionHistory;
       document.getElementById('version-history-list').innerHTML = hist.map(h => `
         <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
@@ -1419,6 +1446,24 @@
         </div>
       `).join('');
       verModal.classList.remove('hidden');
+    }
+    document.getElementById('open-history-hub-btn').addEventListener('click', openHistoryModal);
+    document.getElementById('open-version-modal-btn').addEventListener('click', openHistoryModal);
+    if (false) document.getElementById('open-version-modal-btn').addEventListener('click', () => {
+      const hist = appData.versionHistory || FALLBACK_DATA.versionHistory;
+      document.getElementById('version-history-list').innerHTML = hist.map(h => `
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-emerald-400">${h.version} — ${h.title}</span>
+            <span class="text-[10px] text-slate-500">${h.date}</span>
+          </div>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 text-[11px]">
+            ${h.changes.map(c => `<li>${c}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+      verModal.classList.remove('hidden');
+    });
     });
     document.getElementById('close-version-modal-btn').addEventListener('click', () => verModal.classList.add('hidden'));
 

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T15:08:42.698707+09:00",
+  "lastUpdated": "2026-11-12T09:00:00+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
     {
@@ -78,54 +78,6 @@
     ]
   },
   "news": [
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: AI Data Centers and Their Impact on Power Electronics",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This video panel from PowerUP 2026 is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Data centers are shifting toward higher-voltage direct-current architectures, distributing...\nThe post PowerUp: AI Data Centers an...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-ai-data-centers-and-their-impact-on-power-electronics/",
-      "id": 1794463723991,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "SiC",
-      "title": "PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Converts and Uses Energy",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Event Session is presented by Dr. Adam Barkley, Chief Technology Officer, SiC Devices, Wolfspeed. This keynote is an invitation to take a fresh look...\nThe post PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Conve...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-enabling-a-paradigm-shift-in-how-the-world-creates-stores-converts-and-uses-energy/",
-      "id": 1794463723990,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconductor of the AI era",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Keynote is presented by Johannes Schoiswohl, Business Line Head GaN Systems, Infineon GaN has moved well beyond its early adopter phase. From AI data...\nThe post PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconduct...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-gan-at-the-tipping-point-why-gallium-nitride-is-the-semiconductor-of-the-ai-era/",
-      "id": 1794463723989,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUP: Panel Discussion: The Gate Driver Problem – Extracting the Most Out of WBG",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This session is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Gate driver design is one of the most consequential bottlenecks in extracting WBG...\nThe post PowerUP: Panel Discussion: The Gate Driver Problem &#8211;...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-panel-discussion-the-gate-driver-problem-extracting-the-most-out-of-wbg/",
-      "id": 1794463723988,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
     {
       "id": 1,
       "week": "2026-W46",
@@ -492,42 +444,47 @@
     ],
     "wstsNote": "WSTS 글로벌 반도체: 2025년 $796B (+26% YoY) → 2026년 $1T+ 전망"
   },
-  "version": "v2.5",
+  "version": "v2.6",
   "versionHistory": [
+    {
+      "version": "v2.6",
+      "date": "2026-11-12",
+      "title": "히스토리 허브 · 슬라이드 PDF/PPT 다운로드 · 소유자 전용 Doc 연동",
+      "changes": [
+        "상단 CSV 버튼 옆에 히스토리 버튼 신설 (v0.1~v2.6 전체 이력 한눈에 보기)",
+        "Google Slides PDF / PPTX 원클릭 다운로드 및 소유자 전용 Google Doc 링크 통합"
+      ]
+    },
     {
       "version": "v2.5",
       "date": "2026-11-12",
-      "title": "Gemini AI 한국어 실무 자동 요약 파이프라인 통합 완료",
+      "title": "무료 Gemini AI 한국어 실무 자동 요약 완성",
       "changes": [
-        "scripts/update_dashboard.py에 무료 Gemini API 연동 한국어 요약 및 BV/Ron,sp/FOM 자동 추출 기능 추가",
-        "GEMINI_API_KEY 미설정 시에도 기본 키워드 파서로 무중단 무료 동작 보장"
+        "GitHub Secrets 무료 Gemini API 키 연동으로 영문 논문·뉴스 한국어 실무 자동 요약 구현"
       ]
     },
     {
       "version": "v2.4",
       "date": "2026-11-12",
-      "title": "핵심 특허(Patent) 트래커 & 글로벌 8인치(200mm) Fab 증설 타임라인",
+      "title": "핵심 특허 트래커 & 글로벌 8인치 Fab 증설 타임라인",
       "changes": [
-        "SJ MOSFET, SGT, GaN HEMT 핵심 미국 특허(Google Patents 링크 포함) 트래커 테이블 추가",
-        "Infineon(Kulim), STMicro(Catania), onsemi(Roznov), Rohm(Miyazaki) 8인치 Fab 투자 타임라인 카드 추가"
+        "Google Patents 원문 연동 공정 특허 트래커 및 선진사 8인치 Fab 투자 타임라인 추가"
       ]
     },
     {
       "version": "v2.3",
       "date": "2026-11-12",
-      "title": "공정 단면 아키텍처(SVG) & 마스크 스텝·단위공정 비교 뷰",
+      "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰",
       "changes": [
-        "SJ MOSFET, UD SGT, GaN E-mode HEMT, SiC Trench MOSFET 4종 단면 구조도(SVG) 추가",
-        "소자별 표준 마스크 스텝(Mask Count), 핵심 단위공정 흐름, 공정 난제(Bottleneck) 비교 카드 구현"
+        "SJ MOSFET·UD SGT·GaN HEMT·SiC Trench 단면 구조도(SVG), 마스크 수, 단위공정 난제 비교기 구현"
       ]
     },
     {
       "version": "v2.2",
       "date": "2026-11-12",
-      "title": "선진사 양산 Part Number 데이터시트 DB & 세대별 진화 계보",
+      "title": "양산 Part Number 데이터시트 DB & 세대별 진화 계보",
       "changes": [
-        "Infineon CoolMOS 8 / CoolGaN, onsemi DFN5, Navitas GaNFast 등 실제 양산 Part Number 스펙표 추가",
-        "선진사 세대별(Gen-to-Gen) Rds(on)·Qg·Coss·RthJC 개선 계보 카드 추가"
+        "Infineon CoolMOS 8·CoolGaN·onsemi·Navitas 양산 Part Number 스펙표 및 Gen-to-Gen 계보 추가"
       ]
     },
     {
@@ -535,18 +492,39 @@
       "date": "2026-11-12",
       "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이",
       "changes": [
-        "100V / 650V / 1200V+ 내압대별 다중 FOM (Ron×Qg, Ron×Qgd, BFOM) 비교 차트 추가",
-        "Baliga Ron,sp-BV 차트에 자사 개발 목표 소자(★) 실시간 오버레이 입력기 추가",
-        "대시보드 헤더 버전 배지 및 릴리스 히스토리 모달 구축"
+        "100V/650V/1200V+ 다중 FOM 비교 차트 및 Baliga 한계선 자사 목표 스펙 오버레이(★) 추가"
       ]
     },
     {
       "version": "v2.0",
       "date": "2026-11-12",
-      "title": "GitHub Pages 자동 수집 파이프라인 & 5대 탭 구축",
+      "title": "GitHub Pages 자동 수집 파이프라인 구축",
       "changes": [
-        "arXiv API + 전력반도체 RSS 주간 자동 수집(GitHub Actions) 파이프라인 연동",
-        "Baliga Ron,sp-BV Log-Log 한계선 차트, 공정 매트릭스, 신뢰성/패키징, 다분기 WSTS·재무 탭 구현"
+        "arXiv·RSS 주간 자동 수집기와 GitHub Actions를 연동해 공유 가능한 고정 웹 URL 오픈"
+      ]
+    },
+    {
+      "version": "v1.1",
+      "date": "2026-11-12",
+      "title": "주별 데이터 관리 & JSON/CSV 백업 기능 탑재",
+      "changes": [
+        "주차별 드롭다운 전환, 신규 항목 등록 모달, localStorage 저장 및 JSON/CSV 추출 구현"
+      ]
+    },
+    {
+      "version": "v1.0",
+      "date": "2026-11-12",
+      "title": "초기 인터랙티브 대시보드 구축",
+      "changes": [
+        "종합 브리핑·선진사 동향·논문 아카이브·수익성 벤치마크 4개 탭 단일 HTML 대시보드 구현"
+      ]
+    },
+    {
+      "version": "v0.1",
+      "date": "2026-11-12",
+      "title": "기획 초안 & 대화형 요구사항 설문",
+      "changes": [
+        "SJ MOSFET·UD SGT·GaN 실무에 맞춘 4대 대시보드 영역 기획 및 대화형 설문 웹앱 제작"
       ]
     }
   ],
@@ -853,5 +831,11 @@
       "status": "Gen 5 SiC 8인치 전환용 설비투자 지속",
       "url": "https://www.rohm.com/investor-relations"
     }
-  ]
+  ],
+  "links": {
+    "slidesView": "https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/edit",
+    "slidesPdf": "https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pdf",
+    "slidesPptx": "https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pptx",
+    "ownerDoc": "https://docs.google.com/document/d/1nJ7UzElVtGY6qCFUozDXkWkHVw8hcfWt0LjOREWMu6E/edit"
+  }
 }
