@@ -28,7 +28,7 @@
         <div>
           <div class="flex items-center gap-2 flex-wrap">
             <h1 class="text-base font-bold text-white tracking-tight">전력반도체 Process Architecture 인텔리전스</h1>
-            <button id="open-version-modal-btn" type="button" class="text-[10px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 transition cursor-pointer flex items-center gap-1"><i class="fa-solid fa-code-branch text-[9px]"></i> v2.6</button>
+            <button id="open-version-modal-btn" type="button" class="text-[10px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 transition cursor-pointer flex items-center gap-1"><i class="fa-solid fa-code-branch text-[9px]"></i> v2.7</button>
           </div>
           <p class="text-xs text-slate-400">GaN · SiC · SJ MOSFET · UD SGT | Ron,sp-BV 한계선 | 신뢰성·패키징 | 다분기 재무 & WSTS</p>
         </div>
@@ -489,12 +489,19 @@
       </div>
 
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-sm font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-chart-area text-cyan-400"></i> STMicro 분기별 매출 회복 추이 (Billion USD, 2025 Q1 ~ 2026 Q3)
-          </h3>
-          <span class="text-[11px] text-slate-400">단위: $B</span>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-area text-cyan-400"></i> 선진사 10개사 선택형 분기 실적 추이 비교 (v2.7)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">비교하고 싶은 기업들을 클릭해 분기 매출($M) 또는 매출총이익률(GPM %) 추이를 확인하세요.</p>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-semibold" data-metric="revM">분기 매출 ($M)</button>
+            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-metric="gpm">매출총이익률 (GPM %)</button>
+          </div>
         </div>
+        <div id="fin-company-pills" class="flex flex-wrap gap-1.5 mb-4"></div>
         <div class="relative h-72">
           <canvas id="stmRevSeriesChart"></canvas>
         </div>
@@ -693,58 +700,8 @@
         { "label": "4H-SiC HJ-DTMOS (1200V)", "tech": "SiC", "bv": 1200, "ron_sp": 1.78 },
         { "label": "4H-SiC Trench+SBD (1780V)", "tech": "SiC", "bv": 1780, "ron_sp": 1.92 }
       ],
-      "financials": [
-        { "company": "Infineon Technologies", "ticker": "IFX (Xetra)", "revenue": "€4.71B (Q4 FY26)", "yoy": "+19.0%", "opm": "23.8% (Seg.)", "gpm": "41.8%", "segment": "PSS(AI/전원) €1.80B (OPM 30.8%), ATV 중심", "rd_capex": "FY27 CapEx €3.0~3.5B 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf" },
-        { "company": "STMicroelectronics", "ticker": "STM (NYSE)", "revenue": "$3.76B (Q3 2026)", "yoy": "+17.9%", "opm": "11.4% (Non-GAAP)", "gpm": "37.3%", "segment": "Power & Discrete(P&D) ~16%+, 전장·산업 회복", "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5" },
-        { "company": "onsemi", "ticker": "ON (NASDAQ)", "revenue": "$1.53B (Q4 2025)", "yoy": "-15.0% (FY25)", "opm": "13.2% (Q2'25)", "gpm": "37.6% (Q2'25)", "segment": "Power Solutions Group (PSG) 핵심", "rd_capex": "FCF 마진 24% ($1.4B FY25)", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
-        { "company": "Rohm Semiconductor", "ticker": "6963 (TSE)", "revenue": "¥122B (~$0.82B)", "yoy": "+2.1%", "opm": "12.4%", "gpm": "34.8%", "segment": "SiC Trench / EcoGaN 및 LSI", "rd_capex": "8인치 SiC 팹 투자 지속", "url": "https://www.rohm.com/investor-relations" }
-      ],
-      "version": "v2.2",
-      "processCrossSections": [
-        { "id": "SJ-MOS", "name": "SJ MOSFET (Deep Trench Refill)", "masks": "7 ~ 9 Masks (Deep Trench) / 14+ (Multi-Epi)", "steps": ["N-Drift Epi / Deep Trench Etch (AR 25~30)", "P-Pillar Selective Epi Refill & CMP", "P-Body / N+ Source Implant", "Gate Oxide & Poly Gate Patterning", "Thick Al/Cu Metal & Backside Thinning"], "bottleneck": "Deep Trench 식각 프로파일 수직도 및 보이드(Void) 없는 P-Epi Refill, P/N Charge Balance 산포 ±3% 이내 제어" },
-        { "id": "SGT", "name": "UD SGT (Split-Gate Trench)", "masks": "6 ~ 8 Masks", "steps": ["Deep Trench Etch & Thick Shield Oxide (Stepped)", "Shield Poly (FP) Refill & Etch-back", "Inter-Poly Oxide & Thin Gate Oxide", "Control Gate Poly Refill & P-Body/N+ Implant", "Ultra-Thin Wafer Grinding (<50μm) & Backmetal"], "bottleneck": "Shield Oxide 단차 균일도, Narrow Mesa 접촉 식각 마진, 초박형 웨이퍼 핸들링 휨(Warpage) 제어" },
-        { "id": "GaN", "name": "GaN HEMT (200mm E-mode p-GaN)", "masks": "8 ~ 11 Masks (Au-Free CMOS 라인)", "steps": ["Si(111) 기판 위 AlN/AlGaN 버퍼 & GaN/AlGaN/p-GaN Epi", "p-GaN 저손상 선택적 식각 (2DEG 손상 최소화)", "Mesa/Implant 소자 분리 (Isolation)", "Au-Free Ohmic S/D 어닐링 & Gate Metal", "다층 Passivation & Field Plate 형성"], "bottleneck": "8인치(200mm) 에피 성장 시 열팽창 계수 차이에 의한 Bow 제어, p-GaN 식각 정밀도(Vth 산포 직결)" },
-        { "id": "SiC", "name": "SiC MOSFET (Double / Asymmetric Trench)", "masks": "9 ~ 12 Masks", "steps": ["4H-SiC N-Drift Epi 성장", "고온 Al/N Ion Implantation & 1650°C+ Carbon Cap Anneal", "Gate & Source Trench Etch + Corner Rounding", "Gate Oxide 성장 & NO/N2O 계면 질화 어닐링", "Ni-Silicide Ohmic & Ag 소결 대응 Backmetal"], "bottleneck": "고경도 SiC 식각 및 트렌치 코너 전계 집중(TDDB), SiC/SiO2 계면 트랩(Dit) 저감" }
-      ],
-      "patents": [
-        { "id": "US11973134B2", "tech": "GaN", "year": "2024", "title": "Super junction gated AlGaN/GaN HEMT", "focus": "게이트 하단 선택적 p-형 III-N 층 확장으로 내압·전류밀도 동시 개선", "url": "https://patents.google.com/patent/US11973134B2/en" },
-        { "id": "US20240421196A1", "tech": "GaN", "year": "2024", "title": "GaN semiconductor power transistor with slanted gate field plate", "focus": "경사형 게이트 필드 플레이트(Slanted GMFP)로 리프트오프 잔여물·전계 집중 억제", "url": "https://patents.google.com/patent/US20240421196A1/en" },
-        { "id": "US10679855B2", "tech": "SJ-MOS", "year": "2020", "title": "Method for producing a superjunction device", "focus": "다층 반도체 트렌치 식각 후 측벽 도펀트 이온주입 기반 Charge Balance 형성", "url": "https://patents.google.com/patent/US10679855B2/en" },
-        { "id": "US10103257B1", "tech": "SGT", "year": "2018", "title": "Termination design for trench superjunction / shield power MOSFET", "focus": "스트라이프 트렌치 내 하부 쉴드 폴리 및 상부 게이트 폴리 종단부 설계", "url": "https://patents.google.com/patent/US10103257B1/en" },
-        { "id": "US7843004B2", "tech": "SGT", "year": "2010", "title": "Power MOSFET with self-aligned recessed field plate", "focus": "게이트·RFP 트렌치 자기정렬(Self-aligned) 공정으로 메사 폭 산포 및 Qgd 저감", "url": "https://patents.google.com/patent/US7843004B2/en" }
-      ],
-      "fabTimeline": [
-        { "company": "Infineon", "site": "Kulim Fab 3 (말레이시아)", "wafer": "200mm (8\") SiC / GaN", "status": "양산 가속 및 FY27 €3.0~3.5B 투자 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf" },
-        { "company": "STMicroelectronics", "site": "Catania Campus (이탈리아)", "wafer": "200mm (8\") SiC 수직계열화", "status": "2026년 제조 리쉐이핑 및 Q3 Net CapEx $643M 집행", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5" },
-        { "company": "onsemi", "site": "Roznov (체코)", "wafer": "200mm (8\") SiC / SGT", "status": "2025 제조 리얼라인먼트 이후 SiC 수직계열화 집중", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
-        { "company": "Rohm", "site": "Miyazaki 제2 팹 (일본)", "wafer": "200mm (8\") SiC Trench", "status": "Gen 5 SiC 8인치 전환용 설비투자 지속", "url": "https://www.rohm.com/investor-relations" }
-      ],
-      "partNumbers": [
-        { "company": "Infineon", "part": "IPT60R016CM8", "tech": "SJ-MOS", "bv": "600 V", "rds_on": "16 mΩ (typ)", "qg": "171 nC", "pkg": "PG-HSOF-8 (.XT)", "rth": "RthJA 35 K/W", "note": "CoolMOS 8세대, Fast Body Diode 기본 내장, Coss 50% ↓ vs CFD7", "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-ipt60r016cm8-datasheet-en.pdf" },
-        { "company": "Infineon", "part": "IGLD60R070D1", "tech": "GaN", "bv": "600 V", "rds_on": "70 mΩ class", "qg": "Qgs+Qgd 5 nC", "pkg": "PG-LSON-8", "rth": "Vth 1.2 V", "note": "CoolGaN E-mode HEMT, 역회복 전하(Qrr) 제로 수준", "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-igld60r070d1-datasheet-en.pdf" },
-        { "company": "Navitas", "part": "NV6125", "tech": "GaN", "bv": "650 V", "rds_on": "175 mΩ (typ)", "qg": "Driver 내장", "pkg": "30-QFN (6×8)", "rth": "Iout 8 A", "note": "GaNFast Power IC (구동 드라이버 모놀리식 집적)", "url": "https://www.digi-electronics.com/en/part-substitute/LMG3410R150RWHR/908499.html" },
-        { "company": "onsemi", "part": "NVMFS5C430N", "tech": "SGT", "bv": "40 V", "rds_on": "1.4 mΩ (typ)", "qg": "Coss 1600 pF", "pkg": "DFN5 (5×6mm)", "rth": "RthJC 1.4 °C/W", "note": "AEC-Q101 전장용, 185 A 정격, 저손실 컴팩트 패키지", "url": "https://www.onsemi.com/pdf/datasheet/nvmfs5c430n-d.pdf" }
-      ],
-      "generationRoadmap": [
-        { "family": "Infineon CoolMOS (SJ)", "from": "7세대 (CFD7)", "to": "8세대 (CM8)", "gain": "Qg -18~20%, Eoss -12~15%, Coss -50%, Rth -14~42% (.XT 본딩)" },
-        { "family": "STMicro MDmesh (SJ)", "from": "DM6", "to": "DM9 (Deep Trench)", "gain": "Ron,sp -18%, 바디 다이오드 Qrr 저감으로 하드 스위칭 내량 강화" },
-        { "family": "Rohm SiC MOSFET", "from": "Planar / Gen 4", "to": "Gen 5 Double-Trench", "gain": "Ron,sp -35% (0.78 mΩ·cm² 수준), SCWT 3.5μs 유지" },
-        { "family": "GaN-on-Si (Industry)", "from": "6인치 Discrete", "to": "8인치 E-mode / DrGaN", "gain": "웨이퍼 단가 ~25% 절감 목표, 300mm/200mm CMOS 호환 집적" }
-      ],
-      "version_prev": "v2.1",
-      "versionHistory": [{"version": "v2.6", "date": "2026-11-12", "title": "히스토리 허브 · 슬라이드 PDF/PPT 다운로드 · 소유자 전용 Doc 연동", "changes": ["상단 CSV 버튼 옆에 히스토리 버튼 신설 (v0.1~v2.6 전체 이력 한눈에 보기)", "Google Slides PDF / PPTX 원클릭 다운로드 및 소유자 전용 Google Doc 링크 통합"]}, {"version": "v2.5", "date": "2026-11-12", "title": "무료 Gemini AI 한국어 실무 자동 요약 완성", "changes": ["GitHub Secrets 무료 Gemini API 키 연동으로 영문 논문·뉴스 한국어 실무 자동 요약 구현"]}, {"version": "v2.4", "date": "2026-11-12", "title": "핵심 특허 트래커 & 글로벌 8인치 Fab 증설 타임라인", "changes": ["Google Patents 원문 연동 공정 특허 트래커 및 선진사 8인치 Fab 투자 타임라인 추가"]}, {"version": "v2.3", "date": "2026-11-12", "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰", "changes": ["SJ MOSFET·UD SGT·GaN HEMT·SiC Trench 단면 구조도(SVG), 마스크 수, 단위공정 난제 비교기 구현"]}, {"version": "v2.2", "date": "2026-11-12", "title": "양산 Part Number 데이터시트 DB & 세대별 진화 계보", "changes": ["Infineon CoolMOS 8·CoolGaN·onsemi·Navitas 양산 Part Number 스펙표 및 Gen-to-Gen 계보 추가"]}, {"version": "v2.1", "date": "2026-11-12", "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이", "changes": ["100V/650V/1200V+ 다중 FOM 비교 차트 및 Baliga 한계선 자사 목표 스펙 오버레이(★) 추가"]}, {"version": "v2.0", "date": "2026-11-12", "title": "GitHub Pages 자동 수집 파이프라인 구축", "changes": ["arXiv·RSS 주간 자동 수집기와 GitHub Actions를 연동해 공유 가능한 고정 웹 URL 오픈"]}, {"version": "v1.1", "date": "2026-11-12", "title": "주별 데이터 관리 & JSON/CSV 백업 기능 탑재", "changes": ["주차별 드롭다운 전환, 신규 항목 등록 모달, localStorage 저장 및 JSON/CSV 추출 구현"]}, {"version": "v1.0", "date": "2026-11-12", "title": "초기 인터랙티브 대시보드 구축", "changes": ["종합 브리핑·선진사 동향·논문 아카이브·수익성 벤치마크 4개 탭 단일 HTML 대시보드 구현"]}, {"version": "v0.1", "date": "2026-11-12", "title": "기획 초안 & 대화형 요구사항 설문", "changes": ["SJ MOSFET·UD SGT·GaN 실무에 맞춘 4대 대시보드 영역 기획 및 대화형 설문 웹앱 제작"]}],
-      "fomBenchmarks": [
-        { "name": "100V NL-SGTMOS (IEEE EDL)", "voltageClass": "100V", "tech": "SGT", "bv": 100, "ron_sp": 4.57, "ron_qg": 34.1, "ron_qgd": 11.2, "bfom": 2.19 },
-        { "name": "150V Floating-P SGT", "voltageClass": "100V", "tech": "SGT", "bv": 150, "ron_sp": 1.12, "ron_qg": 18.5, "ron_qgd": 5.4, "bfom": 20.1 },
-        { "name": "60V Ultra-Dense SGT", "voltageClass": "100V", "tech": "SGT", "bv": 60, "ron_sp": 0.45, "ron_qg": 10.2, "ron_qgd": 2.8, "bfom": 8.0 },
-        { "name": "600V CoolMOS 8 (IPT60R016CM8)", "voltageClass": "650V", "tech": "SJ-MOS", "bv": 600, "ron_sp": 8.2, "ron_qg": 125.0, "ron_qgd": 32.0, "bfom": 43.9 },
-        { "name": "650V SJ Deep Trench (AR25)", "voltageClass": "650V", "tech": "SJ-MOS", "bv": 650, "ron_sp": 7.8, "ron_qg": 142.0, "ron_qgd": 38.0, "bfom": 54.2 },
-        { "name": "650V MBDS GaN (IEDM)", "voltageClass": "650V", "tech": "GaN", "bv": 650, "ron_sp": 1.85, "ron_qg": 14.8, "ron_qgd": 3.5, "bfom": 228.4 },
-        { "name": "1200V E-mode GaN (200mm)", "voltageClass": "1200V", "tech": "GaN", "bv": 1250, "ron_sp": 1.45, "ron_qg": 16.0, "ron_qgd": 4.1, "bfom": 1077.6 },
-        { "name": "1200V Vertical GaN FinFET", "voltageClass": "1200V", "tech": "GaN", "bv": 1200, "ron_sp": 0.20, "ron_qg": 8.4, "ron_qgd": 1.9, "bfom": 7200.0 },
-        { "name": "1200V 4H-SiC HJ-DTMOS", "voltageClass": "1200V", "tech": "SiC", "bv": 1200, "ron_sp": 1.78, "ron_qg": 42.0, "ron_qgd": 12.5, "bfom": 809.0 },
-        { "name": "1780V 4H-SiC Trench+SBD", "voltageClass": "1200V", "tech": "SiC", "bv": 1780, "ron_sp": 1.92, "ron_qg": 48.0, "ron_qgd": 14.0, "bfom": 1650.2 }
-      ],
+      "financials": [{"company": "Infineon Technologies", "ticker": "IFX (Xetra)", "revenue": "€4.71B (Q4 FY26)", "yoy": "+19.0%", "opm": "23.8% (Seg.)", "gpm": "41.8%", "segment": "PSS(AI·전원) €1.80B (OPM 30.8%), ATV 중심", "rd_capex": "FY27 CapEx €3.0~3.5B 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"}, {"company": "STMicroelectronics", "ticker": "STM (NYSE)", "revenue": "$3.76B (Q3 2026)", "yoy": "+17.9%", "opm": "11.4% (Non-GAAP)", "gpm": "37.3%", "segment": "Power & Discrete(P&D) · 전장·산업 회복", "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"}, {"company": "onsemi", "ticker": "ON (NASDAQ)", "revenue": "$1.53B (Q4 2025)", "yoy": "-15.0% (FY25)", "opm": "13.2% (Q2'25)", "gpm": "37.6% (Q2'25)", "segment": "Power Solutions Group (PSG) · SGT/SiC", "rd_capex": "FCF 마진 24% ($1.4B FY25)", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"}, {"company": "Vishay Intertechnology", "ticker": "VSH (NYSE)", "revenue": "$978.9M (Q3 2026)", "yoy": "+24.0%", "opm": "9.4%", "gpm": "25.5%", "segment": "Discrete MOSFET / Diode / 전력 수동소자", "rd_capex": "Book-to-bill 1.29, Q4 $990M 가이던스", "url": "https://ir.vishay.com/news-releases/news-release-details/vishay-intertechnology-reports-third-quarter-2026-results"}, {"company": "Rohm Semiconductor", "ticker": "6963 (TSE)", "revenue": "¥122B (~$820M)", "yoy": "+2.1%", "opm": "12.4%", "gpm": "34.8%", "segment": "SiC Trench / EcoGaN 및 LSI", "rd_capex": "8인치 SiC 팹 투자 지속", "url": "https://www.rohm.com/investor-relations"}, {"company": "Diodes Incorporated", "ticker": "DIOD (NASDAQ)", "revenue": "$532.6M (Q3 2026)", "yoy": "+35.8%", "opm": "11.9% (추정)", "gpm": "36.1%", "segment": "전장·산업·AI 컴퓨팅 Discrete/Power", "rd_capex": "Q4 가이던스 $550M (GPM 37%)", "url": "https://investor.diodes.com/news-releases/news-release-details/diodes-incorporated-reports-third-quarter-2026-financial-results"}, {"company": "Alpha & Omega Semi", "ticker": "AOSL (NASDAQ)", "revenue": "$177.8M (Q1 FY27)", "yoy": "-2.6%", "opm": "-0.6% (Non-GAAP)", "gpm": "24.5%", "segment": "전원·산업용(+29.2% QoQ) SJ/SGT/Power IC", "rd_capex": "Q2 가이던스 $180M (GPM 25.1%)", "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductor-Reports-Financial-Results-for-the-Fiscal-First-Quarter-of-2027-Ended-September-30-2026/default.aspx"}, {"company": "Wolfspeed", "ticker": "WOLF (NYSE)", "revenue": "$155.0M (Q1 FY27)", "yoy": "-21.2%", "opm": "적자 (가동률 제약)", "gpm": "-13.0% (Non-GAAP)", "segment": "SiC 웨이퍼 & 파워 소자 (AI 데이터센터 2배 성장)", "rd_capex": "현금성 자산 $995M, Q2 $155~175M 전망", "url": "https://investor.wolfspeed.com/financials/quarterly-results/default.aspx"}, {"company": "Power Integrations", "ticker": "POWI (NASDAQ)", "revenue": "$125.5M (Q3 2026)", "yoy": "+6.0%", "opm": "15.2% (GAAP)", "gpm": "54.5% (Q4 가이던스)", "segment": "PowiGaN / 고내압 AC-DC Power IC", "rd_capex": "R&D 투자 비중 ~22.8%, 무차입 재무", "url": "https://investors.power.com/news/news-details/2026/Power-Integrations-Reports-Third-Quarter-Financial-Results/default.aspx"}, {"company": "Navitas Semiconductor", "ticker": "NVTS (NASDAQ)", "revenue": "$14.0M (Q3 2026)", "yoy": "+38.0%", "opm": "적자 (-$10.9M)", "gpm": "40.0% (Non-GAAP)", "segment": "GaNFast IC & SiC (AI 서버 고출력 집중)", "rd_capex": "현금 $531.5M, Q4 $16.0M(+119% YoY) 전망", "url": "https://navitassemi.com/en/press-releases/navitas-semiconductor-announces-third-quarter-2026-financial-results"}],
+      "companySeries": {"labels": ["25 Q3/Q4", "26 Q1", "26 Q2", "26 Q3/최신"], "companies": {"Infineon": {"color": "#3b82f6", "revM": [4250, 4400, 4520, 5080], "gpm": [40.2, 40.5, 40.8, 41.8]}, "STMicro": {"color": "#10b981", "revM": [3190, 3100, 3490, 3760], "gpm": [33.2, 33.8, 34.8, 37.3]}, "onsemi": {"color": "#8b5cf6", "revM": [1530, 1480, 1510, 1530], "gpm": [37.6, 37.0, 37.6, 38.0]}, "Vishay": {"color": "#f59e0b", "revM": [790, 840, 889, 978.9], "gpm": [19.5, 22.0, 23.5, 25.5]}, "Rohm": {"color": "#ec4899", "revM": [800, 795, 810, 820], "gpm": [34.0, 34.2, 34.5, 34.8]}, "Diodes": {"color": "#06b6d4", "revM": [392, 420, 446, 532.6], "gpm": [30.7, 31.8, 33.1, 36.1]}, "AOSL": {"color": "#84cc16", "revM": [182.5, 168, 170.4, 177.8], "gpm": [23.5, 22.3, 23.1, 24.5]}, "Wolfspeed": {"color": "#ef4444", "revM": [196.8, 165, 150, 155.0], "gpm": [-39.0, -33.0, -19.9, -13.0]}, "Power Integrations": {"color": "#14b8a6", "revM": [118.4, 108.3, 118.9, 125.5], "gpm": [52.9, 53.2, 53.8, 54.5]}, "Navitas": {"color": "#a855f7", "revM": [10.1, 8.6, 10.5, 14.0], "gpm": [38.7, 39.0, 39.5, 40.0]}}},
       "quarterlySeries": {
         "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
         "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
@@ -1159,29 +1116,9 @@
         }
       });
 
-      // 4. STMicro Revenue Series
-      stmRevChart = new Chart(document.getElementById('stmRevSeriesChart').getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: qs.labels,
-          datasets: [{
-            label: 'STMicro 분기 매출 ($B)',
-            data: qs.stmRevB,
-            borderColor: '#06b6d4',
-            backgroundColor: 'rgba(6,182,212,0.18)',
-            tension: 0.3,
-            fill: true
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#cbd5e1' } } },
-          scales: {
-            y: { min: 2.0, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => '$' + v + 'B' } },
-            x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
-          }
-        }
-      });
+      // 4. Interactive 10-Company Trend Series (v2.7)
+      initCompanyPills();
+      renderCompanyTrendChart();
     }
 
     // Tab Switching
@@ -1450,6 +1387,77 @@
     document.getElementById('open-history-hub-btn').addEventListener('click', openHistoryModal);
     document.getElementById('open-version-modal-btn').addEventListener('click', openHistoryModal);
     document.getElementById('close-version-modal-btn').addEventListener('click', () => verModal.classList.add('hidden'));
+
+    let selectedFinCompanies = ['Infineon', 'STMicro', 'Vishay', 'Diodes'];
+    let selectedFinMetric = 'revM';
+
+    function initCompanyPills() {
+      const series = appData.companySeries || FALLBACK_DATA.companySeries;
+      const container = document.getElementById('fin-company-pills');
+      if (!container || !series) return;
+      const names = Object.keys(series.companies);
+      container.innerHTML = names.map(name => {
+        const active = selectedFinCompanies.includes(name);
+        return `<button type="button" class="fin-co-pill px-2.5 py-1 text-[11px] rounded-full border transition font-medium ${active ? 'bg-cyan-600/30 text-cyan-200 border-cyan-400' : 'bg-slate-950 text-slate-400 border-slate-700 hover:text-white'}" data-co="${name}">${name}</button>`;
+      }).join('');
+      container.querySelectorAll('.fin-co-pill').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const co = this.getAttribute('data-co');
+          if (selectedFinCompanies.includes(co)) {
+            if (selectedFinCompanies.length > 1) selectedFinCompanies = selectedFinCompanies.filter(c => c !== co);
+          } else {
+            selectedFinCompanies.push(co);
+          }
+          initCompanyPills();
+          renderCompanyTrendChart();
+        });
+      });
+    }
+
+    document.querySelectorAll('.fin-metric-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.fin-metric-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white', 'font-semibold'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white', 'font-semibold');
+        selectedFinMetric = this.getAttribute('data-metric');
+        renderCompanyTrendChart();
+      });
+    });
+
+    function renderCompanyTrendChart() {
+      const series = appData.companySeries || FALLBACK_DATA.companySeries;
+      const ctx = document.getElementById('stmRevSeriesChart').getContext('2d');
+      if (stmRevChart) stmRevChart.destroy();
+      const datasets = selectedFinCompanies.map(name => {
+        const info = series.companies[name];
+        if (!info) return null;
+        return {
+          label: name,
+          data: info[selectedFinMetric],
+          borderColor: info.color,
+          backgroundColor: info.color + '22',
+          tension: 0.3,
+          borderWidth: 2,
+          pointRadius: 4
+        };
+      }).filter(Boolean);
+
+      stmRevChart = new Chart(ctx, {
+        type: 'line',
+        data: { labels: series.labels, datasets },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            y: {
+              grid: { color: 'rgba(255,255,255,0.06)' },
+              ticks: { color: '#94a3b8', callback: v => selectedFinMetric === 'revM' ? '$' + v + 'M' : v + '%' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+          }
+        }
+      });
+    }
 
     const _origInitData = initData;
     window.addEventListener('DOMContentLoaded', () => {

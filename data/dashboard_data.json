@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T16:01:43.061744+09:00",
+  "lastUpdated": "2026-11-12T09:00:00+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
     {
@@ -79,54 +79,6 @@
   },
   "news": [
     {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: AI Data Centers and Their Impact on Power Electronics",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This video panel from PowerUP 2026 is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Data centers are shifting toward higher-voltage direct-current architectures, distributing...\nThe post PowerUp: AI Data Centers an...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-ai-data-centers-and-their-impact-on-power-electronics/",
-      "id": 1794466905130,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "SiC",
-      "title": "PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Converts and Uses Energy",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Event Session is presented by Dr. Adam Barkley, Chief Technology Officer, SiC Devices, Wolfspeed. This keynote is an invitation to take a fresh look...\nThe post PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Conve...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-enabling-a-paradigm-shift-in-how-the-world-creates-stores-converts-and-uses-energy/",
-      "id": 1794466905129,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconductor of the AI era",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Keynote is presented by Johannes Schoiswohl, Business Line Head GaN Systems, Infineon GaN has moved well beyond its early adopter phase. From AI data...\nThe post PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconduct...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-gan-at-the-tipping-point-why-gallium-nitride-is-the-semiconductor-of-the-ai-era/",
-      "id": 1794466905128,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUP: Panel Discussion: The Gate Driver Problem – Extracting the Most Out of WBG",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This session is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Gate driver design is one of the most consequential bottlenecks in extracting WBG...\nThe post PowerUP: Panel Discussion: The Gate Driver Problem &#8211;...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-panel-discussion-the-gate-driver-problem-extracting-the-most-out-of-wbg/",
-      "id": 1794466905127,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
       "id": 1,
       "week": "2026-W46",
       "company": "Infineon",
@@ -200,132 +152,6 @@
     }
   ],
   "papers": [
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Design and Process Analysis of a Split-Gate Trench Power MOSFET with Bottom-Trench Hk-Pillar Superjunction for Enhanced Performance",
-      "authors": "Yunteng Jiang, Zhentao Xiao, Zonghao Zhang et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "In this paper, we propose a simulation-based novel Split-Gate Trench MOSFET structure with an optimized fabrication process to enhance power efficiency, switching speed, and thermal stability for high-performance semicon...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2411.09304v2",
-      "id": "P_2026-W46_9",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SJ-MOS",
-      "conference": "arXiv Preprint",
-      "title": "Taylor Modeling and Comparative Research Containing Aspect-Ratio Dependent Optimization of Three-Dimensional Hk Superjunction MOSFETs",
-      "authors": "Zhentao Xiao, Haimeng Huang, Zonghao Zhang et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "This paper presents a comprehensive study on aspect-ratio dependent optimization for specific on-resistance of three-dimensional high-k superjunction MOSFETs. The research introduces a Taylor modeling method, overcoming ...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2411.13448v1",
-      "id": "P_2026-W46_8",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "kV-Class Lateral NiOx/GaN Super-Heterojunction Diode via Ammonia Molecular Beam Epitaxy (NH3-MBE)",
-      "authors": "Yizheng Liu, Zachary J. Biegler, Ashley E. Wissel-Garcia et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "This work reports the demonstration of lateral p-NiOx/p-GaN/n-GaN-based super-heterojunction (SHJ) diodes using p-GaN with additional sputtered p-type nickel oxide (NiOx) layers to realize charge-balanced structures. The...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2511.05060v1",
-      "id": "P_2026-W46_7",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Individual Characterization of Fast-Responding Trap States at the NO-Annealed SiO$_2$/4H-SiC Interface",
-      "authors": "Takahiro Ono, Mizuki Ohashi, Tomohiro Shigeno et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Fast-responding trap states introduced by NO-annealing are suspected to limit the channel mobility of 4H-SiC MOSFETs, yet their microscopic characterization remains challenging because conventional electrical methods are...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2605.27041v1",
-      "id": "P_2026-W46_6",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Physics-Informed Condition Monitoring of SiC Power Modules",
-      "authors": "Mattia Scarpa, Evgeny Kusmenko, Francesco Toso et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Silicon carbide (SiC) power modules are increasingly deployed in automotive traction inverters, where condition monitoring is essential to prevent in-service failures. Despite extensive qualification under AQG 324, no co...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2608.08363v2",
-      "id": "P_2026-W46_5",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Analysis and Design of Desaturation Short-Circuit Protection for SiC MOSFET Under High Switching Voltage Transients",
-      "authors": "Ravi Teja Pogulaguntla, Arun Karuppaswamy B",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Short-circuit protection is vital for ensuring the safe operation of high-power-density power converters using Silicon Carbide (SiC) MOSFETs. However, adapting conventional desaturation (DESAT) protection, originally des...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2609.23000v1",
-      "id": "P_2026-W46_4",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Energy-Accumulate-Then-Act Backscatter Communications With Retransmission Under Imperfect Feedback Detection",
-      "authors": "Rui Xu, Yinghui Ye, Guangyue Lu et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "In this paper, we propose a threshold-triggered energy-accumulate-then-act backscatter communication system with retransmission under imperfect feedback detection. Under this system, harvested energy is accumulated acros...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.06499v1",
-      "id": "P_2026-W46_3",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Rapid Heat Removal from Chip Cores: Near-Junction Active Cooling of Power Transistors via Electron Entropy Transport and Spatial Decoupling",
-      "authors": "Xiangying Li",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Chip performance is limited by a shared bottleneck: the core produces heat faster than it can be moved out. We study the hardest case, RF power GaN HEMTs, whose hotspots exceed 5 kW/cm^2, and propose a horizontal near-ju...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.11716v1",
-      "id": "P_2026-W46_2",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Environmental Assessment of GaN Current-Source and Voltage-Source AC-AC Variable Speed Drives",
-      "authors": "Luc Imperiali, Jonas Huber",
-      "bv": "200 V",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Three-phase ac-ac converters for variable-speed drives can be realized conventionally as voltage-source converters (VSCs) or, leveraging emerging monolithic bidirectional GaN power transistors (M-BDSs), as current-source...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.12211v1",
-      "id": "P_2026-W46_1",
-      "week": "2026-W46"
-    },
     {
       "id": "P1",
       "week": "2026-W46",
@@ -541,7 +367,7 @@
       "yoy": "+19.0%",
       "opm": "23.8% (Seg.)",
       "gpm": "41.8%",
-      "segment": "PSS(AI/전원) €1.80B (OPM 30.8%), ATV 중심",
+      "segment": "PSS(AI·전원) €1.80B (OPM 30.8%), ATV 중심",
       "rd_capex": "FY27 CapEx €3.0~3.5B 계획",
       "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
     },
@@ -552,7 +378,7 @@
       "yoy": "+17.9%",
       "opm": "11.4% (Non-GAAP)",
       "gpm": "37.3%",
-      "segment": "Power & Discrete(P&D) ~16%+, 전장·산업 회복",
+      "segment": "Power & Discrete(P&D) · 전장·산업 회복",
       "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)",
       "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"
     },
@@ -563,20 +389,86 @@
       "yoy": "-15.0% (FY25)",
       "opm": "13.2% (Q2'25)",
       "gpm": "37.6% (Q2'25)",
-      "segment": "Power Solutions Group (PSG) 핵심",
+      "segment": "Power Solutions Group (PSG) · SGT/SiC",
       "rd_capex": "FCF 마진 24% ($1.4B FY25)",
       "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"
     },
     {
+      "company": "Vishay Intertechnology",
+      "ticker": "VSH (NYSE)",
+      "revenue": "$978.9M (Q3 2026)",
+      "yoy": "+24.0%",
+      "opm": "9.4%",
+      "gpm": "25.5%",
+      "segment": "Discrete MOSFET / Diode / 전력 수동소자",
+      "rd_capex": "Book-to-bill 1.29, Q4 $990M 가이던스",
+      "url": "https://ir.vishay.com/news-releases/news-release-details/vishay-intertechnology-reports-third-quarter-2026-results"
+    },
+    {
       "company": "Rohm Semiconductor",
       "ticker": "6963 (TSE)",
-      "revenue": "¥122B (~$0.82B)",
+      "revenue": "¥122B (~$820M)",
       "yoy": "+2.1%",
       "opm": "12.4%",
       "gpm": "34.8%",
       "segment": "SiC Trench / EcoGaN 및 LSI",
       "rd_capex": "8인치 SiC 팹 투자 지속",
       "url": "https://www.rohm.com/investor-relations"
+    },
+    {
+      "company": "Diodes Incorporated",
+      "ticker": "DIOD (NASDAQ)",
+      "revenue": "$532.6M (Q3 2026)",
+      "yoy": "+35.8%",
+      "opm": "11.9% (추정)",
+      "gpm": "36.1%",
+      "segment": "전장·산업·AI 컴퓨팅 Discrete/Power",
+      "rd_capex": "Q4 가이던스 $550M (GPM 37%)",
+      "url": "https://investor.diodes.com/news-releases/news-release-details/diodes-incorporated-reports-third-quarter-2026-financial-results"
+    },
+    {
+      "company": "Alpha & Omega Semi",
+      "ticker": "AOSL (NASDAQ)",
+      "revenue": "$177.8M (Q1 FY27)",
+      "yoy": "-2.6%",
+      "opm": "-0.6% (Non-GAAP)",
+      "gpm": "24.5%",
+      "segment": "전원·산업용(+29.2% QoQ) SJ/SGT/Power IC",
+      "rd_capex": "Q2 가이던스 $180M (GPM 25.1%)",
+      "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductor-Reports-Financial-Results-for-the-Fiscal-First-Quarter-of-2027-Ended-September-30-2026/default.aspx"
+    },
+    {
+      "company": "Wolfspeed",
+      "ticker": "WOLF (NYSE)",
+      "revenue": "$155.0M (Q1 FY27)",
+      "yoy": "-21.2%",
+      "opm": "적자 (가동률 제약)",
+      "gpm": "-13.0% (Non-GAAP)",
+      "segment": "SiC 웨이퍼 & 파워 소자 (AI 데이터센터 2배 성장)",
+      "rd_capex": "현금성 자산 $995M, Q2 $155~175M 전망",
+      "url": "https://investor.wolfspeed.com/financials/quarterly-results/default.aspx"
+    },
+    {
+      "company": "Power Integrations",
+      "ticker": "POWI (NASDAQ)",
+      "revenue": "$125.5M (Q3 2026)",
+      "yoy": "+6.0%",
+      "opm": "15.2% (GAAP)",
+      "gpm": "54.5% (Q4 가이던스)",
+      "segment": "PowiGaN / 고내압 AC-DC Power IC",
+      "rd_capex": "R&D 투자 비중 ~22.8%, 무차입 재무",
+      "url": "https://investors.power.com/news/news-details/2026/Power-Integrations-Reports-Third-Quarter-Financial-Results/default.aspx"
+    },
+    {
+      "company": "Navitas Semiconductor",
+      "ticker": "NVTS (NASDAQ)",
+      "revenue": "$14.0M (Q3 2026)",
+      "yoy": "+38.0%",
+      "opm": "적자 (-$10.9M)",
+      "gpm": "40.0% (Non-GAAP)",
+      "segment": "GaNFast IC & SiC (AI 서버 고출력 집중)",
+      "rd_capex": "현금 $531.5M, Q4 $16.0M(+119% YoY) 전망",
+      "url": "https://navitassemi.com/en/press-releases/navitas-semiconductor-announces-third-quarter-2026-financial-results"
     }
   ],
   "quarterlySeries": {
@@ -618,8 +510,17 @@
     ],
     "wstsNote": "WSTS 글로벌 반도체: 2025년 $796B (+26% YoY) → 2026년 $1T+ 전망"
   },
-  "version": "v2.6",
+  "version": "v2.7",
   "versionHistory": [
+    {
+      "version": "v2.7",
+      "date": "2026-11-12",
+      "title": "선진사 재무 벤치마크 10개사 확대 & 기업 선택형 동적 차트",
+      "changes": [
+        "상장 전력반도체/GaN/SiC 선진사 10개사(Infineon, STMicro, onsemi, Rohm, Vishay, Diodes, AOSL, Wolfspeed, Power Integrations, Navitas) 최신 2026 실적 데이터 반영",
+        "원하는 기업을 선택해 분기 매출($M) 또는 매출총이익률(GPM %) 추이를 비교할 수 있는 동적 차트 구현"
+      ]
+    },
     {
       "version": "v2.6",
       "date": "2026-11-12",
@@ -1011,5 +912,165 @@
     "slidesPdf": "https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pdf",
     "slidesPptx": "https://docs.google.com/presentation/d/1t765L11mWWWNGMjoWi9kGFZa0ICLj6DKNSRw8Pgaff0/export/pptx",
     "ownerDoc": "https://docs.google.com/document/d/1nJ7UzElVtGY6qCFUozDXkWkHVw8hcfWt0LjOREWMu6E/edit"
+  },
+  "companySeries": {
+    "labels": [
+      "25 Q3/Q4",
+      "26 Q1",
+      "26 Q2",
+      "26 Q3/최신"
+    ],
+    "companies": {
+      "Infineon": {
+        "color": "#3b82f6",
+        "revM": [
+          4250,
+          4400,
+          4520,
+          5080
+        ],
+        "gpm": [
+          40.2,
+          40.5,
+          40.8,
+          41.8
+        ]
+      },
+      "STMicro": {
+        "color": "#10b981",
+        "revM": [
+          3190,
+          3100,
+          3490,
+          3760
+        ],
+        "gpm": [
+          33.2,
+          33.8,
+          34.8,
+          37.3
+        ]
+      },
+      "onsemi": {
+        "color": "#8b5cf6",
+        "revM": [
+          1530,
+          1480,
+          1510,
+          1530
+        ],
+        "gpm": [
+          37.6,
+          37.0,
+          37.6,
+          38.0
+        ]
+      },
+      "Vishay": {
+        "color": "#f59e0b",
+        "revM": [
+          790,
+          840,
+          889,
+          978.9
+        ],
+        "gpm": [
+          19.5,
+          22.0,
+          23.5,
+          25.5
+        ]
+      },
+      "Rohm": {
+        "color": "#ec4899",
+        "revM": [
+          800,
+          795,
+          810,
+          820
+        ],
+        "gpm": [
+          34.0,
+          34.2,
+          34.5,
+          34.8
+        ]
+      },
+      "Diodes": {
+        "color": "#06b6d4",
+        "revM": [
+          392,
+          420,
+          446,
+          532.6
+        ],
+        "gpm": [
+          30.7,
+          31.8,
+          33.1,
+          36.1
+        ]
+      },
+      "AOSL": {
+        "color": "#84cc16",
+        "revM": [
+          182.5,
+          168,
+          170.4,
+          177.8
+        ],
+        "gpm": [
+          23.5,
+          22.3,
+          23.1,
+          24.5
+        ]
+      },
+      "Wolfspeed": {
+        "color": "#ef4444",
+        "revM": [
+          196.8,
+          165,
+          150,
+          155.0
+        ],
+        "gpm": [
+          -39.0,
+          -33.0,
+          -19.9,
+          -13.0
+        ]
+      },
+      "Power Integrations": {
+        "color": "#14b8a6",
+        "revM": [
+          118.4,
+          108.3,
+          118.9,
+          125.5
+        ],
+        "gpm": [
+          52.9,
+          53.2,
+          53.8,
+          54.5
+        ]
+      },
+      "Navitas": {
+        "color": "#a855f7",
+        "revM": [
+          10.1,
+          8.6,
+          10.5,
+          14.0
+        ],
+        "gpm": [
+          38.7,
+          39.0,
+          39.5,
+          40.0
+        ]
+      }
+    }
   }
 }
