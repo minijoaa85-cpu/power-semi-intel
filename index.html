@@ -755,7 +755,7 @@
 
     let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
     let opmTrendChart, marginChart, baligaChart, stmRevChart, multiFomChart;
-    let targetDevices = JSON.parse(localStorage.getItem("POWER_SEMI_TARGETS") || "[]");
+    let targetDevices = []; try { targetDevices = JSON.parse(localStorage.getItem("POWER_SEMI_TARGETS") || "[]"); } catch (e) {}
 
     async function initData() {
       // Try fetching live JSON (works when hosted on GitHub Pages / HTTP server)
@@ -764,7 +764,7 @@
         if (res.ok) {
           const remote = await res.json();
           if (remote && remote.news && remote.papers) {
-            appData = remote;
+            appData = Object.assign({}, FALLBACK_DATA, remote);
           }
         }
       } catch (e) {
@@ -1449,22 +1449,6 @@
     }
     document.getElementById('open-history-hub-btn').addEventListener('click', openHistoryModal);
     document.getElementById('open-version-modal-btn').addEventListener('click', openHistoryModal);
-    if (false) document.getElementById('open-version-modal-btn').addEventListener('click', () => {
-      const hist = appData.versionHistory || FALLBACK_DATA.versionHistory;
-      document.getElementById('version-history-list').innerHTML = hist.map(h => `
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
-          <div class="flex items-center justify-between mb-1">
-            <span class="font-bold text-emerald-400">${h.version} — ${h.title}</span>
-            <span class="text-[10px] text-slate-500">${h.date}</span>
-          </div>
-          <ul class="list-disc list-inside text-slate-300 space-y-0.5 text-[11px]">
-            ${h.changes.map(c => `<li>${c}</li>`).join('')}
-          </ul>
-        </div>
-      `).join('');
-      verModal.classList.remove('hidden');
-    });
-    });
     document.getElementById('close-version-modal-btn').addEventListener('click', () => verModal.classList.add('hidden'));
 
     const _origInitData = initData;
