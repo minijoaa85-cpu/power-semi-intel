@@ -1,10 +1,19 @@
 {
-  "lastUpdated": "2026-11-12T09:00:00+09:00",
+  "lastUpdated": "2026-11-12T13:44:15.893084+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
-    { "code": "2026-W46", "label": "2026년 11월 2주차" },
-    { "code": "2026-W45", "label": "2026년 11월 1주차" },
-    { "code": "2026-W44", "label": "2026년 10월 5주차" }
+    {
+      "code": "2026-W46",
+      "label": "2026년 11월 2주차"
+    },
+    {
+      "code": "2026-W45",
+      "label": "2026년 11월 1주차"
+    },
+    {
+      "code": "2026-W44",
+      "label": "2026년 10월 5주차"
+    }
   ],
   "weeklyThemes": {
     "2026-W46": [
@@ -69,6 +78,54 @@
     ]
   },
   "news": [
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUp: AI Data Centers and Their Impact on Power Electronics",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This video panel from PowerUP 2026 is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Data centers are shifting toward higher-voltage direct-current architectures, distributing...\nThe post PowerUp: AI Data Centers an...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-ai-data-centers-and-their-impact-on-power-electronics/",
+      "id": 1794458656791,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "SiC",
+      "title": "PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Converts and Uses Energy",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This Event Session is presented by Dr. Adam Barkley, Chief Technology Officer, SiC Devices, Wolfspeed. This keynote is an invitation to take a fresh look...\nThe post PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Conve...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-enabling-a-paradigm-shift-in-how-the-world-creates-stores-converts-and-uses-energy/",
+      "id": 1794458656790,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconductor of the AI era",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This Keynote is presented by Johannes Schoiswohl, Business Line Head GaN Systems, Infineon GaN has moved well beyond its early adopter phase. From AI data...\nThe post PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconduct...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-gan-at-the-tipping-point-why-gallium-nitride-is-the-semiconductor-of-the-ai-era/",
+      "id": 1794458656789,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUP: Panel Discussion: The Gate Driver Problem – Extracting the Most Out of WBG",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This session is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Gate driver design is one of the most consequential bottlenecks in extracting WBG...\nThe post PowerUP: Panel Discussion: The Gate Driver Problem &#8211;...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-panel-discussion-the-gate-driver-problem-extracting-the-most-out-of-wbg/",
+      "id": 1794458656788,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
     {
       "id": 1,
       "week": "2026-W46",
@@ -143,6 +200,132 @@
     }
   ],
   "papers": [
+    {
+      "device": "SiC",
+      "conference": "arXiv Preprint",
+      "title": "Design and Process Analysis of a Split-Gate Trench Power MOSFET with Bottom-Trench Hk-Pillar Superjunction for Enhanced Performance",
+      "authors": "Yunteng Jiang, Zhentao Xiao, Zonghao Zhang et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "In this paper, we propose a simulation-based novel Split-Gate Trench MOSFET structure with an optimized fabrication process to enhance power efficiency, switching speed, and thermal stability for high-performance semicon...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2411.09304v2",
+      "id": "P_2026-W46_9",
+      "week": "2026-W46"
+    },
+    {
+      "device": "SJ-MOS",
+      "conference": "arXiv Preprint",
+      "title": "Taylor Modeling and Comparative Research Containing Aspect-Ratio Dependent Optimization of Three-Dimensional Hk Superjunction MOSFETs",
+      "authors": "Zhentao Xiao, Haimeng Huang, Zonghao Zhang et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "This paper presents a comprehensive study on aspect-ratio dependent optimization for specific on-resistance of three-dimensional high-k superjunction MOSFETs. The research introduces a Taylor modeling method, overcoming ...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2411.13448v1",
+      "id": "P_2026-W46_8",
+      "week": "2026-W46"
+    },
+    {
+      "device": "GaN",
+      "conference": "arXiv Preprint",
+      "title": "kV-Class Lateral NiOx/GaN Super-Heterojunction Diode via Ammonia Molecular Beam Epitaxy (NH3-MBE)",
+      "authors": "Yizheng Liu, Zachary J. Biegler, Ashley E. Wissel-Garcia et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "This work reports the demonstration of lateral p-NiOx/p-GaN/n-GaN-based super-heterojunction (SHJ) diodes using p-GaN with additional sputtered p-type nickel oxide (NiOx) layers to realize charge-balanced structures. The...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2511.05060v1",
+      "id": "P_2026-W46_7",
+      "week": "2026-W46"
+    },
+    {
+      "device": "SiC",
+      "conference": "arXiv Preprint",
+      "title": "Individual Characterization of Fast-Responding Trap States at the NO-Annealed SiO$_2$/4H-SiC Interface",
+      "authors": "Takahiro Ono, Mizuki Ohashi, Tomohiro Shigeno et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "Fast-responding trap states introduced by NO-annealing are suspected to limit the channel mobility of 4H-SiC MOSFETs, yet their microscopic characterization remains challenging because conventional electrical methods are...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2605.27041v1",
+      "id": "P_2026-W46_6",
+      "week": "2026-W46"
+    },
+    {
+      "device": "SiC",
+      "conference": "arXiv Preprint",
+      "title": "Physics-Informed Condition Monitoring of SiC Power Modules",
+      "authors": "Mattia Scarpa, Evgeny Kusmenko, Francesco Toso et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "Silicon carbide (SiC) power modules are increasingly deployed in automotive traction inverters, where condition monitoring is essential to prevent in-service failures. Despite extensive qualification under AQG 324, no co...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2608.08363v2",
+      "id": "P_2026-W46_5",
+      "week": "2026-W46"
+    },
+    {
+      "device": "SiC",
+      "conference": "arXiv Preprint",
+      "title": "Analysis and Design of Desaturation Short-Circuit Protection for SiC MOSFET Under High Switching Voltage Transients",
+      "authors": "Ravi Teja Pogulaguntla, Arun Karuppaswamy B",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "Short-circuit protection is vital for ensuring the safe operation of high-power-density power converters using Silicon Carbide (SiC) MOSFETs. However, adapting conventional desaturation (DESAT) protection, originally des...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2609.23000v1",
+      "id": "P_2026-W46_4",
+      "week": "2026-W46"
+    },
+    {
+      "device": "GaN",
+      "conference": "arXiv Preprint",
+      "title": "Energy-Accumulate-Then-Act Backscatter Communications With Retransmission Under Imperfect Feedback Detection",
+      "authors": "Rui Xu, Yinghui Ye, Guangyue Lu et al.",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "In this paper, we propose a threshold-triggered energy-accumulate-then-act backscatter communication system with retransmission under imperfect feedback detection. Under this system, harvested energy is accumulated acros...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2611.06499v1",
+      "id": "P_2026-W46_3",
+      "week": "2026-W46"
+    },
+    {
+      "device": "GaN",
+      "conference": "arXiv Preprint",
+      "title": "Rapid Heat Removal from Chip Cores: Near-Junction Active Cooling of Power Transistors via Electron Entropy Transport and Spatial Decoupling",
+      "authors": "Xiangying Li",
+      "bv": "-",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "Chip performance is limited by a shared bottleneck: the core produces heat faster than it can be moved out. We study the hardest case, RF power GaN HEMTs, whose hotspots exceed 5 kW/cm^2, and propose a horizontal near-ju...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2611.11716v1",
+      "id": "P_2026-W46_2",
+      "week": "2026-W46"
+    },
+    {
+      "device": "GaN",
+      "conference": "arXiv Preprint",
+      "title": "Environmental Assessment of GaN Current-Source and Voltage-Source AC-AC Variable Speed Drives",
+      "authors": "Luc Imperiali, Jonas Huber",
+      "bv": "200 V",
+      "ron_sp": "-",
+      "fom": "자동 수집(요약 참조)",
+      "arch": "Three-phase ac-ac converters for variable-speed drives can be realized conventionally as voltage-source converters (VSCs) or, leveraging emerging monolithic bidirectional GaN power transistors (M-BDSs), as current-source...",
+      "reliability": "-",
+      "link": "http://arxiv.org/abs/2611.12211v1",
+      "id": "P_2026-W46_1",
+      "week": "2026-W46"
+    },
     {
       "id": "P1",
       "week": "2026-W46",
@@ -289,16 +472,66 @@
     }
   ],
   "tradeoffPoints": [
-    { "label": "Si SJ-MOS (Fuji 650V, AR25)", "tech": "SJ-MOS", "bv": 600, "ron_sp": 9.5 },
-    { "label": "Si SJ-MOS (DM9 Class)", "tech": "SJ-MOS", "bv": 650, "ron_sp": 7.8 },
-    { "label": "Si UD SGT (60V)", "tech": "SGT", "bv": 60, "ron_sp": 0.45 },
-    { "label": "Si UD SGT (100V Narrow Gate)", "tech": "SGT", "bv": 100, "ron_sp": 0.82 },
-    { "label": "Si UD SGT (150V Floating P)", "tech": "SGT", "bv": 150, "ron_sp": 1.12 },
-    { "label": "GaN Lateral (650V BDS)", "tech": "GaN", "bv": 650, "ron_sp": 1.85 },
-    { "label": "GaN-on-Si (1200V E-mode)", "tech": "GaN", "bv": 1250, "ron_sp": 1.45 },
-    { "label": "GaN Vertical FinFET (1200V)", "tech": "GaN", "bv": 1200, "ron_sp": 0.20 },
-    { "label": "4H-SiC HJ-DTMOS (1200V)", "tech": "SiC", "bv": 1200, "ron_sp": 1.78 },
-    { "label": "4H-SiC Trench+SBD (1700V)", "tech": "SiC", "bv": 1780, "ron_sp": 1.92 }
+    {
+      "label": "Si SJ-MOS (Fuji 650V, AR25)",
+      "tech": "SJ-MOS",
+      "bv": 600,
+      "ron_sp": 9.5
+    },
+    {
+      "label": "Si SJ-MOS (DM9 Class)",
+      "tech": "SJ-MOS",
+      "bv": 650,
+      "ron_sp": 7.8
+    },
+    {
+      "label": "Si UD SGT (60V)",
+      "tech": "SGT",
+      "bv": 60,
+      "ron_sp": 0.45
+    },
+    {
+      "label": "Si UD SGT (100V Narrow Gate)",
+      "tech": "SGT",
+      "bv": 100,
+      "ron_sp": 0.82
+    },
+    {
+      "label": "Si UD SGT (150V Floating P)",
+      "tech": "SGT",
+      "bv": 150,
+      "ron_sp": 1.12
+    },
+    {
+      "label": "GaN Lateral (650V BDS)",
+      "tech": "GaN",
+      "bv": 650,
+      "ron_sp": 1.85
+    },
+    {
+      "label": "GaN-on-Si (1200V E-mode)",
+      "tech": "GaN",
+      "bv": 1250,
+      "ron_sp": 1.45
+    },
+    {
+      "label": "GaN Vertical FinFET (1200V)",
+      "tech": "GaN",
+      "bv": 1200,
+      "ron_sp": 0.2
+    },
+    {
+      "label": "4H-SiC HJ-DTMOS (1200V)",
+      "tech": "SiC",
+      "bv": 1200,
+      "ron_sp": 1.78
+    },
+    {
+      "label": "4H-SiC Trench+SBD (1700V)",
+      "tech": "SiC",
+      "bv": 1780,
+      "ron_sp": 1.92
+    }
   ],
   "financials": [
     {
@@ -347,10 +580,42 @@
     }
   ],
   "quarterlySeries": {
-    "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
-    "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
-    "stOpm": [0.1, 2.1, 6.8, 3.8, 5.2, 8.9, 11.4],
-    "stmRevB": [2.52, 2.77, 3.19, 3.33, 3.10, 3.49, 3.76],
+    "labels": [
+      "25 Q1",
+      "25 Q2",
+      "25 Q3",
+      "25 Q4",
+      "26 Q1",
+      "26 Q2",
+      "26 Q3/Q4"
+    ],
+    "infineonOpm": [
+      16.7,
+      17.5,
+      18.0,
+      18.2,
+      18.5,
+      19.1,
+      23.8
+    ],
+    "stOpm": [
+      0.1,
+      2.1,
+      6.8,
+      3.8,
+      5.2,
+      8.9,
+      11.4
+    ],
+    "stmRevB": [
+      2.52,
+      2.77,
+      3.19,
+      3.33,
+      3.1,
+      3.49,
+      3.76
+    ],
     "wstsNote": "WSTS 글로벌 반도체: 2025년 $796B (+26% YoY) → 2026년 $1T+ 전망"
   }
 }
