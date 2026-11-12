@@ -28,7 +28,7 @@
         <div>
           <div class="flex items-center gap-2 flex-wrap">
             <h1 class="text-base font-bold text-white tracking-tight">전력반도체 Process Architecture 인텔리전스</h1>
-            <span class="text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">v2.0 Auto-Pipeline Ready</span>
+            <button id="open-version-modal-btn" type="button" class="text-[10px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 px-2.5 py-0.5 rounded-full border border-emerald-500/30 transition cursor-pointer flex items-center gap-1"><i class="fa-solid fa-code-branch text-[9px]"></i> v2.5 (히스토리 보기)</button>
           </div>
           <p class="text-xs text-slate-400">GaN · SiC · SJ MOSFET · UD SGT | Ron,sp-BV 한계선 | 신뢰성·패키징 | 다분기 재무 & WSTS</p>
         </div>
@@ -191,18 +191,99 @@
 
     <!-- TAB 3: RON,SP vs BV & PROCESS MATRIX -->
     <div id="tab-benchmark" class="tab-pane hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-crosshairs text-cyan-400"></i> Baliga 이론 한계선 대비 Ron,sp vs BV (Log-Log)
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Si / 4H-SiC / GaN 1D 한계선 + 논문·선진사 + 자사 목표 소자(★)</p>
+            </div>
+            <span class="text-[11px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700">mΩ·cm² vs V</span>
+          </div>
+          <div class="relative h-80">
+            <canvas id="baligaScatterChart"></canvas>
+          </div>
+        </div>
+
+        <!-- My Target Device Overlay Panel -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2 mb-1">
+              <i class="fa-solid fa-bullseye text-rose-400"></i> 자사 목표 스펙 오버레이
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">개발 중인 목표 스펙을 입력해 Baliga 한계선 및 선진사 대비 위치를 바로 확인하세요.</p>
+            <form id="target-overlay-form" class="space-y-3 text-xs">
+              <div>
+                <label class="block text-slate-300 font-semibold mb-1">목표 소자명</label>
+                <input type="text" id="target-name" value="자사 차세대 650V SJ" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-rose-500">
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-slate-300 font-semibold mb-1">목표 내압 BV (V)</label>
+                  <input type="number" id="target-bv" value="650" step="10" min="20" max="3000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-rose-500">
+                </div>
+                <div>
+                  <label class="block text-slate-300 font-semibold mb-1">목표 Ron,sp (mΩ·cm²)</label>
+                  <input type="number" id="target-ron" value="6.5" step="0.05" min="0.05" max="100" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-rose-500">
+                </div>
+              </div>
+              <div class="flex gap-2 pt-1">
+                <button type="submit" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-semibold py-2 rounded-lg transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-star"></i> 차트에 오버레이
+                </button>
+                <button type="button" id="clear-targets-btn" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition">초기화</button>
+              </div>
+            </form>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800">
+            <div class="text-[11px] text-slate-400 mb-1.5 font-semibold">현재 오버레이 목록:</div>
+            <div id="target-list" class="space-y-1 text-[11px] text-rose-300 max-h-24 overflow-y-auto"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process Cross-Section & Mask Step Explorer (v2.3) -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
           <div>
             <h3 class="text-sm font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-crosshairs text-cyan-400"></i> Baliga 이론 한계선 대비 소자별 Ron,sp vs Breakdown Voltage (Log-Log)
+              <i class="fa-solid fa-layer-group text-indigo-400"></i> 공정 단면 아키텍처 & 마스크 스텝 비교기 (v2.3)
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">Si / 4H-SiC / GaN 1D 이론 한계선과 수록 논문·상용 소자 위치 비교</p>
+            <p class="text-xs text-slate-400 mt-0.5">소자별 구조 단면도, 표준 마스크 수, 핵심 단위공정 플로우 및 공정 난제 비교</p>
           </div>
-          <span class="text-[11px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700">단위: mΩ·cm² vs V</span>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button class="cs-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-semibold" data-cs="SJ-MOS">SJ MOSFET</button>
+            <button class="cs-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-cs="SGT">UD SGT</button>
+            <button class="cs-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-cs="GaN">GaN HEMT</button>
+            <button class="cs-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-cs="SiC">SiC Trench</button>
+          </div>
         </div>
-        <div class="relative h-80">
-          <canvas id="baligaScatterChart"></canvas>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div id="cs-svg-container" class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex items-center justify-center min-h-[240px]"></div>
+          <div id="cs-detail-container" class="space-y-3 text-xs"></div>
+        </div>
+      </div>
+
+      <!-- Multi-FOM Voltage Class Comparator (v2.1) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-amber-400"></i> 내압대별 다중 FOM 비교기 (v2.1)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">동일 내압대(100V급 · 650V급 · 1200V+급) 소자 간 Ron×Qg / Ron×Qgd / BFOM 비교</p>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button class="fom-vclass-btn px-2.5 py-1 text-xs rounded-lg bg-blue-600 text-white font-medium" data-vclass="all">전체</button>
+            <button class="fom-vclass-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-vclass="100V">100V급 (SGT vs GaN)</button>
+            <button class="fom-vclass-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-vclass="650V">650V급 (SJ vs GaN)</button>
+            <button class="fom-vclass-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-vclass="1200V">1200V+ (SiC vs GaN)</button>
+          </div>
+        </div>
+        <div class="relative h-72">
+          <canvas id="multiFomChart"></canvas>
         </div>
       </div>
 
@@ -229,6 +310,45 @@
             <tbody id="process-matrix-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
           </table>
         </div>
+      </div>
+
+      <!-- Commercial Part Number Datasheet DB (v2.2) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-barcode text-cyan-400"></i> 선진사 양산 Part Number 데이터시트 DB (v2.2)
+          </h3>
+          <div class="flex items-center gap-1.5">
+            <button class="pn-filter-btn px-2.5 py-1 text-xs rounded-lg bg-blue-600 text-white font-medium" data-filter="all">전체</button>
+            <button class="pn-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-filter="SJ-MOS">SJ-MOS</button>
+            <button class="pn-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-filter="SGT">UD SGT</button>
+            <button class="pn-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-filter="GaN">GaN</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">제조사 / Part No.</th>
+                <th class="py-3 px-4 text-center">소자 / 내압</th>
+                <th class="py-3 px-4 text-center">Rds(on)</th>
+                <th class="py-3 px-4 text-center">Qg / Coss</th>
+                <th class="py-3 px-4">패키지 & 열특성</th>
+                <th class="py-3 px-4">핵심 특징</th>
+                <th class="py-3 px-4 text-center">데이터시트</th>
+              </tr>
+            </thead>
+            <tbody id="part-number-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Generation-to-Generation Evolution Lineage (v2.2) -->
+      <div>
+        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-diagram-next text-emerald-400"></i> 선진사 세대별(Gen-to-Gen) 공정 진화 계보
+        </h3>
+        <div id="gen-roadmap-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
     </div>
 
@@ -272,6 +392,30 @@
           <i class="fa-solid fa-shield-halved text-amber-400"></i> 신뢰성(Reliability) & 패키징(Packaging) 아키텍처 핵심 이슈
         </h3>
         <div id="reliability-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+
+      <!-- Key Patent Tracker (v2.4) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-stamp text-purple-400"></i> 선진사 핵심 공정 특허 트래커 (v2.4)
+          </h3>
+          <span class="text-[11px] text-slate-400">Google Patents 원문 직통 링크</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">특허 번호 / 연도</th>
+                <th class="py-3 px-4 text-center">소자</th>
+                <th class="py-3 px-4">특허 명칭</th>
+                <th class="py-3 px-4">공정·구조 핵심 포인트</th>
+                <th class="py-3 px-4 text-center">원문</th>
+              </tr>
+            </thead>
+            <tbody id="patent-table-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -351,6 +495,14 @@
           <canvas id="stmRevSeriesChart"></canvas>
         </div>
       </div>
+
+      <!-- 8-inch Fab Expansion Timeline (v2.4) -->
+      <div>
+        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-industry text-cyan-400"></i> 글로벌 선진사 8인치(200mm) Fab 증설·투자 현황 (v2.4)
+        </h3>
+        <div id="fab-timeline-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
     </div>
 
   </main>
@@ -415,6 +567,22 @@
           <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold">저장</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- VERSION HISTORY MODAL -->
+  <div id="version-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl overflow-y-auto max-h-[85vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-code-branch text-emerald-400"></i> 대시보드 버전 히스토리 & 로드맵
+        </h3>
+        <button id="close-version-modal-btn" class="text-slate-400 hover:text-white text-sm p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="version-history-list" class="space-y-3 text-xs"></div>
+      <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
+        <span class="font-semibold text-slate-300">예정 로드맵:</span> v2.2 Part Number 데이터시트 DB → v2.3 공정 단면·마스크 스텝 → v2.4 특허·8인치 Fab 타임라인 → v2.5 AI 한국어 자동 요약
+      </div>
     </div>
   </div>
 
@@ -497,6 +665,59 @@
         { "company": "onsemi", "ticker": "ON (NASDAQ)", "revenue": "$1.53B (Q4 2025)", "yoy": "-15.0% (FY25)", "opm": "13.2% (Q2'25)", "gpm": "37.6% (Q2'25)", "segment": "Power Solutions Group (PSG) 핵심", "rd_capex": "FCF 마진 24% ($1.4B FY25)", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
         { "company": "Rohm Semiconductor", "ticker": "6963 (TSE)", "revenue": "¥122B (~$0.82B)", "yoy": "+2.1%", "opm": "12.4%", "gpm": "34.8%", "segment": "SiC Trench / EcoGaN 및 LSI", "rd_capex": "8인치 SiC 팹 투자 지속", "url": "https://www.rohm.com/investor-relations" }
       ],
+      "version": "v2.2",
+      "processCrossSections": [
+        { "id": "SJ-MOS", "name": "SJ MOSFET (Deep Trench Refill)", "masks": "7 ~ 9 Masks (Deep Trench) / 14+ (Multi-Epi)", "steps": ["N-Drift Epi / Deep Trench Etch (AR 25~30)", "P-Pillar Selective Epi Refill & CMP", "P-Body / N+ Source Implant", "Gate Oxide & Poly Gate Patterning", "Thick Al/Cu Metal & Backside Thinning"], "bottleneck": "Deep Trench 식각 프로파일 수직도 및 보이드(Void) 없는 P-Epi Refill, P/N Charge Balance 산포 ±3% 이내 제어" },
+        { "id": "SGT", "name": "UD SGT (Split-Gate Trench)", "masks": "6 ~ 8 Masks", "steps": ["Deep Trench Etch & Thick Shield Oxide (Stepped)", "Shield Poly (FP) Refill & Etch-back", "Inter-Poly Oxide & Thin Gate Oxide", "Control Gate Poly Refill & P-Body/N+ Implant", "Ultra-Thin Wafer Grinding (<50μm) & Backmetal"], "bottleneck": "Shield Oxide 단차 균일도, Narrow Mesa 접촉 식각 마진, 초박형 웨이퍼 핸들링 휨(Warpage) 제어" },
+        { "id": "GaN", "name": "GaN HEMT (200mm E-mode p-GaN)", "masks": "8 ~ 11 Masks (Au-Free CMOS 라인)", "steps": ["Si(111) 기판 위 AlN/AlGaN 버퍼 & GaN/AlGaN/p-GaN Epi", "p-GaN 저손상 선택적 식각 (2DEG 손상 최소화)", "Mesa/Implant 소자 분리 (Isolation)", "Au-Free Ohmic S/D 어닐링 & Gate Metal", "다층 Passivation & Field Plate 형성"], "bottleneck": "8인치(200mm) 에피 성장 시 열팽창 계수 차이에 의한 Bow 제어, p-GaN 식각 정밀도(Vth 산포 직결)" },
+        { "id": "SiC", "name": "SiC MOSFET (Double / Asymmetric Trench)", "masks": "9 ~ 12 Masks", "steps": ["4H-SiC N-Drift Epi 성장", "고온 Al/N Ion Implantation & 1650°C+ Carbon Cap Anneal", "Gate & Source Trench Etch + Corner Rounding", "Gate Oxide 성장 & NO/N2O 계면 질화 어닐링", "Ni-Silicide Ohmic & Ag 소결 대응 Backmetal"], "bottleneck": "고경도 SiC 식각 및 트렌치 코너 전계 집중(TDDB), SiC/SiO2 계면 트랩(Dit) 저감" }
+      ],
+      "patents": [
+        { "id": "US11973134B2", "tech": "GaN", "year": "2024", "title": "Super junction gated AlGaN/GaN HEMT", "focus": "게이트 하단 선택적 p-형 III-N 층 확장으로 내압·전류밀도 동시 개선", "url": "https://patents.google.com/patent/US11973134B2/en" },
+        { "id": "US20240421196A1", "tech": "GaN", "year": "2024", "title": "GaN semiconductor power transistor with slanted gate field plate", "focus": "경사형 게이트 필드 플레이트(Slanted GMFP)로 리프트오프 잔여물·전계 집중 억제", "url": "https://patents.google.com/patent/US20240421196A1/en" },
+        { "id": "US10679855B2", "tech": "SJ-MOS", "year": "2020", "title": "Method for producing a superjunction device", "focus": "다층 반도체 트렌치 식각 후 측벽 도펀트 이온주입 기반 Charge Balance 형성", "url": "https://patents.google.com/patent/US10679855B2/en" },
+        { "id": "US10103257B1", "tech": "SGT", "year": "2018", "title": "Termination design for trench superjunction / shield power MOSFET", "focus": "스트라이프 트렌치 내 하부 쉴드 폴리 및 상부 게이트 폴리 종단부 설계", "url": "https://patents.google.com/patent/US10103257B1/en" },
+        { "id": "US7843004B2", "tech": "SGT", "year": "2010", "title": "Power MOSFET with self-aligned recessed field plate", "focus": "게이트·RFP 트렌치 자기정렬(Self-aligned) 공정으로 메사 폭 산포 및 Qgd 저감", "url": "https://patents.google.com/patent/US7843004B2/en" }
+      ],
+      "fabTimeline": [
+        { "company": "Infineon", "site": "Kulim Fab 3 (말레이시아)", "wafer": "200mm (8\") SiC / GaN", "status": "양산 가속 및 FY27 €3.0~3.5B 투자 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf" },
+        { "company": "STMicroelectronics", "site": "Catania Campus (이탈리아)", "wafer": "200mm (8\") SiC 수직계열화", "status": "2026년 제조 리쉐이핑 및 Q3 Net CapEx $643M 집행", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5" },
+        { "company": "onsemi", "site": "Roznov (체코)", "wafer": "200mm (8\") SiC / SGT", "status": "2025 제조 리얼라인먼트 이후 SiC 수직계열화 집중", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
+        { "company": "Rohm", "site": "Miyazaki 제2 팹 (일본)", "wafer": "200mm (8\") SiC Trench", "status": "Gen 5 SiC 8인치 전환용 설비투자 지속", "url": "https://www.rohm.com/investor-relations" }
+      ],
+      "partNumbers": [
+        { "company": "Infineon", "part": "IPT60R016CM8", "tech": "SJ-MOS", "bv": "600 V", "rds_on": "16 mΩ (typ)", "qg": "171 nC", "pkg": "PG-HSOF-8 (.XT)", "rth": "RthJA 35 K/W", "note": "CoolMOS 8세대, Fast Body Diode 기본 내장, Coss 50% ↓ vs CFD7", "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-ipt60r016cm8-datasheet-en.pdf" },
+        { "company": "Infineon", "part": "IGLD60R070D1", "tech": "GaN", "bv": "600 V", "rds_on": "70 mΩ class", "qg": "Qgs+Qgd 5 nC", "pkg": "PG-LSON-8", "rth": "Vth 1.2 V", "note": "CoolGaN E-mode HEMT, 역회복 전하(Qrr) 제로 수준", "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-igld60r070d1-datasheet-en.pdf" },
+        { "company": "Navitas", "part": "NV6125", "tech": "GaN", "bv": "650 V", "rds_on": "175 mΩ (typ)", "qg": "Driver 내장", "pkg": "30-QFN (6×8)", "rth": "Iout 8 A", "note": "GaNFast Power IC (구동 드라이버 모놀리식 집적)", "url": "https://www.digi-electronics.com/en/part-substitute/LMG3410R150RWHR/908499.html" },
+        { "company": "onsemi", "part": "NVMFS5C430N", "tech": "SGT", "bv": "40 V", "rds_on": "1.4 mΩ (typ)", "qg": "Coss 1600 pF", "pkg": "DFN5 (5×6mm)", "rth": "RthJC 1.4 °C/W", "note": "AEC-Q101 전장용, 185 A 정격, 저손실 컴팩트 패키지", "url": "https://www.onsemi.com/pdf/datasheet/nvmfs5c430n-d.pdf" }
+      ],
+      "generationRoadmap": [
+        { "family": "Infineon CoolMOS (SJ)", "from": "7세대 (CFD7)", "to": "8세대 (CM8)", "gain": "Qg -18~20%, Eoss -12~15%, Coss -50%, Rth -14~42% (.XT 본딩)" },
+        { "family": "STMicro MDmesh (SJ)", "from": "DM6", "to": "DM9 (Deep Trench)", "gain": "Ron,sp -18%, 바디 다이오드 Qrr 저감으로 하드 스위칭 내량 강화" },
+        { "family": "Rohm SiC MOSFET", "from": "Planar / Gen 4", "to": "Gen 5 Double-Trench", "gain": "Ron,sp -35% (0.78 mΩ·cm² 수준), SCWT 3.5μs 유지" },
+        { "family": "GaN-on-Si (Industry)", "from": "6인치 Discrete", "to": "8인치 E-mode / DrGaN", "gain": "웨이퍼 단가 ~25% 절감 목표, 300mm/200mm CMOS 호환 집적" }
+      ],
+      "version_prev": "v2.1",
+      "versionHistory": [
+        { "version": "v2.5", "date": "2026-11-12", "title": "Gemini AI 한국어 실무 자동 요약 파이프라인 통합 완료", "changes": ["무료 Gemini API 연동 영문 논문/뉴스 한국어 자동 요약 및 스펙 추출", "API 키 미설정 시에도 기본 키워드 파서로 무중단 동작"] },
+        { "version": "v2.4", "date": "2026-11-12", "title": "핵심 특허 트래커 & 8인치 Fab 증설 타임라인", "changes": ["SJ/SGT/GaN 핵심 미국 특허 테이블(Google Patents 연동) 추가", "Infineon·STMicro·onsemi·Rohm 8인치 Fab 증설 타임라인 추가"] },
+        { "version": "v2.3", "date": "2026-11-12", "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰", "changes": ["SJ MOSFET / UD SGT / GaN HEMT / SiC Trench 단면 구조도(SVG) 추가", "소자별 마스크 수(Mask Count), 핵심 단위공정 순서, 공정 난제 비교 UI 구현"] },
+        { "version": "v2.2", "date": "2026-11-12", "title": "선진사 양산 Part Number 데이터시트 DB & 세대별 진화 계보", "changes": ["Infineon CoolMOS 8 / CoolGaN, onsemi DFN5, Navitas GaNFast 양산 스펙표 추가", "선진사 세대별(Gen-to-Gen) 개선율 계보 카드 추가"] },
+        { "version": "v2.1", "date": "2026-11-12", "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이", "changes": ["100V / 650V / 1200V+ 내압대별 다중 FOM 비교 차트 추가", "Baliga Ron,sp-BV 차트 자사 목표 소자(★) 실시간 오버레이 추가", "버전 히스토리 모달 구축"] },
+        { "version": "v2.0", "date": "2026-11-12", "title": "GitHub Pages 자동 수집 파이프라인 & 5대 탭 구축", "changes": ["arXiv + RSS 주간 자동 수집 파이프라인 연동", "Baliga 한계선 차트, 공정 매트릭스, 신뢰성/패키징, 다분기 WSTS·재무 구현"] }
+      ],
+      "fomBenchmarks": [
+        { "name": "100V NL-SGTMOS (IEEE EDL)", "voltageClass": "100V", "tech": "SGT", "bv": 100, "ron_sp": 4.57, "ron_qg": 34.1, "ron_qgd": 11.2, "bfom": 2.19 },
+        { "name": "150V Floating-P SGT", "voltageClass": "100V", "tech": "SGT", "bv": 150, "ron_sp": 1.12, "ron_qg": 18.5, "ron_qgd": 5.4, "bfom": 20.1 },
+        { "name": "60V Ultra-Dense SGT", "voltageClass": "100V", "tech": "SGT", "bv": 60, "ron_sp": 0.45, "ron_qg": 10.2, "ron_qgd": 2.8, "bfom": 8.0 },
+        { "name": "600V CoolMOS 8 (IPT60R016CM8)", "voltageClass": "650V", "tech": "SJ-MOS", "bv": 600, "ron_sp": 8.2, "ron_qg": 125.0, "ron_qgd": 32.0, "bfom": 43.9 },
+        { "name": "650V SJ Deep Trench (AR25)", "voltageClass": "650V", "tech": "SJ-MOS", "bv": 650, "ron_sp": 7.8, "ron_qg": 142.0, "ron_qgd": 38.0, "bfom": 54.2 },
+        { "name": "650V MBDS GaN (IEDM)", "voltageClass": "650V", "tech": "GaN", "bv": 650, "ron_sp": 1.85, "ron_qg": 14.8, "ron_qgd": 3.5, "bfom": 228.4 },
+        { "name": "1200V E-mode GaN (200mm)", "voltageClass": "1200V", "tech": "GaN", "bv": 1250, "ron_sp": 1.45, "ron_qg": 16.0, "ron_qgd": 4.1, "bfom": 1077.6 },
+        { "name": "1200V Vertical GaN FinFET", "voltageClass": "1200V", "tech": "GaN", "bv": 1200, "ron_sp": 0.20, "ron_qg": 8.4, "ron_qgd": 1.9, "bfom": 7200.0 },
+        { "name": "1200V 4H-SiC HJ-DTMOS", "voltageClass": "1200V", "tech": "SiC", "bv": 1200, "ron_sp": 1.78, "ron_qg": 42.0, "ron_qgd": 12.5, "bfom": 809.0 },
+        { "name": "1780V 4H-SiC Trench+SBD", "voltageClass": "1200V", "tech": "SiC", "bv": 1780, "ron_sp": 1.92, "ron_qg": 48.0, "ron_qgd": 14.0, "bfom": 1650.2 }
+      ],
       "quarterlySeries": {
         "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
         "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
@@ -506,7 +727,8 @@
     };
 
     let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
-    let opmTrendChart, marginChart, baligaChart, stmRevChart;
+    let opmTrendChart, marginChart, baligaChart, stmRevChart, multiFomChart;
+    let targetDevices = JSON.parse(localStorage.getItem("POWER_SEMI_TARGETS") || "[]");
 
     async function initData() {
       // Try fetching live JSON (works when hosted on GitHub Pages / HTTP server)
@@ -541,9 +763,14 @@
       renderOverviewInsights();
       renderNews();
       renderProcessMatrix();
+      renderPartNumbers();
+      renderCrossSection('SJ-MOS');
+      renderGenRoadmap();
       renderPapers();
       renderReliability();
       renderFinancials();
+      renderPatents();
+      renderFabTimeline();
       document.getElementById('kpi-total-items').textContent = (appData.news.length + appData.papers.length);
       document.getElementById('kpi-last-updated').textContent = (appData.lastUpdated || '2026-11-12').slice(0, 10);
     }
@@ -609,6 +836,107 @@
       }).join('');
     }
 
+    const CS_SVGS = {
+      'SJ-MOS': `<svg viewBox="0 0 360 200" class="w-full max-w-sm h-auto">
+        <rect x="20" y="165" width="320" height="25" fill="#334155" rx="2"/><text x="180" y="182" fill="#e2e8f0" font-size="11" text-anchor="middle" font-weight="bold">N+ Substrate (Drain)</text>
+        <rect x="20" y="55" width="320" height="110" fill="#1e3a8a" opacity="0.65"/><text x="180" y="145" fill="#93c5fd" font-size="10" text-anchor="middle">N-Drift (Charge Balanced)</text>
+        <rect x="70" y="55" width="38" height="100" fill="#7c3aed" rx="4"/><text x="89" y="110" fill="#fff" font-size="9" text-anchor="middle">P-Pillar</text>
+        <rect x="252" y="55" width="38" height="100" fill="#7c3aed" rx="4"/><text x="271" y="110" fill="#fff" font-size="9" text-anchor="middle">P-Pillar</text>
+        <rect x="55" y="40" width="68" height="20" fill="#a855f7" rx="2"/><text x="89" y="54" fill="#fff" font-size="9" text-anchor="middle">P-Body</text>
+        <rect x="237" y="40" width="68" height="20" fill="#a855f7" rx="2"/><text x="271" y="54" fill="#fff" font-size="9" text-anchor="middle">P-Body</text>
+        <rect x="115" y="25" width="130" height="14" fill="#f59e0b" rx="2"/><text x="180" y="35" fill="#0f172a" font-size="9" text-anchor="middle" font-weight="bold">Planar Gate Poly</text>
+        <rect x="65" y="28" width="40" height="12" fill="#10b981" rx="2"/><text x="85" y="37" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Source</text>
+        <rect x="255" y="28" width="40" height="12" fill="#10b981" rx="2"/><text x="275" y="37" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Source</text>
+      </svg>`,
+      'SGT': `<svg viewBox="0 0 360 200" class="w-full max-w-sm h-auto">
+        <rect x="20" y="165" width="320" height="25" fill="#334155" rx="2"/><text x="180" y="182" fill="#e2e8f0" font-size="11" text-anchor="middle" font-weight="bold">N+ Substrate (Drain)</text>
+        <rect x="20" y="45" width="320" height="120" fill="#1e3a8a" opacity="0.65"/>
+        <rect x="20" y="45" width="125" height="32" fill="#7c3aed" opacity="0.8"/><text x="82" y="65" fill="#fff" font-size="9" text-anchor="middle">P-Body / N+</text>
+        <rect x="215" y="45" width="125" height="32" fill="#7c3aed" opacity="0.8"/><text x="278" y="65" fill="#fff" font-size="9" text-anchor="middle">P-Body / N+</text>
+        <rect x="145" y="35" width="70" height="115" fill="#cbd5e1" rx="6"/><text x="180" y="142" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Thick Shield Ox</text>
+        <rect x="155" y="40" width="50" height="34" fill="#f59e0b" rx="2"/><text x="180" y="60" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Gate Poly</text>
+        <rect x="160" y="82" width="40" height="50" fill="#10b981" rx="3"/><text x="180" y="110" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Shield Poly</text>
+      </svg>`,
+      'GaN': `<svg viewBox="0 0 360 200" class="w-full max-w-sm h-auto">
+        <rect x="20" y="155" width="320" height="32" fill="#334155" rx="2"/><text x="180" y="175" fill="#e2e8f0" font-size="10" text-anchor="middle" font-weight="bold">Si(111) or QST Substrate (200mm)</text>
+        <rect x="20" y="120" width="320" height="35" fill="#475569"/><text x="180" y="141" fill="#cbd5e1" font-size="9" text-anchor="middle">AlN / Graded AlGaN Buffer</text>
+        <rect x="20" y="80" width="320" height="40" fill="#0284c7" opacity="0.8"/><text x="180" y="108" fill="#fff" font-size="10" text-anchor="middle">GaN Channel</text>
+        <line x1="25" y1="82" x2="335" y2="82" stroke="#22d3ee" stroke-width="2.5" stroke-dasharray="4 2"/><text x="275" y="94" fill="#67e8f9" font-size="8" font-weight="bold">2DEG Channel</text>
+        <rect x="20" y="62" width="320" height="18" fill="#38bdf8"/><text x="180" y="74" fill="#0f172a" font-size="9" text-anchor="middle" font-weight="bold">AlGaN Barrier</text>
+        <rect x="145" y="42" width="50" height="20" fill="#f43f5e" rx="2"/><text x="170" y="55" fill="#fff" font-size="8" text-anchor="middle" font-weight="bold">p-GaN Gate</text>
+        <rect x="35" y="38" width="55" height="24" fill="#10b981" rx="2"/><text x="62" y="53" fill="#0f172a" font-size="9" text-anchor="middle" font-weight="bold">Source</text>
+        <rect x="270" y="38" width="55" height="24" fill="#f59e0b" rx="2"/><text x="297" y="53" fill="#0f172a" font-size="9" text-anchor="middle" font-weight="bold">Drain</text>
+      </svg>`,
+      'SiC': `<svg viewBox="0 0 360 200" class="w-full max-w-sm h-auto">
+        <rect x="20" y="165" width="320" height="25" fill="#064e3b" rx="2"/><text x="180" y="182" fill="#a7f3d0" font-size="10" text-anchor="middle" font-weight="bold">4H-SiC N+ Substrate</text>
+        <rect x="20" y="50" width="320" height="115" fill="#047857" opacity="0.65"/><text x="180" y="152" fill="#a7f3d0" font-size="9" text-anchor="middle">4H-SiC N-Drift</text>
+        <rect x="45" y="50" width="60" height="80" fill="#7c3aed" rx="4"/><text x="75" y="92" fill="#fff" font-size="8" text-anchor="middle">P-Shield</text>
+        <rect x="155" y="35" width="55" height="75" fill="#f59e0b" rx="4"/><text x="182" y="75" fill="#0f172a" font-size="9" text-anchor="middle" font-weight="bold">Gate Trench</text>
+        <rect x="145" y="108" width="75" height="16" fill="#6d28d9" rx="4"/><text x="182" y="119" fill="#fff" font-size="8" text-anchor="middle">Bottom P-Shield</text>
+        <rect x="245" y="50" width="70" height="30" fill="#38bdf8" rx="2"/><text x="280" y="68" fill="#0f172a" font-size="8" text-anchor="middle" font-weight="bold">Integrated SBD</text>
+      </svg>`
+    };
+
+    function renderCrossSection(id) {
+      const items = appData.processCrossSections || FALLBACK_DATA.processCrossSections;
+      const item = items.find(x => x.id === id) || items[0];
+      document.getElementById('cs-svg-container').innerHTML = CS_SVGS[item.id] || '';
+      document.getElementById('cs-detail-container').innerHTML = `
+        <div class="flex items-center justify-between bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+          <span class="font-bold text-white">${item.name}</span>
+          <span class="text-[11px] font-semibold text-cyan-400">${item.masks}</span>
+        </div>
+        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
+          <div class="font-semibold text-indigo-300 mb-1.5">핵심 단위공정 플로우:</div>
+          <ol class="list-decimal list-inside space-y-1 text-slate-300 text-[11px]">
+            ${item.steps.map(s => `<li>${s}</li>`).join('')}
+          </ol>
+        </div>
+        <div class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-lg text-[11px] text-amber-200">
+          <strong class="text-amber-400">공정 난제 (Bottleneck):</strong> ${item.bottleneck}
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('.cs-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.cs-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white', 'font-semibold'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white', 'font-semibold');
+        renderCrossSection(this.getAttribute('data-cs'));
+      });
+    });
+
+    function renderPartNumbers(filter = 'all') {
+      const body = document.getElementById('part-number-body');
+      const items = (appData.partNumbers || FALLBACK_DATA.partNumbers).filter(p => filter === 'all' || p.tech === filter);
+      body.innerHTML = items.map(p => `
+        <tr class="hover:bg-slate-800/40">
+          <td class="py-3 px-4"><div class="font-bold text-white">${p.part}</div><div class="text-[10px] text-slate-400">${p.company}</div></td>
+          <td class="py-3 px-4 text-center"><span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-cyan-300">${p.tech}</span><div class="text-[11px] text-slate-300 mt-0.5">${p.bv}</div></td>
+          <td class="py-3 px-4 text-center font-bold text-emerald-400">${p.rds_on}</td>
+          <td class="py-3 px-4 text-center font-mono text-[11px] text-slate-200">${p.qg}</td>
+          <td class="py-3 px-4 text-[11px]"><div class="text-slate-200">${p.pkg}</div><div class="text-slate-400">${p.rth}</div></td>
+          <td class="py-3 px-4 text-[11px] text-slate-300">${p.note}</td>
+          <td class="py-3 px-4 text-center"><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fa-solid fa-file-pdf"></i></a></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderGenRoadmap() {
+      const grid = document.getElementById('gen-roadmap-grid');
+      const items = appData.generationRoadmap || FALLBACK_DATA.generationRoadmap;
+      grid.innerHTML = items.map(g => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-white">${g.family}</span>
+            <span class="text-[11px] font-semibold text-emerald-400">${g.from} → ${g.to}</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">${g.gain}</p>
+        </div>
+      `).join('');
+    }
+
     function renderProcessMatrix() {
       const body = document.getElementById('process-matrix-body');
       body.innerHTML = (appData.processMatrix || []).map(m => `
@@ -666,6 +994,37 @@
           </div>
           <h4 class="text-sm font-bold text-white mb-1.5">${r.title}</h4>
           <p class="text-xs text-slate-300 leading-relaxed">${r.detail}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderPatents() {
+      const body = document.getElementById('patent-table-body');
+      const items = appData.patents || FALLBACK_DATA.patents;
+      body.innerHTML = items.map(p => `
+        <tr class="hover:bg-slate-800/40">
+          <td class="py-3 px-4"><div class="font-bold text-purple-300 font-mono">${p.id}</div><div class="text-[10px] text-slate-400">${p.year}</div></td>
+          <td class="py-3 px-4 text-center"><span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-cyan-300">${p.tech}</span></td>
+          <td class="py-3 px-4 font-semibold text-slate-100">${p.title}</td>
+          <td class="py-3 px-4 text-[11px] text-slate-300">${p.focus}</td>
+          <td class="py-3 px-4 text-center"><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderFabTimeline() {
+      const grid = document.getElementById('fab-timeline-grid');
+      const items = appData.fabTimeline || FALLBACK_DATA.fabTimeline;
+      grid.innerHTML = items.map(f => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-bold text-white">${f.company} — ${f.site}</span>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">${f.wafer}</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-2">${f.status}</p>
+          </div>
+          <div><a href="${f.url}" target="_blank" rel="noopener noreferrer" class="text-[11px] text-blue-400 hover:underline">공시/출처 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a></div>
         </div>
       `).join('');
     }
@@ -752,7 +1111,8 @@
             { label: 'SJ MOSFET', data: groupByTech('SJ-MOS'), backgroundColor: '#818cf8', pointRadius: 6 },
             { label: 'UD SGT', data: groupByTech('SGT'), backgroundColor: '#fbbf24', pointRadius: 6 },
             { label: 'GaN', data: groupByTech('GaN'), backgroundColor: '#38bdf8', pointRadius: 7 },
-            { label: 'SiC', data: groupByTech('SiC'), backgroundColor: '#34d399', pointRadius: 7 }
+            { label: 'SiC', data: groupByTech('SiC'), backgroundColor: '#34d399', pointRadius: 7 },
+            { label: '★ 자사 목표 소자', data: targetDevices.map(t => ({ x: t.bv, y: t.ron_sp, label: t.name })), backgroundColor: '#f43f5e', borderColor: '#ffffff', borderWidth: 1.5, pointStyle: 'star', pointRadius: 10 }
           ]
         },
         options: {
@@ -807,6 +1167,7 @@
         document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
         document.getElementById(target).classList.remove('hidden');
         if (target === 'tab-benchmark' && baligaChart) baligaChart.resize();
+        if (target === 'tab-benchmark' && multiFomChart) multiFomChart.resize();
         if (target === 'tab-financials' && stmRevChart) stmRevChart.resize();
       });
     });
@@ -833,6 +1194,15 @@
     document.getElementById('news-search-input').addEventListener('input', function() {
       const active = document.querySelector('.news-filter-btn.bg-blue-600');
       renderNews(active ? active.getAttribute('data-filter') : 'all', this.value);
+    });
+
+    document.querySelectorAll('.pn-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.pn-filter-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white');
+        renderPartNumbers(this.getAttribute('data-filter'));
+      });
     });
 
     document.querySelectorAll('.paper-filter-btn').forEach(btn => {
@@ -963,7 +1333,103 @@
       setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(12px)'; }, 3000);
     }
 
-    window.addEventListener('DOMContentLoaded', initData);
+    
+    function renderMultiFomChart(vclass = 'all') {
+      const ctx = document.getElementById('multiFomChart').getContext('2d');
+      const items = (appData.fomBenchmarks || FALLBACK_DATA.fomBenchmarks).filter(i => vclass === 'all' || i.voltageClass === vclass);
+      if (multiFomChart) multiFomChart.destroy();
+      multiFomChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: items.map(i => i.name),
+          datasets: [
+            { label: 'Ron×Qg (mΩ·nC, 낮을수록 우수)', data: items.map(i => i.ron_qg), backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 5 },
+            { label: 'Ron×Qgd HF-FOM (낮을수록 우수)', data: items.map(i => i.ron_qgd), backgroundColor: 'rgba(245, 158, 11, 0.85)', borderRadius: 5 }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8' } },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 10 } } }
+          }
+        }
+      });
+    }
+
+    function renderTargetList() {
+      const el = document.getElementById('target-list');
+      if (!targetDevices.length) {
+        el.innerHTML = '<span class="text-slate-500">아직 오버레이된 목표 소자가 없습니다.</span>';
+        return;
+      }
+      el.innerHTML = targetDevices.map((t, idx) => `<div class="flex items-center justify-between bg-slate-950 px-2.5 py-1 rounded border border-rose-500/30"><span>★ ${t.name} (${t.bv}V, ${t.ron_sp} mΩ·cm²)</span></div>`).join('');
+    }
+
+    document.getElementById('target-overlay-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('target-name').value.trim() || '자사 목표';
+      const bv = parseFloat(document.getElementById('target-bv').value);
+      const ron_sp = parseFloat(document.getElementById('target-ron').value);
+      if (!bv || !ron_sp) return;
+      targetDevices.push({ name, bv, ron_sp });
+      try { localStorage.setItem('POWER_SEMI_TARGETS', JSON.stringify(targetDevices)); } catch (err) {}
+      if (baligaChart) {
+        const ds = baligaChart.data.datasets[baligaChart.data.datasets.length - 1];
+        ds.data = targetDevices.map(t => ({ x: t.bv, y: t.ron_sp, label: t.name }));
+        baligaChart.update();
+      }
+      renderTargetList();
+      showToast(`${name} 스펙이 차트에 오버레이되었습니다.`);
+    });
+
+    document.getElementById('clear-targets-btn').addEventListener('click', () => {
+      targetDevices = [];
+      try { localStorage.removeItem('POWER_SEMI_TARGETS'); } catch (err) {}
+      if (baligaChart) {
+        baligaChart.data.datasets[baligaChart.data.datasets.length - 1].data = [];
+        baligaChart.update();
+      }
+      renderTargetList();
+      showToast('오버레이가 초기화되었습니다.');
+    });
+
+    document.querySelectorAll('.fom-vclass-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.fom-vclass-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white');
+        renderMultiFomChart(this.getAttribute('data-vclass'));
+      });
+    });
+
+    const verModal = document.getElementById('version-modal');
+    document.getElementById('open-version-modal-btn').addEventListener('click', () => {
+      const hist = appData.versionHistory || FALLBACK_DATA.versionHistory;
+      document.getElementById('version-history-list').innerHTML = hist.map(h => `
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-emerald-400">${h.version} — ${h.title}</span>
+            <span class="text-[10px] text-slate-500">${h.date}</span>
+          </div>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 text-[11px]">
+            ${h.changes.map(c => `<li>${c}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+      verModal.classList.remove('hidden');
+    });
+    document.getElementById('close-version-modal-btn').addEventListener('click', () => verModal.classList.add('hidden'));
+
+    const _origInitData = initData;
+    window.addEventListener('DOMContentLoaded', () => {
+      _origInitData().then(() => {
+        renderMultiFomChart('all');
+        renderTargetList();
+      });
+    });
+
   </script>
 </body>
 </html>

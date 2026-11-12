@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T13:44:15.893084+09:00",
+  "lastUpdated": "2026-11-12T09:00:00+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
     {
@@ -79,54 +79,6 @@
   },
   "news": [
     {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: AI Data Centers and Their Impact on Power Electronics",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This video panel from PowerUP 2026 is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Data centers are shifting toward higher-voltage direct-current architectures, distributing...\nThe post PowerUp: AI Data Centers an...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-ai-data-centers-and-their-impact-on-power-electronics/",
-      "id": 1794458656791,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "SiC",
-      "title": "PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Converts and Uses Energy",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Event Session is presented by Dr. Adam Barkley, Chief Technology Officer, SiC Devices, Wolfspeed. This keynote is an invitation to take a fresh look...\nThe post PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Conve...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-enabling-a-paradigm-shift-in-how-the-world-creates-stores-converts-and-uses-energy/",
-      "id": 1794458656790,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconductor of the AI era",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This Keynote is presented by Johannes Schoiswohl, Business Line Head GaN Systems, Infineon GaN has moved well beyond its early adopter phase. From AI data...\nThe post PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconduct...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-gan-at-the-tipping-point-why-gallium-nitride-is-the-semiconductor-of-the-ai-era/",
-      "id": 1794458656789,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
-      "company": "Power Electronics News",
-      "tag": "GaN",
-      "title": "PowerUP: Panel Discussion: The Gate Driver Problem – Extracting the Most Out of WBG",
-      "app": "전력변환 · 전장 · AI 서버",
-      "desc": "This session is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Gate driver design is one of the most consequential bottlenecks in extracting WBG...\nThe post PowerUP: Panel Discussion: The Gate Driver Problem &#8211;...",
-      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
-      "url": "https://www.powerelectronicsnews.com/powerup-panel-discussion-the-gate-driver-problem-extracting-the-most-out-of-wbg/",
-      "id": 1794458656788,
-      "week": "2026-W46",
-      "date": "2026-11-12"
-    },
-    {
       "id": 1,
       "week": "2026-W46",
       "company": "Infineon",
@@ -200,132 +152,6 @@
     }
   ],
   "papers": [
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Design and Process Analysis of a Split-Gate Trench Power MOSFET with Bottom-Trench Hk-Pillar Superjunction for Enhanced Performance",
-      "authors": "Yunteng Jiang, Zhentao Xiao, Zonghao Zhang et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "In this paper, we propose a simulation-based novel Split-Gate Trench MOSFET structure with an optimized fabrication process to enhance power efficiency, switching speed, and thermal stability for high-performance semicon...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2411.09304v2",
-      "id": "P_2026-W46_9",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SJ-MOS",
-      "conference": "arXiv Preprint",
-      "title": "Taylor Modeling and Comparative Research Containing Aspect-Ratio Dependent Optimization of Three-Dimensional Hk Superjunction MOSFETs",
-      "authors": "Zhentao Xiao, Haimeng Huang, Zonghao Zhang et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "This paper presents a comprehensive study on aspect-ratio dependent optimization for specific on-resistance of three-dimensional high-k superjunction MOSFETs. The research introduces a Taylor modeling method, overcoming ...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2411.13448v1",
-      "id": "P_2026-W46_8",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "kV-Class Lateral NiOx/GaN Super-Heterojunction Diode via Ammonia Molecular Beam Epitaxy (NH3-MBE)",
-      "authors": "Yizheng Liu, Zachary J. Biegler, Ashley E. Wissel-Garcia et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "This work reports the demonstration of lateral p-NiOx/p-GaN/n-GaN-based super-heterojunction (SHJ) diodes using p-GaN with additional sputtered p-type nickel oxide (NiOx) layers to realize charge-balanced structures. The...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2511.05060v1",
-      "id": "P_2026-W46_7",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Individual Characterization of Fast-Responding Trap States at the NO-Annealed SiO$_2$/4H-SiC Interface",
-      "authors": "Takahiro Ono, Mizuki Ohashi, Tomohiro Shigeno et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Fast-responding trap states introduced by NO-annealing are suspected to limit the channel mobility of 4H-SiC MOSFETs, yet their microscopic characterization remains challenging because conventional electrical methods are...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2605.27041v1",
-      "id": "P_2026-W46_6",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Physics-Informed Condition Monitoring of SiC Power Modules",
-      "authors": "Mattia Scarpa, Evgeny Kusmenko, Francesco Toso et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Silicon carbide (SiC) power modules are increasingly deployed in automotive traction inverters, where condition monitoring is essential to prevent in-service failures. Despite extensive qualification under AQG 324, no co...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2608.08363v2",
-      "id": "P_2026-W46_5",
-      "week": "2026-W46"
-    },
-    {
-      "device": "SiC",
-      "conference": "arXiv Preprint",
-      "title": "Analysis and Design of Desaturation Short-Circuit Protection for SiC MOSFET Under High Switching Voltage Transients",
-      "authors": "Ravi Teja Pogulaguntla, Arun Karuppaswamy B",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Short-circuit protection is vital for ensuring the safe operation of high-power-density power converters using Silicon Carbide (SiC) MOSFETs. However, adapting conventional desaturation (DESAT) protection, originally des...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2609.23000v1",
-      "id": "P_2026-W46_4",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Energy-Accumulate-Then-Act Backscatter Communications With Retransmission Under Imperfect Feedback Detection",
-      "authors": "Rui Xu, Yinghui Ye, Guangyue Lu et al.",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "In this paper, we propose a threshold-triggered energy-accumulate-then-act backscatter communication system with retransmission under imperfect feedback detection. Under this system, harvested energy is accumulated acros...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.06499v1",
-      "id": "P_2026-W46_3",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Rapid Heat Removal from Chip Cores: Near-Junction Active Cooling of Power Transistors via Electron Entropy Transport and Spatial Decoupling",
-      "authors": "Xiangying Li",
-      "bv": "-",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Chip performance is limited by a shared bottleneck: the core produces heat faster than it can be moved out. We study the hardest case, RF power GaN HEMTs, whose hotspots exceed 5 kW/cm^2, and propose a horizontal near-ju...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.11716v1",
-      "id": "P_2026-W46_2",
-      "week": "2026-W46"
-    },
-    {
-      "device": "GaN",
-      "conference": "arXiv Preprint",
-      "title": "Environmental Assessment of GaN Current-Source and Voltage-Source AC-AC Variable Speed Drives",
-      "authors": "Luc Imperiali, Jonas Huber",
-      "bv": "200 V",
-      "ron_sp": "-",
-      "fom": "자동 수집(요약 참조)",
-      "arch": "Three-phase ac-ac converters for variable-speed drives can be realized conventionally as voltage-source converters (VSCs) or, leveraging emerging monolithic bidirectional GaN power transistors (M-BDSs), as current-source...",
-      "reliability": "-",
-      "link": "http://arxiv.org/abs/2611.12211v1",
-      "id": "P_2026-W46_1",
-      "week": "2026-W46"
-    },
     {
       "id": "P1",
       "week": "2026-W46",
@@ -617,5 +443,367 @@
       3.76
     ],
     "wstsNote": "WSTS 글로벌 반도체: 2025년 $796B (+26% YoY) → 2026년 $1T+ 전망"
-  }
+  },
+  "version": "v2.5",
+  "versionHistory": [
+    {
+      "version": "v2.5",
+      "date": "2026-11-12",
+      "title": "Gemini AI 한국어 실무 자동 요약 파이프라인 통합 완료",
+      "changes": [
+        "scripts/update_dashboard.py에 무료 Gemini API 연동 한국어 요약 및 BV/Ron,sp/FOM 자동 추출 기능 추가",
+        "GEMINI_API_KEY 미설정 시에도 기본 키워드 파서로 무중단 무료 동작 보장"
+      ]
+    },
+    {
+      "version": "v2.4",
+      "date": "2026-11-12",
+      "title": "핵심 특허(Patent) 트래커 & 글로벌 8인치(200mm) Fab 증설 타임라인",
+      "changes": [
+        "SJ MOSFET, SGT, GaN HEMT 핵심 미국 특허(Google Patents 링크 포함) 트래커 테이블 추가",
+        "Infineon(Kulim), STMicro(Catania), onsemi(Roznov), Rohm(Miyazaki) 8인치 Fab 투자 타임라인 카드 추가"
+      ]
+    },
+    {
+      "version": "v2.3",
+      "date": "2026-11-12",
+      "title": "공정 단면 아키텍처(SVG) & 마스크 스텝·단위공정 비교 뷰",
+      "changes": [
+        "SJ MOSFET, UD SGT, GaN E-mode HEMT, SiC Trench MOSFET 4종 단면 구조도(SVG) 추가",
+        "소자별 표준 마스크 스텝(Mask Count), 핵심 단위공정 흐름, 공정 난제(Bottleneck) 비교 카드 구현"
+      ]
+    },
+    {
+      "version": "v2.2",
+      "date": "2026-11-12",
+      "title": "선진사 양산 Part Number 데이터시트 DB & 세대별 진화 계보",
+      "changes": [
+        "Infineon CoolMOS 8 / CoolGaN, onsemi DFN5, Navitas GaNFast 등 실제 양산 Part Number 스펙표 추가",
+        "선진사 세대별(Gen-to-Gen) Rds(on)·Qg·Coss·RthJC 개선 계보 카드 추가"
+      ]
+    },
+    {
+      "version": "v2.1",
+      "date": "2026-11-12",
+      "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이",
+      "changes": [
+        "100V / 650V / 1200V+ 내압대별 다중 FOM (Ron×Qg, Ron×Qgd, BFOM) 비교 차트 추가",
+        "Baliga Ron,sp-BV 차트에 자사 개발 목표 소자(★) 실시간 오버레이 입력기 추가",
+        "대시보드 헤더 버전 배지 및 릴리스 히스토리 모달 구축"
+      ]
+    },
+    {
+      "version": "v2.0",
+      "date": "2026-11-12",
+      "title": "GitHub Pages 자동 수집 파이프라인 & 5대 탭 구축",
+      "changes": [
+        "arXiv API + 전력반도체 RSS 주간 자동 수집(GitHub Actions) 파이프라인 연동",
+        "Baliga Ron,sp-BV Log-Log 한계선 차트, 공정 매트릭스, 신뢰성/패키징, 다분기 WSTS·재무 탭 구현"
+      ]
+    }
+  ],
+  "fomBenchmarks": [
+    {
+      "name": "100V NL-SGTMOS (IEEE EDL)",
+      "voltageClass": "100V",
+      "tech": "SGT",
+      "bv": 100,
+      "ron_sp": 4.57,
+      "ron_qg": 34.1,
+      "ron_qgd": 11.2,
+      "bfom": 2.19
+    },
+    {
+      "name": "150V Floating-P SGT",
+      "voltageClass": "100V",
+      "tech": "SGT",
+      "bv": 150,
+      "ron_sp": 1.12,
+      "ron_qg": 18.5,
+      "ron_qgd": 5.4,
+      "bfom": 20.1
+    },
+    {
+      "name": "60V Ultra-Dense SGT (ISPSD)",
+      "voltageClass": "100V",
+      "tech": "SGT",
+      "bv": 60,
+      "ron_sp": 0.45,
+      "ron_qg": 10.2,
+      "ron_qgd": 2.8,
+      "bfom": 8.0
+    },
+    {
+      "name": "600V CoolMOS 8 (IPT60R016CM8)",
+      "voltageClass": "650V",
+      "tech": "SJ-MOS",
+      "bv": 600,
+      "ron_sp": 8.2,
+      "ron_qg": 125.0,
+      "ron_qgd": 32.0,
+      "bfom": 43.9
+    },
+    {
+      "name": "650V SJ Deep Trench (AR25)",
+      "voltageClass": "650V",
+      "tech": "SJ-MOS",
+      "bv": 650,
+      "ron_sp": 7.8,
+      "ron_qg": 142.0,
+      "ron_qgd": 38.0,
+      "bfom": 54.2
+    },
+    {
+      "name": "650V MBDS GaN-on-Si (IEDM)",
+      "voltageClass": "650V",
+      "tech": "GaN",
+      "bv": 650,
+      "ron_sp": 1.85,
+      "ron_qg": 14.8,
+      "ron_qgd": 3.5,
+      "bfom": 228.4
+    },
+    {
+      "name": "1200V E-mode GaN-on-Si (200mm)",
+      "voltageClass": "1200V",
+      "tech": "GaN",
+      "bv": 1250,
+      "ron_sp": 1.45,
+      "ron_qg": 16.0,
+      "ron_qgd": 4.1,
+      "bfom": 1077.6
+    },
+    {
+      "name": "1200V Vertical GaN FinFET",
+      "voltageClass": "1200V",
+      "tech": "GaN",
+      "bv": 1200,
+      "ron_sp": 0.2,
+      "ron_qg": 8.4,
+      "ron_qgd": 1.9,
+      "bfom": 7200.0
+    },
+    {
+      "name": "1200V 4H-SiC HJ-DTMOS",
+      "voltageClass": "1200V",
+      "tech": "SiC",
+      "bv": 1200,
+      "ron_sp": 1.78,
+      "ron_qg": 42.0,
+      "ron_qgd": 12.5,
+      "bfom": 809.0
+    },
+    {
+      "name": "1780V 4H-SiC Trench+SBD",
+      "voltageClass": "1200V",
+      "tech": "SiC",
+      "bv": 1780,
+      "ron_sp": 1.92,
+      "ron_qg": 48.0,
+      "ron_qgd": 14.0,
+      "bfom": 1650.2
+    }
+  ],
+  "partNumbers": [
+    {
+      "company": "Infineon",
+      "part": "IPT60R016CM8",
+      "tech": "SJ-MOS",
+      "bv": "600 V",
+      "rds_on": "16 mΩ (typ)",
+      "qg": "171 nC",
+      "pkg": "PG-HSOF-8 (.XT)",
+      "rth": "RthJA 35 K/W",
+      "note": "CoolMOS 8세대, Fast Body Diode 기본 내장, Coss 50% ↓ vs CFD7",
+      "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-ipt60r016cm8-datasheet-en.pdf"
+    },
+    {
+      "company": "Infineon",
+      "part": "IGLD60R070D1",
+      "tech": "GaN",
+      "bv": "600 V",
+      "rds_on": "70 mΩ class",
+      "qg": "Qgs+Qgd 5 nC",
+      "pkg": "PG-LSON-8",
+      "rth": "Vth 1.2 V",
+      "note": "CoolGaN E-mode HEMT, 역회복 전하(Qrr) 제로 수준",
+      "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-igld60r070d1-datasheet-en.pdf"
+    },
+    {
+      "company": "Navitas",
+      "part": "NV6125",
+      "tech": "GaN",
+      "bv": "650 V",
+      "rds_on": "175 mΩ (typ)",
+      "qg": "Driver 내장",
+      "pkg": "30-QFN (6×8)",
+      "rth": "Iout 8 A",
+      "note": "GaNFast Power IC (구동 드라이버 모놀리식 집적)",
+      "url": "https://www.digi-electronics.com/en/part-substitute/LMG3410R150RWHR/908499.html"
+    },
+    {
+      "company": "onsemi",
+      "part": "NVMFS5C430N",
+      "tech": "SGT",
+      "bv": "40 V",
+      "rds_on": "1.4 mΩ (typ)",
+      "qg": "Coss 1600 pF",
+      "pkg": "DFN5 (5×6mm)",
+      "rth": "RthJC 1.4 °C/W",
+      "note": "AEC-Q101 전장용, 185 A 정격, 저손실 컴팩트 패키지",
+      "url": "https://www.onsemi.com/pdf/datasheet/nvmfs5c430n-d.pdf"
+    }
+  ],
+  "generationRoadmap": [
+    {
+      "family": "Infineon CoolMOS (SJ)",
+      "from": "7세대 (CFD7)",
+      "to": "8세대 (CM8)",
+      "gain": "Qg -18~20%, Eoss -12~15%, Coss -50%, Rth -14~42% (.XT 본딩)"
+    },
+    {
+      "family": "STMicro MDmesh (SJ)",
+      "from": "DM6",
+      "to": "DM9 (Deep Trench)",
+      "gain": "Ron,sp -18%, 바디 다이오드 Qrr 저감으로 하드 스위칭 내량 강화"
+    },
+    {
+      "family": "Rohm SiC MOSFET",
+      "from": "Planar / Gen 4",
+      "to": "Gen 5 Double-Trench",
+      "gain": "Ron,sp -35% (0.78 mΩ·cm² 수준), SCWT 3.5μs 유지"
+    },
+    {
+      "family": "GaN-on-Si (Industry)",
+      "from": "6인치 Discrete",
+      "to": "8인치 E-mode / DrGaN",
+      "gain": "웨이퍼 단가 ~25% 절감 목표, 300mm/200mm CMOS 호환 집적"
+    }
+  ],
+  "processCrossSections": [
+    {
+      "id": "SJ-MOS",
+      "name": "SJ MOSFET (Deep Trench Refill)",
+      "masks": "7 ~ 9 Masks (Deep Trench) / 14+ (Multi-Epi)",
+      "steps": [
+        "N-Drift Epi / Deep Trench Etch (AR 25~30)",
+        "P-Pillar Selective Epi Refill & CMP",
+        "P-Body / N+ Source Implant",
+        "Gate Oxide & Poly Gate Patterning",
+        "Thick Al/Cu Metal & Backside Thinning"
+      ],
+      "bottleneck": "Deep Trench 식각 프로파일 수직도 및 보이드(Void) 없는 P-Epi Refill, P/N Charge Balance 산포 ±3% 이내 제어"
+    },
+    {
+      "id": "SGT",
+      "name": "UD SGT (Split-Gate Trench)",
+      "masks": "6 ~ 8 Masks",
+      "steps": [
+        "Deep Trench Etch & Thick Shield Oxide (Stepped)",
+        "Shield Poly (FP) Refill & Etch-back",
+        "Inter-Poly Oxide & Thin Gate Oxide",
+        "Control Gate Poly Refill & P-Body/N+ Implant",
+        "Ultra-Thin Wafer Grinding (<50μm) & Backmetal"
+      ],
+      "bottleneck": "Shield Oxide 단차 균일도, Narrow Mesa 접촉 식각 마진, 초박형 웨이퍼 핸들링 휨(Warpage) 제어"
+    },
+    {
+      "id": "GaN",
+      "name": "GaN HEMT (200mm E-mode p-GaN)",
+      "masks": "8 ~ 11 Masks (Au-Free CMOS 라인)",
+      "steps": [
+        "Si(111) 기판 위 AlN/AlGaN 버퍼 & GaN/AlGaN/p-GaN Epi",
+        "p-GaN 저손상 선택적 식각 (2DEG 손상 최소화)",
+        "Mesa/Implant 소자 분리 (Isolation)",
+        "Au-Free Ohmic S/D 어닐링 & Gate Metal",
+        "다층 Passivation & Field Plate 형성"
+      ],
+      "bottleneck": "8인치(200mm) 에피 성장 시 열팽창 계수 차이에 의한 Bow 제어, p-GaN 식각 정밀도(Vth 산포 직결)"
+    },
+    {
+      "id": "SiC",
+      "name": "SiC MOSFET (Double / Asymmetric Trench)",
+      "masks": "9 ~ 12 Masks",
+      "steps": [
+        "4H-SiC N-Drift Epi 성장",
+        "고온 Al/N Ion Implantation & 1650°C+ Carbon Cap Anneal",
+        "Gate & Source Trench Etch + Corner Rounding",
+        "Gate Oxide 성장 & NO/N2O 계면 질화 어닐링",
+        "Ni-Silicide Ohmic & Ag 소결 대응 Backmetal"
+      ],
+      "bottleneck": "고경도 SiC 식각 및 트렌치 코너 전계 집중(TDDB), SiC/SiO2 계면 트랩(Dit) 저감"
+    }
+  ],
+  "patents": [
+    {
+      "id": "US11973134B2",
+      "tech": "GaN",
+      "year": "2024",
+      "title": "Super junction gated AlGaN/GaN HEMT",
+      "focus": "게이트 하단 선택적 p-형 III-N 층 확장으로 내압·전류밀도 동시 개선",
+      "url": "https://patents.google.com/patent/US11973134B2/en"
+    },
+    {
+      "id": "US20240421196A1",
+      "tech": "GaN",
+      "year": "2024",
+      "title": "GaN semiconductor power transistor with slanted gate field plate",
+      "focus": "경사형 게이트 필드 플레이트(Slanted GMFP)로 리프트오프 잔여물·전계 집중 억제",
+      "url": "https://patents.google.com/patent/US20240421196A1/en"
+    },
+    {
+      "id": "US10679855B2",
+      "tech": "SJ-MOS",
+      "year": "2020",
+      "title": "Method for producing a superjunction device",
+      "focus": "다층 반도체 트렌치 식각 후 측벽 도펀트 이온주입 기반 Charge Balance 형성",
+      "url": "https://patents.google.com/patent/US10679855B2/en"
+    },
+    {
+      "id": "US10103257B1",
+      "tech": "SGT",
+      "year": "2018",
+      "title": "Termination design for trench superjunction / shield power MOSFET",
+      "focus": "스트라이프 트렌치 내 하부 쉴드 폴리 및 상부 게이트 폴리 종단부(Termination) 설계",
+      "url": "https://patents.google.com/patent/US10103257B1/en"
+    },
+    {
+      "id": "US7843004B2",
+      "tech": "SGT",
+      "year": "2010",
+      "title": "Power MOSFET with self-aligned recessed field plate",
+      "focus": "게이트·RFP 트렌치 자기정렬(Self-aligned) 공정으로 메사 폭 산포 및 Qgd 저감",
+      "url": "https://patents.google.com/patent/US7843004B2/en"
+    }
+  ],
+  "fabTimeline": [
+    {
+      "company": "Infineon",
+      "site": "Kulim Fab 3 (말레이시아)",
+      "wafer": "200mm (8\") SiC / GaN",
+      "status": "양산 가속 및 FY27 €3.0~3.5B 투자 계획",
+      "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
+    },
+    {
+      "company": "STMicroelectronics",
+      "site": "Catania Campus (이탈리아)",
+      "wafer": "200mm (8\") SiC 수직계열화",
+      "status": "2026년 제조 리쉐이핑 및 Q3 Net CapEx $643M 집행",
+      "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"
+    },
+    {
+      "company": "onsemi",
+      "site": "Roznov (체코)",
+      "wafer": "200mm (8\") SiC / SGT",
+      "status": "2025 제조 리얼라인먼트 이후 SiC 수직계열화 집중",
+      "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"
+    },
+    {
+      "company": "Rohm",
+      "site": "Miyazaki 제2 팹 (일본)",
+      "wafer": "200mm (8\") SiC Trench",
+      "status": "Gen 5 SiC 8인치 전환용 설비투자 지속",
+      "url": "https://www.rohm.com/investor-relations"
+    }
+  ]
 }
