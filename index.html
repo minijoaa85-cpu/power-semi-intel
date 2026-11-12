@@ -431,7 +431,7 @@
             <h3 class="text-sm font-bold text-white flex items-center gap-2">
               <i class="fa-solid fa-arrows-split-up-and-left text-blue-400"></i> WSTS 글로벌 반도체 시장 vs 전력반도체(GaN/SiC/Discrete)
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">전체 반도체 사이클 대비 전력반도체 수익성·성장률 위치 점검</p>
+            <p class="text-xs text-slate-400 mt-0.5">전체 반도체 사이클 대비 전력반도체 수익성·현금창출력 점검</p>
           </div>
           <a href="https://www.wsts.org/76/103/Global-Semiconductor-Market-grows-26-in-2025-to-796B" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-lg border border-blue-500/20 hover:bg-blue-500/20">
             WSTS 공식 리포트 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -448,24 +448,77 @@
 
           <div class="p-4 bg-slate-950 rounded-xl border border-slate-800">
             <span class="text-xs text-slate-400 block mb-1">전력 Discrete / IDM 회복 흐름</span>
-            <div class="text-xl font-bold text-white">점진적 턴어라운드</div>
-            <div class="text-xs text-blue-400 font-semibold mt-1">STMicro Q3'26 +17.9% YoY</div>
-            <p class="text-[11px] text-slate-400 mt-2">2025년 재고 조정 이후 2026년 가동률 및 수주잔고($20B+) 회복</p>
+            <div class="text-xl font-bold text-white">매출·마진 동반 반등</div>
+            <div class="text-xs text-blue-400 font-semibold mt-1">Diodes +35.8%, Vishay +24.0% YoY</div>
+            <p class="text-[11px] text-slate-400 mt-2">전장·산업·AI 서버 수요 회복으로 가동률 및 수주잔고 개선</p>
           </div>
 
           <div class="p-4 bg-slate-950 rounded-xl border border-slate-800">
-            <span class="text-xs text-slate-400 block mb-1">AI 전원(PSS) 고수익 세그먼트</span>
-            <div class="text-xl font-bold text-white">Infineon PSS 30.8% OPM</div>
-            <div class="text-xs text-cyan-400 font-semibold mt-1">Q4 FY26 전분기비 +25%</div>
-            <p class="text-[11px] text-slate-400 mt-2">AI 서버 랙당 전력 컨텐츠($100~$250/kW) 급증이 고마진 견인</p>
+            <span class="text-xs text-slate-400 block mb-1">잉여현금흐름 (FCF) 우위 기업</span>
+            <div class="text-xl font-bold text-white">POWI 29.5% · onsemi 24%</div>
+            <div class="text-xs text-cyan-400 font-semibold mt-1">Infineon Adj. €1.93B · STM $351M</div>
+            <p class="text-[11px] text-slate-400 mt-2">Fab 증설기 기업 대비 고마진·최적화 기업의 FCF 창출력 부각</p>
           </div>
         </div>
       </div>
 
+      <!-- Chart 1: Interactive 10-Company Trend (Top) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-cyan-400"></i> 선진사 10개사 선택형 분기 실적 추이 (매출 · 영업이익률 · GPM)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">비교할 기업을 선택하고 상단 지표(매출 / OPM / GPM)를 전환해 추이를 비교하세요.</p>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-semibold" data-metric="revM">분기 매출 ($M)</button>
+            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-metric="opm">영업이익률 (OPM %)</button>
+            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-metric="gpm">매출총이익률 (GPM %)</button>
+          </div>
+        </div>
+        <div id="fin-company-pills" class="flex flex-wrap gap-1.5 mb-4"></div>
+        <div class="relative h-72">
+          <canvas id="stmRevSeriesChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Charts 2 & 3: Revenue vs OPM Combo & Free Cash Flow (FCF) Margin -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-chart-column text-blue-400"></i> 10개사 매출 규모 vs 영업이익률(OPM)
+              </h3>
+              <p class="text-[11px] text-slate-400">막대: 최근 분기 매출 ($M) | 선: 영업이익률 (OPM %)</p>
+            </div>
+          </div>
+          <div class="relative h-72">
+            <canvas id="revOpmComboChart"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-sack-dollar text-emerald-400"></i> 잉여현금흐름(FCF) 마진율 비교 (v2.8)
+              </h3>
+              <p class="text-[11px] text-slate-400">공시 FCF 기준 현금 창출력 vs 대규모 Fab 투자기 구분</p>
+            </div>
+          </div>
+          <div class="relative h-72">
+            <canvas id="fcfMarginChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Table (Moved Below Charts) -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
         <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
           <h3 class="text-xs font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-table-list text-emerald-400"></i> 선진사 최신 분기 재무 실적 벤치마크
+            <i class="fa-solid fa-table-list text-emerald-400"></i> 상장 전력반도체 선진사 10개사 최신 분기 재무 상세표
           </h3>
           <span class="text-[11px] text-slate-400">공식 IR 공시 기준</span>
         </div>
@@ -485,25 +538,6 @@
             </thead>
             <tbody id="financial-table-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
           </table>
-        </div>
-      </div>
-
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div>
-            <h3 class="text-sm font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-chart-area text-cyan-400"></i> 선진사 10개사 선택형 분기 실적 추이 비교 (v2.7)
-            </h3>
-            <p class="text-xs text-slate-400 mt-0.5">비교하고 싶은 기업들을 클릭해 분기 매출($M) 또는 매출총이익률(GPM %) 추이를 확인하세요.</p>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-semibold" data-metric="revM">분기 매출 ($M)</button>
-            <button class="fin-metric-btn px-3 py-1.5 text-xs rounded-lg bg-slate-800 text-slate-300 font-medium" data-metric="gpm">매출총이익률 (GPM %)</button>
-          </div>
-        </div>
-        <div id="fin-company-pills" class="flex flex-wrap gap-1.5 mb-4"></div>
-        <div class="relative h-72">
-          <canvas id="stmRevSeriesChart"></canvas>
         </div>
       </div>
 
@@ -701,7 +735,10 @@
         { "label": "4H-SiC Trench+SBD (1780V)", "tech": "SiC", "bv": 1780, "ron_sp": 1.92 }
       ],
       "financials": [{"company": "Infineon Technologies", "ticker": "IFX (Xetra)", "revenue": "€4.71B (Q4 FY26)", "yoy": "+19.0%", "opm": "23.8% (Seg.)", "gpm": "41.8%", "segment": "PSS(AI·전원) €1.80B (OPM 30.8%), ATV 중심", "rd_capex": "FY27 CapEx €3.0~3.5B 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"}, {"company": "STMicroelectronics", "ticker": "STM (NYSE)", "revenue": "$3.76B (Q3 2026)", "yoy": "+17.9%", "opm": "11.4% (Non-GAAP)", "gpm": "37.3%", "segment": "Power & Discrete(P&D) · 전장·산업 회복", "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"}, {"company": "onsemi", "ticker": "ON (NASDAQ)", "revenue": "$1.53B (Q4 2025)", "yoy": "-15.0% (FY25)", "opm": "13.2% (Q2'25)", "gpm": "37.6% (Q2'25)", "segment": "Power Solutions Group (PSG) · SGT/SiC", "rd_capex": "FCF 마진 24% ($1.4B FY25)", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"}, {"company": "Vishay Intertechnology", "ticker": "VSH (NYSE)", "revenue": "$978.9M (Q3 2026)", "yoy": "+24.0%", "opm": "9.4%", "gpm": "25.5%", "segment": "Discrete MOSFET / Diode / 전력 수동소자", "rd_capex": "Book-to-bill 1.29, Q4 $990M 가이던스", "url": "https://ir.vishay.com/news-releases/news-release-details/vishay-intertechnology-reports-third-quarter-2026-results"}, {"company": "Rohm Semiconductor", "ticker": "6963 (TSE)", "revenue": "¥122B (~$820M)", "yoy": "+2.1%", "opm": "12.4%", "gpm": "34.8%", "segment": "SiC Trench / EcoGaN 및 LSI", "rd_capex": "8인치 SiC 팹 투자 지속", "url": "https://www.rohm.com/investor-relations"}, {"company": "Diodes Incorporated", "ticker": "DIOD (NASDAQ)", "revenue": "$532.6M (Q3 2026)", "yoy": "+35.8%", "opm": "11.9% (추정)", "gpm": "36.1%", "segment": "전장·산업·AI 컴퓨팅 Discrete/Power", "rd_capex": "Q4 가이던스 $550M (GPM 37%)", "url": "https://investor.diodes.com/news-releases/news-release-details/diodes-incorporated-reports-third-quarter-2026-financial-results"}, {"company": "Alpha & Omega Semi", "ticker": "AOSL (NASDAQ)", "revenue": "$177.8M (Q1 FY27)", "yoy": "-2.6%", "opm": "-0.6% (Non-GAAP)", "gpm": "24.5%", "segment": "전원·산업용(+29.2% QoQ) SJ/SGT/Power IC", "rd_capex": "Q2 가이던스 $180M (GPM 25.1%)", "url": "https://investor.aosmd.com/press-releases/press-release-details/2026/Alpha-and-Omega-Semiconductor-Reports-Financial-Results-for-the-Fiscal-First-Quarter-of-2027-Ended-September-30-2026/default.aspx"}, {"company": "Wolfspeed", "ticker": "WOLF (NYSE)", "revenue": "$155.0M (Q1 FY27)", "yoy": "-21.2%", "opm": "적자 (가동률 제약)", "gpm": "-13.0% (Non-GAAP)", "segment": "SiC 웨이퍼 & 파워 소자 (AI 데이터센터 2배 성장)", "rd_capex": "현금성 자산 $995M, Q2 $155~175M 전망", "url": "https://investor.wolfspeed.com/financials/quarterly-results/default.aspx"}, {"company": "Power Integrations", "ticker": "POWI (NASDAQ)", "revenue": "$125.5M (Q3 2026)", "yoy": "+6.0%", "opm": "15.2% (GAAP)", "gpm": "54.5% (Q4 가이던스)", "segment": "PowiGaN / 고내압 AC-DC Power IC", "rd_capex": "R&D 투자 비중 ~22.8%, 무차입 재무", "url": "https://investors.power.com/news/news-details/2026/Power-Integrations-Reports-Third-Quarter-Financial-Results/default.aspx"}, {"company": "Navitas Semiconductor", "ticker": "NVTS (NASDAQ)", "revenue": "$14.0M (Q3 2026)", "yoy": "+38.0%", "opm": "적자 (-$10.9M)", "gpm": "40.0% (Non-GAAP)", "segment": "GaNFast IC & SiC (AI 서버 고출력 집중)", "rd_capex": "현금 $531.5M, Q4 $16.0M(+119% YoY) 전망", "url": "https://navitassemi.com/en/press-releases/navitas-semiconductor-announces-third-quarter-2026-financial-results"}],
-      "companySeries": {"labels": ["25 Q3/Q4", "26 Q1", "26 Q2", "26 Q3/최신"], "companies": {"Infineon": {"color": "#3b82f6", "revM": [4250, 4400, 4520, 5080], "gpm": [40.2, 40.5, 40.8, 41.8]}, "STMicro": {"color": "#10b981", "revM": [3190, 3100, 3490, 3760], "gpm": [33.2, 33.8, 34.8, 37.3]}, "onsemi": {"color": "#8b5cf6", "revM": [1530, 1480, 1510, 1530], "gpm": [37.6, 37.0, 37.6, 38.0]}, "Vishay": {"color": "#f59e0b", "revM": [790, 840, 889, 978.9], "gpm": [19.5, 22.0, 23.5, 25.5]}, "Rohm": {"color": "#ec4899", "revM": [800, 795, 810, 820], "gpm": [34.0, 34.2, 34.5, 34.8]}, "Diodes": {"color": "#06b6d4", "revM": [392, 420, 446, 532.6], "gpm": [30.7, 31.8, 33.1, 36.1]}, "AOSL": {"color": "#84cc16", "revM": [182.5, 168, 170.4, 177.8], "gpm": [23.5, 22.3, 23.1, 24.5]}, "Wolfspeed": {"color": "#ef4444", "revM": [196.8, 165, 150, 155.0], "gpm": [-39.0, -33.0, -19.9, -13.0]}, "Power Integrations": {"color": "#14b8a6", "revM": [118.4, 108.3, 118.9, 125.5], "gpm": [52.9, 53.2, 53.8, 54.5]}, "Navitas": {"color": "#a855f7", "revM": [10.1, 8.6, 10.5, 14.0], "gpm": [38.7, 39.0, 39.5, 40.0]}}},
+      "versionHistory": [{"version": "v2.8", "date": "2026-11-12", "title": "재무 차트 상단 배치 · 매출/OPM 콤보 차트 · 잉여현금흐름(FCF) 분석 추가", "changes": ["다분기 재무 탭의 차트 영역을 테이블 위로 상향 배치해 시각적 가독성 강화", "10개사 선택형 추이 차트에 영업이익률(OPM %) 지표 토글 추가", "10개사 매출 vs OPM 콤보 차트 및 잉여현금흐름(FCF) 마진(%) 비교 차트 신설"]}, {"version": "v2.7", "date": "2026-11-12", "title": "선진사 재무 벤치마크 10개사 확대 & 기업 선택형 동적 차트", "changes": ["상장 전력반도체/GaN/SiC 선진사 10개사(Infineon, STMicro, onsemi, Rohm, Vishay, Diodes, AOSL, Wolfspeed, Power Integrations, Navitas) 최신 2026 실적 데이터 반영", "원하는 기업을 선택해 분기 매출($M) 또는 매출총이익률(GPM %) 추이를 비교할 수 있는 동적 차트 구현"]}, {"version": "v2.6", "date": "2026-11-12", "title": "히스토리 허브 · 슬라이드 PDF/PPT 다운로드 · 소유자 전용 Doc 연동", "changes": ["상단 CSV 버튼 옆에 히스토리 버튼 신설 (v0.1~v2.6 전체 이력 한눈에 보기)", "Google Slides PDF / PPTX 원클릭 다운로드 및 소유자 전용 Google Doc 링크 통합"]}, {"version": "v2.5", "date": "2026-11-12", "title": "무료 Gemini AI 한국어 실무 자동 요약 완성", "changes": ["GitHub Secrets 무료 Gemini API 키 연동으로 영문 논문·뉴스 한국어 실무 자동 요약 구현"]}, {"version": "v2.4", "date": "2026-11-12", "title": "핵심 특허 트래커 & 글로벌 8인치 Fab 증설 타임라인", "changes": ["Google Patents 원문 연동 공정 특허 트래커 및 선진사 8인치 Fab 투자 타임라인 추가"]}, {"version": "v2.3", "date": "2026-11-12", "title": "공정 단면 아키텍처(SVG) & 마스크 스텝 비교 뷰", "changes": ["SJ MOSFET·UD SGT·GaN HEMT·SiC Trench 단면 구조도(SVG), 마스크 수, 단위공정 난제 비교기 구현"]}, {"version": "v2.2", "date": "2026-11-12", "title": "양산 Part Number 데이터시트 DB & 세대별 진화 계보", "changes": ["Infineon CoolMOS 8·CoolGaN·onsemi·Navitas 양산 Part Number 스펙표 및 Gen-to-Gen 계보 추가"]}, {"version": "v2.1", "date": "2026-11-12", "title": "내압대별 다중 FOM 비교기 & 자사 소자 오버레이", "changes": ["100V/650V/1200V+ 다중 FOM 비교 차트 및 Baliga 한계선 자사 목표 스펙 오버레이(★) 추가"]}, {"version": "v2.0", "date": "2026-11-12", "title": "GitHub Pages 자동 수집 파이프라인 구축", "changes": ["arXiv·RSS 주간 자동 수집기와 GitHub Actions를 연동해 공유 가능한 고정 웹 URL 오픈"]}, {"version": "v1.1", "date": "2026-11-12", "title": "주별 데이터 관리 & JSON/CSV 백업 기능 탑재", "changes": ["주차별 드롭다운 전환, 신규 항목 등록 모달, localStorage 저장 및 JSON/CSV 추출 구현"]}, {"version": "v1.0", "date": "2026-11-12", "title": "초기 인터랙티브 대시보드 구축", "changes": ["종합 브리핑·선진사 동향·논문 아카이브·수익성 벤치마크 4개 탭 단일 HTML 대시보드 구현"]}, {"version": "v0.1", "date": "2026-11-12", "title": "기획 초안 & 대화형 요구사항 설문", "changes": ["SJ MOSFET·UD SGT·GaN 실무에 맞춘 4대 대시보드 영역 기획 및 대화형 설문 웹앱 제작"]}],
+      "companySeries": {"labels": ["25 Q3/Q4", "26 Q1", "26 Q2", "26 Q3/최신"], "companies": {"Infineon": {"color": "#3b82f6", "revM": [4250, 4400, 4520, 5080], "gpm": [40.2, 40.5, 40.8, 41.8], "opm": [18.0, 18.5, 19.1, 23.8]}, "STMicro": {"color": "#10b981", "revM": [3190, 3100, 3490, 3760], "gpm": [33.2, 33.8, 34.8, 37.3], "opm": [6.8, 5.2, 8.9, 11.4]}, "onsemi": {"color": "#8b5cf6", "revM": [1530, 1480, 1510, 1530], "gpm": [37.6, 37.0, 37.6, 38.0], "opm": [13.2, 12.8, 13.0, 13.2]}, "Vishay": {"color": "#f59e0b", "revM": [790, 840, 889, 978.9], "gpm": [19.5, 22.0, 23.5, 25.5], "opm": [2.4, 4.5, 5.8, 9.4]}, "Rohm": {"color": "#ec4899", "revM": [800, 795, 810, 820], "gpm": [34.0, 34.2, 34.5, 34.8], "opm": [11.0, 11.5, 12.0, 12.4]}, "Diodes": {"color": "#06b6d4", "revM": [392, 420, 446, 532.6], "gpm": [30.7, 31.8, 33.1, 36.1], "opm": [6.5, 8.2, 10.1, 11.9]}, "AOSL": {"color": "#84cc16", "revM": [182.5, 168, 170.4, 177.8], "gpm": [23.5, 22.3, 23.1, 24.5], "opm": [1.4, -2.5, -2.8, -0.6]}, "Wolfspeed": {"color": "#ef4444", "revM": [196.8, 165, 150, 155.0], "gpm": [-39.0, -33.0, -19.9, -13.0], "opm": [-45.0, -42.0, -38.0, -35.0]}, "Power Integrations": {"color": "#14b8a6", "revM": [118.4, 108.3, 118.9, 125.5], "gpm": [52.9, 53.2, 53.8, 54.5], "opm": [14.4, 15.0, 17.2, 21.4]}, "Navitas": {"color": "#a855f7", "revM": [10.1, 8.6, 10.5, 14.0], "gpm": [38.7, 39.0, 39.5, 40.0], "opm": [-85.0, -90.0, -82.0, -77.8]}}},
+      "fcfBenchmarks": [{"company": "Power Integrations", "fcfText": "$37.0M (Q3'26)", "fcfMargin": 29.5}, {"company": "onsemi", "fcfText": "$1.4B (FY25)", "fcfMargin": 24.0}, {"company": "Infineon (Adj.)", "fcfText": "€1.93B (FY26)", "fcfMargin": 11.8}, {"company": "Vishay", "fcfText": "$98.5M (Q3'26)", "fcfMargin": 10.1}, {"company": "STMicro", "fcfText": "$351M (Q3'26)", "fcfMargin": 9.3}, {"company": "Diodes", "fcfText": "$43.9M (Q3'26)", "fcfMargin": 8.2}, {"company": "AOSL", "fcfText": "LTM 적자 (회복중)", "fcfMargin": -10.0}, {"company": "Wolfspeed", "fcfText": "-$84.2M OCF", "fcfMargin": -54.3}],
+      "revVsOpm10": [{"name": "Infineon", "revM": 5080, "opm": 23.8}, {"name": "STMicro", "revM": 3760, "opm": 11.4}, {"name": "onsemi", "revM": 1530, "opm": 13.2}, {"name": "Vishay", "revM": 978.9, "opm": 9.4}, {"name": "Rohm", "revM": 820, "opm": 12.4}, {"name": "Diodes", "revM": 532.6, "opm": 11.9}, {"name": "AOSL", "revM": 177.8, "opm": -0.6}, {"name": "Wolfspeed", "revM": 155.0, "opm": -35.0}, {"name": "POWI", "revM": 125.5, "opm": 21.4}, {"name": "Navitas", "revM": 14.0, "opm": -77.8}],
       "quarterlySeries": {
         "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
         "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
@@ -711,7 +748,7 @@
     };
 
     let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
-    let opmTrendChart, marginChart, baligaChart, stmRevChart, multiFomChart;
+    let opmTrendChart, marginChart, baligaChart, stmRevChart, multiFomChart, revOpmComboChart, fcfMarginChart;
     let targetDevices = []; try { targetDevices = JSON.parse(localStorage.getItem("POWER_SEMI_TARGETS") || "[]"); } catch (e) {}
 
     async function initData() {
@@ -1119,6 +1156,8 @@
       // 4. Interactive 10-Company Trend Series (v2.7)
       initCompanyPills();
       renderCompanyTrendChart();
+      renderRevOpmComboChart();
+      renderFcfMarginChart();
     }
 
     // Tab Switching
@@ -1133,6 +1172,8 @@
         if (target === 'tab-benchmark' && baligaChart) baligaChart.resize();
         if (target === 'tab-benchmark' && multiFomChart) multiFomChart.resize();
         if (target === 'tab-financials' && stmRevChart) stmRevChart.resize();
+        if (target === 'tab-financials' && revOpmComboChart) revOpmComboChart.resize();
+        if (target === 'tab-financials' && fcfMarginChart) fcfMarginChart.resize();
       });
     });
 
@@ -1454,6 +1495,65 @@
               ticks: { color: '#94a3b8', callback: v => selectedFinMetric === 'revM' ? '$' + v + 'M' : v + '%' }
             },
             x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+          }
+        }
+      });
+    }
+
+    function renderRevOpmComboChart() {
+      const items = appData.revVsOpm10 || FALLBACK_DATA.revVsOpm10;
+      const ctx = document.getElementById('revOpmComboChart').getContext('2d');
+      if (revOpmComboChart) revOpmComboChart.destroy();
+      revOpmComboChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: items.map(i => i.name),
+          datasets: [
+            { label: '분기 매출 ($M)', data: items.map(i => i.revM), backgroundColor: 'rgba(59,130,246,0.75)', borderRadius: 4, yAxisID: 'y' },
+            { label: '영업이익률 (OPM %)', data: items.map(i => i.opm), type: 'line', borderColor: '#10b981', backgroundColor: '#10b981', borderWidth: 2, pointRadius: 4, yAxisID: 'y1' }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            y: { position: 'left', grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => '$' + v + 'M' } },
+            y1: { position: 'right', grid: { drawOnChartArea: false }, ticks: { color: '#34d399', callback: v => v + '%' } },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 10 } } }
+          }
+        }
+      });
+    }
+
+    function renderFcfMarginChart() {
+      const items = appData.fcfBenchmarks || FALLBACK_DATA.fcfBenchmarks;
+      const ctx = document.getElementById('fcfMarginChart').getContext('2d');
+      if (fcfMarginChart) fcfMarginChart.destroy();
+      fcfMarginChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: items.map(i => i.company),
+          datasets: [{
+            label: 'FCF 마진 (%)',
+            data: items.map(i => i.fcfMargin),
+            backgroundColor: items.map(i => i.fcfMargin >= 0 ? 'rgba(16,185,129,0.85)' : 'rgba(244,63,94,0.85)'),
+            borderRadius: 5
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${items[ctx.dataIndex].fcfText} (${ctx.raw}%)`
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => v + '%' } },
+            y: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 11 } } }
           }
         }
       });
