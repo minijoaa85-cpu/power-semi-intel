@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T09:00:00+09:00",
+  "lastUpdated": "2026-11-12T15:08:42.698707+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
     {
@@ -78,6 +78,54 @@
     ]
   },
   "news": [
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUp: AI Data Centers and Their Impact on Power Electronics",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This video panel from PowerUP 2026 is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Data centers are shifting toward higher-voltage direct-current architectures, distributing...\nThe post PowerUp: AI Data Centers an...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-ai-data-centers-and-their-impact-on-power-electronics/",
+      "id": 1794463723991,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "SiC",
+      "title": "PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Converts and Uses Energy",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This Event Session is presented by Dr. Adam Barkley, Chief Technology Officer, SiC Devices, Wolfspeed. This keynote is an invitation to take a fresh look...\nThe post PowerUP: Enabling a Paradigm Shift in How the World Creates, Stores, Conve...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-enabling-a-paradigm-shift-in-how-the-world-creates-stores-converts-and-uses-energy/",
+      "id": 1794463723990,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconductor of the AI era",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This Keynote is presented by Johannes Schoiswohl, Business Line Head GaN Systems, Infineon GaN has moved well beyond its early adopter phase. From AI data...\nThe post PowerUp: GaN at the Tipping Point: Why Gallium Nitride is the Semiconduct...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-gan-at-the-tipping-point-why-gallium-nitride-is-the-semiconductor-of-the-ai-era/",
+      "id": 1794463723989,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "PowerUP: Panel Discussion: The Gate Driver Problem – Extracting the Most Out of WBG",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "This session is moderated by Aalyia Shaukat, Editor-in-Chief of Power Electronics News. Gate driver design is one of the most consequential bottlenecks in extracting WBG...\nThe post PowerUP: Panel Discussion: The Gate Driver Problem &#8211;...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/powerup-panel-discussion-the-gate-driver-problem-extracting-the-most-out-of-wbg/",
+      "id": 1794463723988,
+      "week": "2026-W46",
+      "date": "2026-11-12"
+    },
     {
       "id": 1,
       "week": "2026-W46",
