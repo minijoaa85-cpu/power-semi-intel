@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12T19:17:48.410123+09:00",
+  "lastUpdated": "2026-11-13T08:17:38.521456+09:00",
   "currentWeek": "2026-W46",
   "weeks": [
     {
@@ -78,6 +78,42 @@
     ]
   },
   "news": [
+    {
+      "company": "Power Electronics News",
+      "tag": "SiC",
+      "title": "onsemi Unveils EliteSiC M4 SiC Platform",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "Fourth-generation silicon carbide technology delivers higher efficiency, lower losses and greater flexibility for advanced power systems.\nThe post onsemi Unveils EliteSiC M4 SiC Platform appeared first on Power Electronics News.",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/onsemi-unveils-elitesic-m4-sic-platform/",
+      "id": 1794525459581,
+      "week": "2026-W46",
+      "date": "2026-11-13"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "SiC",
+      "title": "Infineon Advances 300-mm SiC Production",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "The 300mm process could deliver 2.3 times more chips per wafer, supporting future SiC manufacturing scale-up and supply.\nThe post Infineon Advances 300-mm SiC Production appeared first on Power Electronics News.",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/infineon-advances-300-mm-sic-production/",
+      "id": 1794525459580,
+      "week": "2026-W46",
+      "date": "2026-11-13"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "Cooling for High-Performance Modules, Both Small and Large",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "Compact mini-fan units, liquid heatsinks, and large fan aggregates offer targeted cooling for power modules of any size.\nThe post Cooling for High-Performance Modules, Both Small and Large appeared first on Power Electronics News.",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/cooling-for-high-performance-modules-both-small-and-large/",
+      "id": 1794525459579,
+      "week": "2026-W46",
+      "date": "2026-11-13"
+    },
     {
       "company": "Power Electronics News",
       "tag": "GaN",
