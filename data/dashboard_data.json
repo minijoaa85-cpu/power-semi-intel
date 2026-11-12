@@ -1,0 +1,356 @@
+{
+  "lastUpdated": "2026-11-12T09:00:00+09:00",
+  "currentWeek": "2026-W46",
+  "weeks": [
+    { "code": "2026-W46", "label": "2026년 11월 2주차" },
+    { "code": "2026-W45", "label": "2026년 11월 1주차" },
+    { "code": "2026-W44", "label": "2026년 10월 5주차" }
+  ],
+  "weeklyThemes": {
+    "2026-W46": [
+      {
+        "icon": "fa-bolt",
+        "color": "text-blue-400",
+        "title": "1. AI 데이터센터가 견인하는 GaN 8인치 전환",
+        "desc": "Infineon PSS 부문이 AI 서버 전원 수요에 힘입어 Q4 FY26 매출 €1.796B(+25%), 마진 30.8%를 기록했습니다. 8인치 GaN-on-Si 및 Direct-Drive 아키텍처로 48V-12V 변환 효율을 극대화하는 추세입니다."
+      },
+      {
+        "icon": "fa-microchip",
+        "color": "text-indigo-400",
+        "title": "2. SJ MOSFET & UD SGT 공정 미세화",
+        "desc": "SJ MOSFET은 Deep Trench Refill 기반 Sub-micron Pitch(0.75μm)로 실리콘 이론 한계에 근접 중이며, UD SGT는 Stepped Shield Oxide로 Qgd/Qgs를 30% 이상 낮춰 고주파 손실을 줄이고 있습니다."
+      },
+      {
+        "icon": "fa-chart-line",
+        "color": "text-emerald-400",
+        "title": "3. WSTS 성장세 속 전력반도체 반등",
+        "desc": "WSTS 기준 전체 반도체 시장이 2025년 $796B(+26%) 이후 2026년 $1T+로 확대되는 가운데, STMicro(Q3'26 $3.76B, +17.9% YoY) 등 전력·전장 IDM도 재고 조정 후 뚜렷한 실적 반등세에 진입했습니다."
+      }
+    ],
+    "2026-W45": [
+      {
+        "icon": "fa-layer-group",
+        "color": "text-cyan-400",
+        "title": "1. 8인치 GaN-on-Si 저전압 영역 침투",
+        "desc": "200mm CMOS 호환 라인에서 100V 이하 GaN 양산 수율이 안정화되며 고주파 PoL 컨버터에서 기존 SGT MOSFET과의 원가 경쟁이 본격화되고 있습니다."
+      },
+      {
+        "icon": "fa-car",
+        "color": "text-emerald-400",
+        "title": "2. SiC Double-Trench 신뢰성 검증",
+        "desc": "Asymmetric/Double-Trench 구조와 집적형 쇼트키 다이오드(SBD) 적용으로 게이트 옥사이드 전계 집중과 바디 다이오드 바이폴라 열화를 동시에 억제하는 설계가 주류가 되고 있습니다."
+      },
+      {
+        "icon": "fa-coins",
+        "color": "text-amber-400",
+        "title": "3. 8인치 Fab 중심 선별적 CapEx 집행",
+        "desc": "주요 IDM들이 6인치 증설을 줄이고 8인치 SiC/GaN 라인 전환에 설비투자를 집중하며 장기 원가 구조 재편을 추진하고 있습니다."
+      }
+    ],
+    "2026-W44": [
+      {
+        "icon": "fa-server",
+        "color": "text-blue-400",
+        "title": "1. AI 랙 파워 셸프 고출력화 (8kW~12kW)",
+        "desc": "단일 파워 셸프 출력 상향에 따라 PFC 단의 650V SJ MOSFET/GaN과 DC-DC 단의 UD SGT/GaN 조합 최적화 수요가 급증하고 있습니다."
+      },
+      {
+        "icon": "fa-flask",
+        "color": "text-purple-400",
+        "title": "2. 양방향(BDS) GaN 및 이종접합 연구",
+        "desc": "모놀리식 양방향(BDS) GaN 스위치와 Si/SiC 이종접합 더블 트렌치 구조가 차세대 전력 변환 토폴로지 단순화의 핵심 연구 주제로 부상했습니다."
+      },
+      {
+        "icon": "fa-scale-balanced",
+        "color": "text-slate-300",
+        "title": "3. 전장·산업용 수주잔고 회복",
+        "desc": "선진사들의 재고회전일수(DOI)가 하락세로 전환되며 수주잔고(Backlog)가 5분기치 이상으로 회복되는 흐름이 포착되었습니다."
+      }
+    ]
+  },
+  "news": [
+    {
+      "id": 1,
+      "week": "2026-W46",
+      "company": "Infineon",
+      "tag": "GaN",
+      "title": "Infineon, AI 데이터센터 전원 수요로 FY26 사상 최대 4분기 실적 달성 (PSS 마진 30.8%)",
+      "date": "2026-11-10",
+      "app": "AI 서버 / 데이터센터 PSU",
+      "desc": "Infineon은 Q4 FY26 매출 €4.706B(+19% YoY), Segment Result Margin 23.8%를 기록했습니다. 특히 Power & Sensor Systems(PSS) 부문 매출이 전분기 대비 25% 급증한 €1.796B, 마진 30.8%를 달성하며 AI 서버용 CoolGaN·고효율 MOSFET 수요를 입증했습니다.",
+      "impact": "AI 서버 전력 밀도 경쟁 심화로 8인치 GaN 및 초저저항 SGT/SJ 패키지 통합 솔루션 요구 증대",
+      "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
+    },
+    {
+      "id": 2,
+      "week": "2026-W46",
+      "company": "STMicroelectronics",
+      "tag": "SJ-MOS",
+      "title": "STMicro, Q3 2026 매출 $3.76B(+17.9% YoY) 반등 및 제조 구조 재편 가속",
+      "date": "2026-10-29",
+      "app": "xEV OBC · 산업용 전원",
+      "desc": "STMicroelectronics는 Q3 2026 매출 $3.76B, 매출총이익률(GPM) 37.3%(전년비 +410bp)를 기록하며 가동률 회복을 확인했습니다. Book-to-bill 2 이상, 수주잔고 $20B 상회로 전력·디스크리트(P&D) 수요 회복이 가시화되고 있습니다.",
+      "impact": "가동률 정상화에 따른 650V급 SJ MOSFET 및 SiC 원가 경쟁력 회복",
+      "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"
+    },
+    {
+      "id": 3,
+      "week": "2026-W46",
+      "company": "onsemi",
+      "tag": "SGT",
+      "title": "onsemi, 제조 리얼라인먼트 완료 후 고효율 Power Solutions(PSG) 마진 방어",
+      "date": "2026-11-02",
+      "app": "전장 모터 드라이브 · 48V 서버",
+      "desc": "onsemi는 2025년 제조 구조 재편 프로그램 이후 잉여현금흐름 마진 약 24%를 유지하며 PSG(Power Solutions Group) 중심의 고부가 SGT 및 EliteSiC 라인업 수익성 방어에 집중하고 있습니다.",
+      "impact": "Shielded Gate Trench 공정 마진 최적화 및 Top-side Cooling 패키지 결합 가속",
+      "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"
+    },
+    {
+      "id": 4,
+      "week": "2026-W45",
+      "company": "Intel / Components Research",
+      "tag": "GaN",
+      "title": "300mm GaN-on-Si 및 Si PMOS 3D 적층 DrGaN 아키텍처 진전",
+      "date": "2026-11-04",
+      "app": "차세대 컴퓨팅 PoL · 고주파 VRM",
+      "desc": "300mm 웨이퍼 기반 구리(Cu) 인터커넥트와 3D 레이어 전사 기술을 활용해 Si PMOS 드라이버와 GaN NMOS 파워 스위치를 단일 칩에 통합한 DrGaN 플랫폼(Ron,sp 0.8 mΩ·mm²)을 발표했습니다.",
+      "impact": "기생 인덕턴스 최소화를 위한 GaN-CMOS 모놀리식/3D 집적 공정 트렌드 주목",
+      "url": "https://www.powerelectronicsnews.com/intels-advancements-in-gan-on-silicon-technology-for-efficient-power-delivery/"
+    },
+    {
+      "id": 5,
+      "week": "2026-W45",
+      "company": "Academic / Industry",
+      "tag": "SiC",
+      "title": "Si/SiC 이종접합 Double-Trench MOSFET(HJ-DTMOS)으로 바디 다이오드 열화 억제",
+      "date": "2026-11-03",
+      "app": "800V EV 인버터 · 고압 컨버터",
+      "desc": "기존 4H-SiC N+ 소스와 P-채널을 Si로 대체해 Si/SiC 이종접합을 형성함으로써 턴온 전압(Von)을 2.74V에서 1.53V로 낮추고 Ron,sp를 20.5% 개선(1.78 mΩ·cm²)하는 연구 결과가 보고되었습니다.",
+      "impact": "SiC MOSFET의 채널 이동도 저하 및 기생 PiN 바이폴라 열화 동시 해결 대안 제시",
+      "url": "https://www.mdpi.com/2072-666X/16/12/1335"
+    },
+    {
+      "id": 6,
+      "week": "2026-W44",
+      "company": "WSTS",
+      "tag": "GaN",
+      "title": "WSTS, 글로벌 반도체 시장 2025년 $796B(+26%) 달성 후 2026년 $1T+ 돌파 전망",
+      "date": "2026-10-28",
+      "app": "글로벌 반도체 산업 전반",
+      "desc": "WSTS는 AI 인프라 투자 확대에 힘입어 글로벌 반도체 시장이 2025년 $796B에 이어 2026년 1조 달러를 상회할 것으로 전망했습니다. Discrete/전력 부문은 완만한 단일 자릿수~중반 성장세를 보이나 GaN/SiC는 고성장 지속 중입니다.",
+      "impact": "전체 반도체 사이클 대비 전력반도체의 후행적 회복 및 AI 전원용 고효율 소자 집중 투자 확인",
+      "url": "https://www.wsts.org/76/103/Global-Semiconductor-Market-grows-26-in-2025-to-796B"
+    }
+  ],
+  "papers": [
+    {
+      "id": "P1",
+      "week": "2026-W46",
+      "device": "GaN",
+      "conference": "IEDM 2024/2025",
+      "title": "The Future of GaN is Also High Voltage, High Current, and Bidirectional (MBDS)",
+      "authors": "Invited Paper (IEDM)",
+      "bv": "650 V",
+      "ron_sp": "1.85",
+      "fom": "양방향(BDS) 단일 소자 구현",
+      "arch": "단일 GaN-on-Si 칩에 듀얼 게이트 양방향 차단(MBDS) 구조를 구현하고, Dynamic Ron 열화 억제 버퍼 공정을 적용해 매트릭스 컨버터 부품 수 절감.",
+      "reliability": "Dynamic Ron, 고온 역바이어스",
+      "link": "https://www.researchgate.net/publication/389110386_The_Future_of_GaN_is_Also_High_Voltage_High_Current_and_Bidirectional_Invited"
+    },
+    {
+      "id": "P2",
+      "week": "2026-W46",
+      "device": "SGT",
+      "conference": "IEEE / ResearchGate",
+      "title": "Detailed Study on Dynamic Characteristics of a High-Performance SGT-MOSFET With Under-the-Trench Floating P-Pillar",
+      "authors": "Power Device Research Group",
+      "bv": "150 V",
+      "ron_sp": "1.12",
+      "fom": "HF-FOM [Ron×Qgd] 71% ↓",
+      "arch": "트렌치 하부에 Floating P-pillar를 배치해 일반 SGT 대비 Rds(on)을 33% 이상 저감하고 MHz 스위칭에서도 Dynamic Rds(on) 증가를 억제.",
+      "reliability": "고주파 스위칭 Qoss 특성 분석",
+      "link": "https://www.researchgate.net/publication/313489939_Detailed_Study_on_Dynamic_Characteristics_of_a_High-Performance_SGT-MOSFET_With_Under-the-Trench_Floating_P-Pillar"
+    },
+    {
+      "id": "P3",
+      "week": "2026-W46",
+      "device": "SGT",
+      "conference": "IEEE EDL",
+      "title": "Shield Gate Trench MOSFET With Narrow Gate Architecture and Low-k Dielectric Layer (NL-SGTMOS)",
+      "authors": "Power Semiconductor Lab",
+      "bv": "100 V",
+      "ron_sp": "4.57 (1mm²)",
+      "fom": "Qg 7.46 nC (@10V)",
+      "arch": "추가 마스크 없이 게이트 폴리실리콘 중앙부를 제거한 Narrow Gate 구조와 제어 게이트-필드 플레이트 간 Low-k 유전체를 적용해 기생 Cgp를 대폭 감소.",
+      "reliability": "게이트-플레이트 절연 내압 유지",
+      "link": "https://www.researchgate.net/publication/339995846_Shield_Gate_Trench_MOSFET_With_Narrow_Gate_Architecture_and_Low-k_Dielectric_Layer"
+    },
+    {
+      "id": "P4",
+      "week": "2026-W45",
+      "device": "SiC",
+      "conference": "Micromachines 2025",
+      "title": "A Si/SiC Heterojunction Double-Trench MOSFET (HJ-DTMOS) with Improved Third-Quadrant Performance",
+      "authors": "MDPI Power Devices",
+      "bv": "1200 V",
+      "ron_sp": "1.78",
+      "fom": "Von 1.53V (44% ↓), Ron,sp 20.5% ↓",
+      "arch": "4H-SiC 더블 트렌치의 N+ 소스 및 P-베이스를 Si로 대체한 이종접합 구조와 High-k 게이트 유전체를 적용해 바이폴라 열화를 원천 차단.",
+      "reliability": "트렌치 코너 전계 완화 P-well",
+      "link": "https://www.mdpi.com/2072-666X/16/12/1335"
+    },
+    {
+      "id": "P5",
+      "week": "2026-W45",
+      "device": "GaN",
+      "conference": "Vertical GaN FinFET",
+      "title": "High-breakdown-voltage GaN-based vertical FinFET design",
+      "authors": "GaN Power Research",
+      "bv": "1200 V",
+      "ron_sp": "0.20",
+      "fom": "BFOM 7.2 GW/cm², Vth 1V",
+      "arch": "에피 재성장이나 p-GaN 층 없이 n-GaN Fin 채널 건식/습식 복합 식각만으로 150°C까지 안정적인 노멀리-오프(E-mode) 수직형 GaN 구현.",
+      "reliability": "150°C Vth 안정성 검증",
+      "link": "https://www.researchgate.net/publication/376715782_High-breakdown-voltage_GaN-based_vertical_FinFET_design"
+    },
+    {
+      "id": "P6",
+      "week": "2026-W44",
+      "device": "SJ-MOS",
+      "conference": "ISPSD",
+      "title": "600V-class Super Junction MOSFET with High Aspect Ratio P/N Columns by Trench Filling Epitaxial Growth",
+      "authors": "SJ Process Team",
+      "bv": "600 V",
+      "ron_sp": "9.5",
+      "fom": "Aspect Ratio 25 p/n 컬럼",
+      "arch": "다층 에피-임플란트 반복 대신 고종횡비(AR 25) 딥 트렌치 식각 후 에피택셜 필링 공정을 적용해 600V급 최저 온저항 구현.",
+      "reliability": "Charge Balance 공정 마진 확보",
+      "link": "https://www.researchgate.net/publication/4341405_600V-class_Super_Junction_MOSFET_with_High_Aspect_Ratio_PN_Columns_Structure"
+    }
+  ],
+  "processMatrix": [
+    {
+      "device": "SJ MOSFET (600~900V)",
+      "wafer": "8인치(200mm) 주력 / 12인치 일부",
+      "architecture": "Multi-Epi vs Deep Trench Etch & Refill",
+      "bottleneck": "Aspect Ratio 25~30 딥 트렌치 보이드 없는 필링 및 P/N Charge Balance 산포 제어",
+      "fom": "Ron,sp · Qg / Body Diode Qrr",
+      "trend": "Cell Pitch 1.0μm 이하 미세화, Fast Recovery 바디 다이오드(FRD) 내장형 확대"
+    },
+    {
+      "device": "UD SGT (30~150V)",
+      "wafer": "8인치(200mm) 주력 / 12인치 전환",
+      "architecture": "Split-Gate / Shielded Gate Trench",
+      "bottleneck": "두꺼운 Bottom/Shield Oxide 균일도, Narrow Mesa 식각 및 Wafer Thinning(50μm 이하)",
+      "fom": "Ron × Qgd (HF-FOM) / Qoss",
+      "trend": "Stepped Shield Oxide, Low-k 절연막, Floating P-pillar 도입으로 1MHz+ 서버 VRM 대응"
+    },
+    {
+      "device": "GaN HEMT (100~650V+)",
+      "wafer": "6인치 → 8인치(200mm) 급속 전환",
+      "architecture": "Lateral E-mode p-GaN Gate / Cascode",
+      "bottleneck": "8인치 GaN-on-Si 에피 휨(Bow) 제어, p-GaN 저손상 정밀 식각, Au-Free CMOS 공정",
+      "fom": "Dynamic Ron / Qg · Coss (Qrr=0)",
+      "trend": "양방향 스위치(BDS), 드라이버 IC 모놀리식 집적(DrGaN), 1200V Vertical FinFET 연구"
+    },
+    {
+      "device": "SiC MOSFET (650~1700V+)",
+      "wafer": "6인치 → 8인치(200mm) 전환기",
+      "architecture": "Planar vs Asymmetric/Double Trench",
+      "bottleneck": "8인치 SiC 기판 결함(BPD) 수율, 트렌치 코너 Gate Oxide 전계 집중(TDDB/BTI)",
+      "fom": "Ron,sp / SCWT(단락내량) / Vf",
+      "trend": "쇼트키 다이오드(SBD) 내장으로 바이폴라 열화 방지, Ag 소결·양면 냉각 모듈화"
+    }
+  ],
+  "reliabilityPackaging": [
+    {
+      "category": "신뢰성 (Reliability)",
+      "device": "GaN",
+      "title": "Dynamic Ron (전류 붕괴) 및 Vth 안정성",
+      "detail": "고전압 스위칭 시 버퍼층 및 AlGaN/GaN 계면 트랩 포획으로 인한 동적 온저항 상승 제어. p-GaN 게이트 누설전류 및 BTI(Bias Temperature Instability) 장기 수명 확보가 핵심."
+    },
+    {
+      "category": "신뢰성 (Reliability)",
+      "device": "SiC / SGT",
+      "title": "Gate Oxide 전계 집중(TDDB) & 단락 내량(SCWT)",
+      "detail": "SiC 트렌치 코너 및 SGT 스플릿 게이트 단차 부위의 산화막 절연파괴(TDDB) 방지. 전기차 인버터용 SiC는 SCWT 2~5μs 확보가 필수이며, GaN(<1μs)은 200ns 이내 고속 보호회로와 결합."
+    },
+    {
+      "category": "패키징 (Packaging)",
+      "device": "공통 (SGT/SJ/GaN)",
+      "title": "Top-Side Cooling (상면 냉각) & Cu Clip 본딩",
+      "detail": "AI 서버 및 xEV OBC에서 PCB 열저항 한계를 돌파하기 위해 패키지 상단 노출형(TOLT, QDPAK) 채택 급증. 와이어 본딩 대신 구리 클립(Cu Clip)으로 기생 인덕턴스 및 Rds(on) 패키지 기여분 최소화."
+    },
+    {
+      "category": "패키징 (Packaging)",
+      "device": "GaN / SGT",
+      "title": "PCB 임베디드 & 3D Co-Packaging",
+      "detail": "수 MHz 스위칭에서 게이트 루프 인덕턴스를 1nH 이하로 줄이기 위해 다이를 기판 내부에 매립하거나(Embedded PCB), 드라이버 IC와 디커플링 커패시터를 단일 패키지에 3D 집적."
+    }
+  ],
+  "tradeoffPoints": [
+    { "label": "Si SJ-MOS (Fuji 650V, AR25)", "tech": "SJ-MOS", "bv": 600, "ron_sp": 9.5 },
+    { "label": "Si SJ-MOS (DM9 Class)", "tech": "SJ-MOS", "bv": 650, "ron_sp": 7.8 },
+    { "label": "Si UD SGT (60V)", "tech": "SGT", "bv": 60, "ron_sp": 0.45 },
+    { "label": "Si UD SGT (100V Narrow Gate)", "tech": "SGT", "bv": 100, "ron_sp": 0.82 },
+    { "label": "Si UD SGT (150V Floating P)", "tech": "SGT", "bv": 150, "ron_sp": 1.12 },
+    { "label": "GaN Lateral (650V BDS)", "tech": "GaN", "bv": 650, "ron_sp": 1.85 },
+    { "label": "GaN-on-Si (1200V E-mode)", "tech": "GaN", "bv": 1250, "ron_sp": 1.45 },
+    { "label": "GaN Vertical FinFET (1200V)", "tech": "GaN", "bv": 1200, "ron_sp": 0.20 },
+    { "label": "4H-SiC HJ-DTMOS (1200V)", "tech": "SiC", "bv": 1200, "ron_sp": 1.78 },
+    { "label": "4H-SiC Trench+SBD (1700V)", "tech": "SiC", "bv": 1780, "ron_sp": 1.92 }
+  ],
+  "financials": [
+    {
+      "company": "Infineon Technologies",
+      "ticker": "IFX (Xetra)",
+      "revenue": "€4.71B (Q4 FY26)",
+      "yoy": "+19.0%",
+      "opm": "23.8% (Seg.)",
+      "gpm": "41.8%",
+      "segment": "PSS(AI/전원) €1.80B (OPM 30.8%), ATV 중심",
+      "rd_capex": "FY27 CapEx €3.0~3.5B 계획",
+      "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
+    },
+    {
+      "company": "STMicroelectronics",
+      "ticker": "STM (NYSE)",
+      "revenue": "$3.76B (Q3 2026)",
+      "yoy": "+17.9%",
+      "opm": "11.4% (Non-GAAP)",
+      "gpm": "37.3%",
+      "segment": "Power & Discrete(P&D) ~16%+, 전장·산업 회복",
+      "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)",
+      "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5"
+    },
+    {
+      "company": "onsemi",
+      "ticker": "ON (NASDAQ)",
+      "revenue": "$1.53B (Q4 2025)",
+      "yoy": "-15.0% (FY25)",
+      "opm": "13.2% (Q2'25)",
+      "gpm": "37.6% (Q2'25)",
+      "segment": "Power Solutions Group (PSG) 핵심",
+      "rd_capex": "FCF 마진 24% ($1.4B FY25)",
+      "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0"
+    },
+    {
+      "company": "Rohm Semiconductor",
+      "ticker": "6963 (TSE)",
+      "revenue": "¥122B (~$0.82B)",
+      "yoy": "+2.1%",
+      "opm": "12.4%",
+      "gpm": "34.8%",
+      "segment": "SiC Trench / EcoGaN 및 LSI",
+      "rd_capex": "8인치 SiC 팹 투자 지속",
+      "url": "https://www.rohm.com/investor-relations"
+    }
+  ],
+  "quarterlySeries": {
+    "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
+    "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
+    "stOpm": [0.1, 2.1, 6.8, 3.8, 5.2, 8.9, 11.4],
+    "stmRevB": [2.52, 2.77, 3.19, 3.33, 3.10, 3.49, 3.76],
+    "wstsNote": "WSTS 글로벌 반도체: 2025년 $796B (+26% YoY) → 2026년 $1T+ 전망"
+  }
+}

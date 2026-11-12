@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전력반도체 Process Architecture & 시장 인텔리전스 플랫폼 v2.0</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .tab-btn.active {
+      background-color: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.35);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-slate-950/90 backdrop-blur border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 flex-shrink-0">
+          <i class="fa-solid fa-microchip text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="text-base font-bold text-white tracking-tight">전력반도체 Process Architecture 인텔리전스</h1>
+            <span class="text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">v2.0 Auto-Pipeline Ready</span>
+          </div>
+          <p class="text-xs text-slate-400">GaN · SiC · SJ MOSFET · UD SGT | Ron,sp-BV 한계선 | 신뢰성·패키징 | 다분기 재무 & WSTS</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="flex items-center gap-1.5 bg-slate-900 border border-slate-700 px-2.5 py-1.5 rounded-lg text-xs">
+          <i class="fa-regular fa-calendar-check text-blue-400"></i>
+          <select id="week-selector" class="bg-transparent text-slate-100 font-semibold focus:outline-none cursor-pointer"></select>
+        </div>
+
+        <button id="open-add-modal-btn" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-lg font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-plus"></i> 신규 등록
+        </button>
+
+        <button id="copy-weekly-summary-btn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-lg border border-slate-700 font-medium transition flex items-center gap-1.5">
+          <i class="fa-regular fa-copy text-blue-400"></i> 팀 브리핑 복사
+        </button>
+
+        <button id="export-json-btn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-2 rounded-lg border border-slate-700 font-medium transition flex items-center gap-1.5" title="JSON 백업">
+          <i class="fa-solid fa-file-code text-cyan-400"></i> JSON
+        </button>
+
+        <label class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-2 rounded-lg border border-slate-700 font-medium transition flex items-center gap-1.5 cursor-pointer" title="JSON 불러오기">
+          <i class="fa-solid fa-upload text-amber-400"></i> 불러오기
+          <input type="file" id="import-json-input" accept=".json" class="sr-only">
+        </label>
+
+        <button id="export-csv-btn" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5">
+          <i class="fa-solid fa-download"></i> CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="max-w-7xl mx-auto px-4 pt-2 pb-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/70">
+      <button class="tab-btn active px-3.5 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap" data-tab="tab-overview">
+        <i class="fa-solid fa-chart-pie"></i> 종합 브리핑
+      </button>
+      <button class="tab-btn px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition flex items-center gap-2 whitespace-nowrap" data-tab="tab-news">
+        <i class="fa-solid fa-newspaper"></i> 선진사 기술 동향
+      </button>
+      <button class="tab-btn px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition flex items-center gap-2 whitespace-nowrap" data-tab="tab-benchmark">
+        <i class="fa-solid fa-crosshairs"></i> Ron,sp-BV & 공정 매트릭스
+      </button>
+      <button class="tab-btn px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition flex items-center gap-2 whitespace-nowrap" data-tab="tab-papers">
+        <i class="fa-solid fa-book-bookmark"></i> 논문 & 신뢰성·패키징
+      </button>
+      <button class="tab-btn px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition flex items-center gap-2 whitespace-nowrap" data-tab="tab-financials">
+        <i class="fa-solid fa-money-bill-trend-up"></i> 다분기 재무 & WSTS
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="tab-overview" class="tab-pane space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+            <span>글로벌 반도체 시장 (WSTS)</span>
+            <i class="fa-solid fa-globe text-blue-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-white">$796B <span class="text-xs font-semibold text-emerald-400">+26% (2025)</span></div>
+          <p class="text-[11px] text-slate-400 mt-1">2026년 $1T+ 돌파 전망 (AI 인프라 견인)</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+            <span>Infineon PSS (AI·전원 부문)</span>
+            <i class="fa-solid fa-bolt text-cyan-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-white">€1.80B <span class="text-xs font-semibold text-cyan-400">OPM 30.8%</span></div>
+          <p class="text-[11px] text-slate-400 mt-1">Q4 FY26 전분기비 +25% 성장 (AI 데이터센터)</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+            <span>STMicro 분기 반등 (Q3'26)</span>
+            <i class="fa-solid fa-layer-group text-indigo-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-white">$3.76B <span class="text-xs font-semibold text-emerald-400">+17.9% YoY</span></div>
+          <p class="text-[11px] text-slate-400 mt-1">GPM 37.3%, 수주잔고 $20B+ 회복</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+            <span>자동 수집 데이터 현황</span>
+            <i class="fa-solid fa-database text-amber-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-white"><span id="kpi-total-items">-</span>건 <span class="text-xs font-semibold text-amber-400">뉴스·논문 누적</span></div>
+          <p class="text-[11px] text-slate-400 mt-1">최종 갱신: <span id="kpi-last-updated">2026-11-12</span></p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-rose-500"></div>
+        </div>
+      </div>
+
+      <!-- Weekly Themes -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h3 class="font-bold text-sm text-white"><span id="overview-current-week-label">2026년 11월 2주차</span> Process Architecture 핵심 인사이트</h3>
+          </div>
+          <span class="text-xs text-blue-400 font-medium">주간 팀 공유 브리핑</span>
+        </div>
+        <div id="overview-insights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs"></div>
+      </div>
+
+      <!-- Overview Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-blue-400"></i> 선진사 다분기 영업이익률(OPM %) 추이
+            </h3>
+            <span class="text-[11px] text-slate-400">2025 Q1 ~ 2026 Q3/Q4</span>
+          </div>
+          <div class="relative h-72">
+            <canvas id="overviewOpmTrendChart"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-column text-emerald-400"></i> 주요 선진사 최신 GPM vs OPM 비교 (%)
+            </h3>
+            <span class="text-[11px] text-slate-400">최근 공시 기준</span>
+          </div>
+          <div class="relative h-72">
+            <canvas id="overviewMarginChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: NEWS & INDUSTRY TRENDS -->
+    <div id="tab-news" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs text-slate-400 font-semibold mr-1">소자 필터:</span>
+          <button class="news-filter-btn px-2.5 py-1 text-xs rounded-lg bg-blue-600 text-white font-medium" data-filter="all">전체</button>
+          <button class="news-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="GaN">GaN</button>
+          <button class="news-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SiC">SiC</button>
+          <button class="news-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SJ-MOS">SJ MOSFET</button>
+          <button class="news-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SGT">UD SGT</button>
+        </div>
+        <div class="relative w-full sm:w-64">
+          <input type="text" id="news-search-input" placeholder="선진사, 기술 키워드 검색..." class="w-full text-xs px-3 py-1.5 bg-slate-950 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500">
+          <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-xs text-slate-500"></i>
+        </div>
+      </div>
+      <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+
+    <!-- TAB 3: RON,SP vs BV & PROCESS MATRIX -->
+    <div id="tab-benchmark" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-crosshairs text-cyan-400"></i> Baliga 이론 한계선 대비 소자별 Ron,sp vs Breakdown Voltage (Log-Log)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Si / 4H-SiC / GaN 1D 이론 한계선과 수록 논문·상용 소자 위치 비교</p>
+          </div>
+          <span class="text-[11px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700">단위: mΩ·cm² vs V</span>
+        </div>
+        <div class="relative h-80">
+          <canvas id="baligaScatterChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Process Architecture Comparison Matrix -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-cells text-indigo-400"></i> 소자군별 공정 아키텍처 핵심 비교 매트릭스
+          </h3>
+          <span class="text-[11px] text-slate-400">Process Architecture 실무 기준</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">소자군 (내압대)</th>
+                <th class="py-3 px-4">웨이퍼 대구경화</th>
+                <th class="py-3 px-4">핵심 구조</th>
+                <th class="py-3 px-4">공정 난제 (Bottleneck)</th>
+                <th class="py-3 px-4">주요 FOM</th>
+                <th class="py-3 px-4">최신 진화 방향</th>
+              </tr>
+            </thead>
+            <tbody id="process-matrix-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: PAPERS & RELIABILITY / PACKAGING -->
+    <div id="tab-papers" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs text-slate-400 font-semibold mr-1">분류:</span>
+          <button class="paper-filter-btn px-2.5 py-1 text-xs rounded-lg bg-blue-600 text-white font-medium" data-filter="all">전체 논문</button>
+          <button class="paper-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="GaN">GaN</button>
+          <button class="paper-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SiC">SiC</button>
+          <button class="paper-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SJ-MOS">SJ MOSFET</button>
+          <button class="paper-filter-btn px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:text-white font-medium" data-filter="SGT">UD SGT</button>
+        </div>
+        <span class="text-xs text-slate-400"><i class="fa-solid fa-robot mr-1 text-emerald-400"></i>주간 arXiv 자동 수집 연동 지원</span>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">소자 / 학회</th>
+                <th class="py-3 px-4">논문 제목 및 주체</th>
+                <th class="py-3 px-4 text-center">내압(BV)</th>
+                <th class="py-3 px-4 text-center">Ron,sp</th>
+                <th class="py-3 px-4 text-center">FOM / 기생특성</th>
+                <th class="py-3 px-4">공정 아키텍처 혁신</th>
+                <th class="py-3 px-4">신뢰성</th>
+                <th class="py-3 px-4 text-center">원문</th>
+              </tr>
+            </thead>
+            <tbody id="paper-table-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reliability & Packaging Cards -->
+      <div>
+        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-amber-400"></i> 신뢰성(Reliability) & 패키징(Packaging) 아키텍처 핵심 이슈
+        </h3>
+        <div id="reliability-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+    </div>
+
+    <!-- TAB 5: FINANCIALS & WSTS -->
+    <div id="tab-financials" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-800">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-arrows-split-up-and-left text-blue-400"></i> WSTS 글로벌 반도체 시장 vs 전력반도체(GaN/SiC/Discrete)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">전체 반도체 사이클 대비 전력반도체 수익성·성장률 위치 점검</p>
+          </div>
+          <a href="https://www.wsts.org/76/103/Global-Semiconductor-Market-grows-26-in-2025-to-796B" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-lg border border-blue-500/20 hover:bg-blue-500/20">
+            WSTS 공식 리포트 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">글로벌 전체 반도체 시장 (WSTS)</span>
+            <div class="text-xl font-bold text-white">$796B (2025) → $1T+ (2026)</div>
+            <div class="text-xs text-emerald-400 font-semibold mt-1">+26% YoY (2025 실적)</div>
+            <p class="text-[11px] text-slate-400 mt-2">AI 데이터센터용 메모리·로직 반도체가 전체 시장 성장을 주도</p>
+          </div>
+
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">전력 Discrete / IDM 회복 흐름</span>
+            <div class="text-xl font-bold text-white">점진적 턴어라운드</div>
+            <div class="text-xs text-blue-400 font-semibold mt-1">STMicro Q3'26 +17.9% YoY</div>
+            <p class="text-[11px] text-slate-400 mt-2">2025년 재고 조정 이후 2026년 가동률 및 수주잔고($20B+) 회복</p>
+          </div>
+
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800">
+            <span class="text-xs text-slate-400 block mb-1">AI 전원(PSS) 고수익 세그먼트</span>
+            <div class="text-xl font-bold text-white">Infineon PSS 30.8% OPM</div>
+            <div class="text-xs text-cyan-400 font-semibold mt-1">Q4 FY26 전분기비 +25%</div>
+            <p class="text-[11px] text-slate-400 mt-2">AI 서버 랙당 전력 컨텐츠($100~$250/kW) 급증이 고마진 견인</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+          <h3 class="text-xs font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-emerald-400"></i> 선진사 최신 분기 재무 실적 벤치마크
+          </h3>
+          <span class="text-[11px] text-slate-400">공식 IR 공시 기준</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">기업명</th>
+                <th class="py-3 px-4">분기 매출액</th>
+                <th class="py-3 px-4 text-center">YoY 성장률</th>
+                <th class="py-3 px-4 text-center">영업이익률 (OPM)</th>
+                <th class="py-3 px-4 text-center">매출총이익률 (GPM)</th>
+                <th class="py-3 px-4">전력/전장 세그먼트</th>
+                <th class="py-3 px-4">CapEx / FCF</th>
+                <th class="py-3 px-4 text-center">공시</th>
+              </tr>
+            </thead>
+            <tbody id="financial-table-body" class="divide-y divide-slate-800 text-slate-300"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-chart-area text-cyan-400"></i> STMicro 분기별 매출 회복 추이 (Billion USD, 2025 Q1 ~ 2026 Q3)
+          </h3>
+          <span class="text-[11px] text-slate-400">단위: $B</span>
+        </div>
+        <div class="relative h-72">
+          <canvas id="stmRevSeriesChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ADD / UPDATE MODAL -->
+  <div id="add-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-plus text-emerald-400"></i> 신규 주간 항목 추가
+        </h3>
+        <button id="close-modal-btn" class="text-slate-400 hover:text-white text-sm p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-item-form" class="space-y-3 text-xs">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">주차 코드</label>
+            <input type="text" id="modal-week" placeholder="예: 2026-W47" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">분류 / 소자</label>
+            <div class="flex gap-1.5">
+              <select id="modal-category" class="w-1/2 bg-slate-950 border border-slate-700 rounded-lg px-2 py-2 text-slate-200">
+                <option value="news">동향(News)</option>
+                <option value="paper">논문(Paper)</option>
+              </select>
+              <select id="modal-device" class="w-1/2 bg-slate-950 border border-slate-700 rounded-lg px-2 py-2 text-slate-200">
+                <option value="GaN">GaN</option>
+                <option value="SiC">SiC</option>
+                <option value="SJ-MOS">SJ-MOS</option>
+                <option value="SGT">UD SGT</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="modal-news-fields" class="space-y-2.5">
+          <input type="text" id="modal-news-company" placeholder="선진사 / 출처 (예: Infineon)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          <input type="text" id="modal-news-title" placeholder="동향 제목" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          <input type="text" id="modal-news-app" placeholder="응용처 (예: AI 서버 PSU)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          <textarea id="modal-news-desc" rows="2" placeholder="핵심 내용..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200"></textarea>
+          <input type="text" id="modal-news-impact" placeholder="Process Architecture 시사점" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+        </div>
+
+        <div id="modal-paper-fields" class="space-y-2.5 hidden">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="modal-paper-conf" placeholder="학회/저널 (예: ISPSD 2026)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+            <input type="text" id="modal-paper-bv" placeholder="내압 BV (예: 650 V)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          </div>
+          <input type="text" id="modal-paper-title" placeholder="논문 제목" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          <input type="text" id="modal-paper-authors" placeholder="연구 기관 / 저자" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="modal-paper-ron" placeholder="Ron,sp (예: 1.45)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+            <input type="text" id="modal-paper-fom" placeholder="FOM / 기생특성" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+          </div>
+          <textarea id="modal-paper-arch" rows="2" placeholder="핵심 공정 아키텍처 혁신 포인트..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200"></textarea>
+          <input type="url" id="modal-paper-link" placeholder="원문 URL (https://...)" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-200">
+        </div>
+
+        <div class="pt-3 border-t border-slate-800 flex justify-end gap-2">
+          <button type="button" id="cancel-modal-btn" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg">취소</button>
+          <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold">저장</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl border border-slate-700 z-50 transition transform duration-300 opacity-0 translate-y-3 flex items-center gap-2 pointer-events-none">
+    <i class="fa-solid fa-check-circle text-emerald-400"></i> <span id="toast-msg">완료</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'POWER_SEMI_INTEL_V2';
+
+    const FALLBACK_DATA = {
+      "lastUpdated": "2026-11-12T09:00:00+09:00",
+      "currentWeek": "2026-W46",
+      "weeks": [
+        { "code": "2026-W46", "label": "2026년 11월 2주차" },
+        { "code": "2026-W45", "label": "2026년 11월 1주차" },
+        { "code": "2026-W44", "label": "2026년 10월 5주차" }
+      ],
+      "weeklyThemes": {
+        "2026-W46": [
+          { "icon": "fa-bolt", "color": "text-blue-400", "title": "1. AI 데이터센터가 견인하는 GaN 8인치 전환", "desc": "Infineon PSS 부문이 AI 서버 전원 수요에 힘입어 Q4 FY26 매출 €1.796B(+25%), 마진 30.8%를 기록했습니다. 8인치 GaN-on-Si 및 Direct-Drive 아키텍처로 48V-12V 변환 효율을 극대화하는 추세입니다." },
+          { "icon": "fa-microchip", "color": "text-indigo-400", "title": "2. SJ MOSFET & UD SGT 공정 미세화", "desc": "SJ MOSFET은 Deep Trench Refill 기반 Sub-micron Pitch(0.75μm)로 실리콘 이론 한계에 근접 중이며, UD SGT는 Stepped Shield Oxide로 Qgd/Qgs를 30% 이상 낮춰 고주파 손실을 줄이고 있습니다." },
+          { "icon": "fa-chart-line", "color": "text-emerald-400", "title": "3. WSTS 성장세 속 전력반도체 반등", "desc": "WSTS 기준 전체 반도체 시장이 2025년 $796B(+26%) 이후 2026년 $1T+로 확대되는 가운데, STMicro(Q3'26 $3.76B, +17.9% YoY) 등 전력·전장 IDM도 재고 조정 후 뚜렷한 실적 반등세에 진입했습니다." }
+        ],
+        "2026-W45": [
+          { "icon": "fa-layer-group", "color": "text-cyan-400", "title": "1. 8인치 GaN-on-Si 저전압 영역 침투", "desc": "200mm CMOS 호환 라인에서 100V 이하 GaN 양산 수율이 안정화되며 고주파 PoL 컨버터에서 기존 SGT MOSFET과의 원가 경쟁이 본격화되고 있습니다." },
+          { "icon": "fa-car", "color": "text-emerald-400", "title": "2. SiC Double-Trench 신뢰성 검증", "desc": "Asymmetric/Double-Trench 구조와 집적형 쇼트키 다이오드(SBD) 적용으로 게이트 옥사이드 전계 집중과 바디 다이오드 바이폴라 열화를 동시에 억제하는 설계가 주류가 되고 있습니다." },
+          { "icon": "fa-coins", "color": "text-amber-400", "title": "3. 8인치 Fab 중심 선별적 CapEx 집행", "desc": "주요 IDM들이 6인치 증설을 줄이고 8인치 SiC/GaN 라인 전환에 설비투자를 집중하며 장기 원가 구조 재편을 추진하고 있습니다." }
+        ],
+        "2026-W44": [
+          { "icon": "fa-server", "color": "text-blue-400", "title": "1. AI 랙 파워 셸프 고출력화 (8kW~12kW)", "desc": "단일 파워 셸프 출력 상향에 따라 PFC 단의 650V SJ MOSFET/GaN과 DC-DC 단의 UD SGT/GaN 조합 최적화 수요가 급증하고 있습니다." },
+          { "icon": "fa-flask", "color": "text-purple-400", "title": "2. 양방향(BDS) GaN 및 이종접합 연구", "desc": "모놀리식 양방향(BDS) GaN 스위치와 Si/SiC 이종접합 더블 트렌치 구조가 차세대 전력 변환 토폴로지 단순화의 핵심 연구 주제로 부상했습니다." },
+          { "icon": "fa-scale-balanced", "color": "text-slate-300", "title": "3. 전장·산업용 수주잔고 회복", "desc": "선진사들의 재고회전일수(DOI)가 하락세로 전환되며 수주잔고(Backlog)가 5분기치 이상으로 회복되는 흐름이 포착되었습니다." }
+        ]
+      },
+      "news": [
+        { "id": 1, "week": "2026-W46", "company": "Infineon", "tag": "GaN", "title": "Infineon, AI 데이터센터 전원 수요로 FY26 사상 최대 4분기 실적 달성 (PSS 마진 30.8%)", "date": "2026-11-10", "app": "AI 서버 / 데이터센터 PSU", "desc": "Infineon은 Q4 FY26 매출 €4.706B(+19% YoY), Segment Result Margin 23.8%를 기록했습니다. 특히 Power & Sensor Systems(PSS) 부문 매출이 전분기 대비 25% 급증한 €1.796B, 마진 30.8%를 달성하며 AI 서버용 CoolGaN·고효율 MOSFET 수요를 입증했습니다.", "impact": "AI 서버 전력 밀도 경쟁 심화로 8인치 GaN 및 초저저항 SGT/SJ 패키지 통합 솔루션 요구 증대", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf" },
+        { "id": 2, "week": "2026-W46", "company": "STMicroelectronics", "tag": "SJ-MOS", "title": "STMicro, Q3 2026 매출 $3.76B(+17.9% YoY) 반등 및 제조 구조 재편 가속", "date": "2026-10-29", "app": "xEV OBC · 산업용 전원", "desc": "STMicroelectronics는 Q3 2026 매출 $3.76B, 매출총이익률(GPM) 37.3%(전년비 +410bp)를 기록하며 가동률 회복을 확인했습니다. Book-to-bill 2 이상, 수주잔고 $20B 상회로 전력·디스크리트(P&D) 수요 회복이 가시화되고 있습니다.", "impact": "가동률 정상화에 따른 650V급 SJ MOSFET 및 SiC 원가 경쟁력 회복", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5" },
+        { "id": 3, "week": "2026-W46", "company": "onsemi", "tag": "SGT", "title": "onsemi, 제조 리얼라인먼트 완료 후 고효율 Power Solutions(PSG) 마진 방어", "date": "2026-11-02", "app": "전장 모터 드라이브 · 48V 서버", "desc": "onsemi는 2025년 제조 구조 재편 프로그램 이후 잉여현금흐름 마진 약 24%를 유지하며 PSG(Power Solutions Group) 중심의 고부가 SGT 및 EliteSiC 라인업 수익성 방어에 집중하고 있습니다.", "impact": "Shielded Gate Trench 공정 마진 최적화 및 Top-side Cooling 패키지 결합 가속", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
+        { "id": 4, "week": "2026-W45", "company": "Intel / Components Research", "tag": "GaN", "title": "300mm GaN-on-Si 및 Si PMOS 3D 적층 DrGaN 아키텍처 진전", "date": "2026-11-04", "app": "차세대 컴퓨팅 PoL · 고주파 VRM", "desc": "300mm 웨이퍼 기반 구리(Cu) 인터커넥트와 3D 레이어 전사 기술을 활용해 Si PMOS 드라이버와 GaN NMOS 파워 스위치를 단일 칩에 통합한 DrGaN 플랫폼(Ron,sp 0.8 mΩ·mm²)을 발표했습니다.", "impact": "기생 인덕턴스 최소화를 위한 GaN-CMOS 모놀리식/3D 집적 공정 트렌드 주목", "url": "https://www.powerelectronicsnews.com/intels-advancements-in-gan-on-silicon-technology-for-efficient-power-delivery/" },
+        { "id": 5, "week": "2026-W45", "company": "Academic / Industry", "tag": "SiC", "title": "Si/SiC 이종접합 Double-Trench MOSFET(HJ-DTMOS)으로 바디 다이오드 열화 억제", "date": "2026-11-03", "app": "800V EV 인버터 · 고압 컨버터", "desc": "기존 4H-SiC N+ 소스와 P-채널을 Si로 대체해 Si/SiC 이종접합을 형성함으로써 턴온 전압(Von)을 2.74V에서 1.53V로 낮추고 Ron,sp를 20.5% 개선(1.78 mΩ·cm²)하는 연구 결과가 보고되었습니다.", "impact": "SiC MOSFET의 채널 이동도 저하 및 기생 PiN 바이폴라 열화 동시 해결 대안 제시", "url": "https://www.mdpi.com/2072-666X/16/12/1335" },
+        { "id": 6, "week": "2026-W44", "company": "WSTS", "tag": "GaN", "title": "WSTS, 글로벌 반도체 시장 2025년 $796B(+26%) 달성 후 2026년 $1T+ 돌파 전망", "date": "2026-10-28", "app": "글로벌 반도체 산업 전반", "desc": "WSTS는 AI 인프라 투자 확대에 힘입어 글로벌 반도체 시장이 2025년 $796B에 이어 2026년 1조 달러를 상회할 것으로 전망했습니다. Discrete/전력 부문은 완만한 단일 자릿수~중반 성장세를 보이나 GaN/SiC는 고성장 지속 중입니다.", "impact": "전체 반도체 사이클 대비 전력반도체의 후행적 회복 및 AI 전원용 고효율 소자 집중 투자 확인", "url": "https://www.wsts.org/76/103/Global-Semiconductor-Market-grows-26-in-2025-to-796B" }
+      ],
+      "papers": [
+        { "id": "P1", "week": "2026-W46", "device": "GaN", "conference": "IEDM 2024/2025", "title": "The Future of GaN is Also High Voltage, High Current, and Bidirectional (MBDS)", "authors": "Invited Paper (IEDM)", "bv": "650 V", "ron_sp": "1.85", "fom": "양방향(BDS) 단일 소자 구현", "arch": "단일 GaN-on-Si 칩에 듀얼 게이트 양방향 차단(MBDS) 구조를 구현하고, Dynamic Ron 열화 억제 버퍼 공정을 적용해 매트릭스 컨버터 부품 수 절감.", "reliability": "Dynamic Ron, 고온 역바이어스", "link": "https://www.researchgate.net/publication/389110386_The_Future_of_GaN_is_Also_High_Voltage_High_Current_and_Bidirectional_Invited" },
+        { "id": "P2", "week": "2026-W46", "device": "SGT", "conference": "IEEE / ResearchGate", "title": "Detailed Study on Dynamic Characteristics of a High-Performance SGT-MOSFET With Under-the-Trench Floating P-Pillar", "authors": "Power Device Research Group", "bv": "150 V", "ron_sp": "1.12", "fom": "HF-FOM [Ron×Qgd] 71% ↓", "arch": "트렌치 하부에 Floating P-pillar를 배치해 일반 SGT 대비 Rds(on)을 33% 이상 저감하고 MHz 스위칭에서도 Dynamic Rds(on) 증가를 억제.", "reliability": "고주파 스위칭 Qoss 특성 분석", "link": "https://www.researchgate.net/publication/313489939_Detailed_Study_on_Dynamic_Characteristics_of_a_High-Performance_SGT-MOSFET_With_Under-the-Trench_Floating_P-Pillar" },
+        { "id": "P3", "week": "2026-W46", "device": "SGT", "conference": "IEEE EDL", "title": "Shield Gate Trench MOSFET With Narrow Gate Architecture and Low-k Dielectric Layer (NL-SGTMOS)", "authors": "Power Semiconductor Lab", "bv": "100 V", "ron_sp": "4.57 (1mm²)", "fom": "Qg 7.46 nC (@10V)", "arch": "추가 마스크 없이 게이트 폴리실리콘 중앙부를 제거한 Narrow Gate 구조와 제어 게이트-필드 플레이트 간 Low-k 유전체를 적용해 기생 Cgp를 대폭 감소.", "reliability": "게이트-플레이트 절연 내압 유지", "link": "https://www.researchgate.net/publication/339995846_Shield_Gate_Trench_MOSFET_With_Narrow_Gate_Architecture_and_Low-k_Dielectric_Layer" },
+        { "id": "P4", "week": "2026-W45", "device": "SiC", "conference": "Micromachines 2025", "title": "A Si/SiC Heterojunction Double-Trench MOSFET (HJ-DTMOS) with Improved Third-Quadrant Performance", "authors": "MDPI Power Devices", "bv": "1200 V", "ron_sp": "1.78", "fom": "Von 1.53V (44% ↓), Ron,sp 20.5% ↓", "arch": "4H-SiC 더블 트렌치의 N+ 소스 및 P-베이스를 Si로 대체한 이종접합 구조와 High-k 게이트 유전체를 적용해 바이폴라 열화를 원천 차단.", "reliability": "트렌치 코너 전계 완화 P-well", "link": "https://www.mdpi.com/2072-666X/16/12/1335" },
+        { "id": "P5", "week": "2026-W45", "device": "GaN", "conference": "Vertical GaN FinFET", "title": "High-breakdown-voltage GaN-based vertical FinFET design", "authors": "GaN Power Research", "bv": "1200 V", "ron_sp": "0.20", "fom": "BFOM 7.2 GW/cm², Vth 1V", "arch": "에피 재성장이나 p-GaN 층 없이 n-GaN Fin 채널 건식/습식 복합 식각만으로 150°C까지 안정적인 노멀리-오프(E-mode) 수직형 GaN 구현.", "reliability": "150°C Vth 안정성 검증", "link": "https://www.researchgate.net/publication/376715782_High-breakdown-voltage_GaN-based_vertical_FinFET_design" },
+        { "id": "P6", "week": "2026-W44", "device": "SJ-MOS", "conference": "ISPSD", "title": "600V-class Super Junction MOSFET with High Aspect Ratio P/N Columns by Trench Filling Epitaxial Growth", "authors": "SJ Process Team", "bv": "600 V", "ron_sp": "9.5", "fom": "Aspect Ratio 25 p/n 컬럼", "arch": "다층 에피-임플란트 반복 대신 고종횡비(AR 25) 딥 트렌치 식각 후 에피택셜 필링 공정을 적용해 600V급 최저 온저항 구현.", "reliability": "Charge Balance 공정 마진 확보", "link": "https://www.researchgate.net/publication/4341405_600V-class_Super_Junction_MOSFET_with_High_Aspect_Ratio_PN_Columns_Structure" }
+      ],
+      "processMatrix": [
+        { "device": "SJ MOSFET (600~900V)", "wafer": "8인치(200mm) 주력 / 12인치 일부", "architecture": "Multi-Epi vs Deep Trench Etch & Refill", "bottleneck": "Aspect Ratio 25~30 딥 트렌치 보이드 없는 필링 및 P/N Charge Balance 산포 제어", "fom": "Ron,sp · Qg / Body Diode Qrr", "trend": "Cell Pitch 1.0μm 이하 미세화, Fast Recovery 바디 다이오드(FRD) 내장형 확대" },
+        { "device": "UD SGT (30~150V)", "wafer": "8인치(200mm) 주력 / 12인치 전환", "architecture": "Split-Gate / Shielded Gate Trench", "bottleneck": "두꺼운 Bottom/Shield Oxide 균일도, Narrow Mesa 식각 및 Wafer Thinning(50μm 이하)", "fom": "Ron × Qgd (HF-FOM) / Qoss", "trend": "Stepped Shield Oxide, Low-k 절연막, Floating P-pillar 도입으로 1MHz+ 서버 VRM 대응" },
+        { "device": "GaN HEMT (100~650V+)", "wafer": "6인치 → 8인치(200mm) 급속 전환", "architecture": "Lateral E-mode p-GaN Gate / Cascode", "bottleneck": "8인치 GaN-on-Si 에피 휨(Bow) 제어, p-GaN 저손상 정밀 식각, Au-Free CMOS 공정", "fom": "Dynamic Ron / Qg · Coss (Qrr=0)", "trend": "양방향 스위치(BDS), 드라이버 IC 모놀리식 집적(DrGaN), 1200V Vertical FinFET 연구" },
+        { "device": "SiC MOSFET (650~1700V+)", "wafer": "6인치 → 8인치(200mm) 전환기", "architecture": "Planar vs Asymmetric/Double Trench", "bottleneck": "8인치 SiC 기판 결함(BPD) 수율, 트렌치 코너 Gate Oxide 전계 집중(TDDB/BTI)", "fom": "Ron,sp / SCWT(단락내량) / Vf", "trend": "쇼트키 다이오드(SBD) 내장으로 바이폴라 열화 방지, Ag 소결·양면 냉각 모듈화" }
+      ],
+      "reliabilityPackaging": [
+        { "category": "신뢰성 (Reliability)", "device": "GaN", "title": "Dynamic Ron (전류 붕괴) 및 Vth 안정성", "detail": "고전압 스위칭 시 버퍼층 및 AlGaN/GaN 계면 트랩 포획으로 인한 동적 온저항 상승 제어. p-GaN 게이트 누설전류 및 BTI(Bias Temperature Instability) 장기 수명 확보가 핵심." },
+        { "category": "신뢰성 (Reliability)", "device": "SiC / SGT", "title": "Gate Oxide 전계 집중(TDDB) & 단락 내량(SCWT)", "detail": "SiC 트렌치 코너 및 SGT 스플릿 게이트 단차 부위의 산화막 절연파괴(TDDB) 방지. 전기차 인버터용 SiC는 SCWT 2~5μs 확보가 필수이며, GaN(<1μs)은 200ns 이내 고속 보호회로와 결합." },
+        { "category": "패키징 (Packaging)", "device": "공통 (SGT/SJ/GaN)", "title": "Top-Side Cooling (상면 냉각) & Cu Clip 본딩", "detail": "AI 서버 및 xEV OBC에서 PCB 열저항 한계를 돌파하기 위해 패키지 상단 노출형(TOLT, QDPAK) 채택 급증. 와이어 본딩 대신 구리 클립(Cu Clip)으로 기생 인덕턴스 및 Rds(on) 패키지 기여분 최소화." },
+        { "category": "패키징 (Packaging)", "device": "GaN / SGT", "title": "PCB 임베디드 & 3D Co-Packaging", "detail": "수 MHz 스위칭에서 게이트 루프 인덕턴스를 1nH 이하로 줄이기 위해 다이를 기판 내부에 매립하거나(Embedded PCB), 드라이버 IC와 디커플링 커패시터를 단일 패키지에 3D 집적." }
+      ],
+      "tradeoffPoints": [
+        { "label": "Si SJ-MOS (600V, AR25)", "tech": "SJ-MOS", "bv": 600, "ron_sp": 9.5 },
+        { "label": "Si SJ-MOS (650V DM9)", "tech": "SJ-MOS", "bv": 650, "ron_sp": 7.8 },
+        { "label": "Si UD SGT (60V)", "tech": "SGT", "bv": 60, "ron_sp": 0.45 },
+        { "label": "Si UD SGT (100V)", "tech": "SGT", "bv": 100, "ron_sp": 0.82 },
+        { "label": "Si UD SGT (150V Floating P)", "tech": "SGT", "bv": 150, "ron_sp": 1.12 },
+        { "label": "GaN Lateral (650V BDS)", "tech": "GaN", "bv": 650, "ron_sp": 1.85 },
+        { "label": "GaN-on-Si (1250V E-mode)", "tech": "GaN", "bv": 1250, "ron_sp": 1.45 },
+        { "label": "GaN Vertical FinFET (1200V)", "tech": "GaN", "bv": 1200, "ron_sp": 0.20 },
+        { "label": "4H-SiC HJ-DTMOS (1200V)", "tech": "SiC", "bv": 1200, "ron_sp": 1.78 },
+        { "label": "4H-SiC Trench+SBD (1780V)", "tech": "SiC", "bv": 1780, "ron_sp": 1.92 }
+      ],
+      "financials": [
+        { "company": "Infineon Technologies", "ticker": "IFX (Xetra)", "revenue": "€4.71B (Q4 FY26)", "yoy": "+19.0%", "opm": "23.8% (Seg.)", "gpm": "41.8%", "segment": "PSS(AI/전원) €1.80B (OPM 30.8%), ATV 중심", "rd_capex": "FY27 CapEx €3.0~3.5B 계획", "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf" },
+        { "company": "STMicroelectronics", "ticker": "STM (NYSE)", "revenue": "$3.76B (Q3 2026)", "yoy": "+17.9%", "opm": "11.4% (Non-GAAP)", "gpm": "37.3%", "segment": "Power & Discrete(P&D) ~16%+, 전장·산업 회복", "rd_capex": "Q3 Net CapEx $643M (수주잔고 $20B+)", "url": "https://investors.st.com/static-files/48035c2b-6c9a-4621-b9bc-8925c38c9fb5" },
+        { "company": "onsemi", "ticker": "ON (NASDAQ)", "revenue": "$1.53B (Q4 2025)", "yoy": "-15.0% (FY25)", "opm": "13.2% (Q2'25)", "gpm": "37.6% (Q2'25)", "segment": "Power Solutions Group (PSG) 핵심", "rd_capex": "FCF 마진 24% ($1.4B FY25)", "url": "https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-fourth-quarter-and-full-year-2025-results-0" },
+        { "company": "Rohm Semiconductor", "ticker": "6963 (TSE)", "revenue": "¥122B (~$0.82B)", "yoy": "+2.1%", "opm": "12.4%", "gpm": "34.8%", "segment": "SiC Trench / EcoGaN 및 LSI", "rd_capex": "8인치 SiC 팹 투자 지속", "url": "https://www.rohm.com/investor-relations" }
+      ],
+      "quarterlySeries": {
+        "labels": ["25 Q1", "25 Q2", "25 Q3", "25 Q4", "26 Q1", "26 Q2", "26 Q3/Q4"],
+        "infineonOpm": [16.7, 17.5, 18.0, 18.2, 18.5, 19.1, 23.8],
+        "stOpm": [0.1, 2.1, 6.8, 3.8, 5.2, 8.9, 11.4],
+        "stmRevB": [2.52, 2.77, 3.19, 3.33, 3.10, 3.49, 3.76]
+      }
+    };
+
+    let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
+    let opmTrendChart, marginChart, baligaChart, stmRevChart;
+
+    async function initData() {
+      // Try fetching live JSON (works when hosted on GitHub Pages / HTTP server)
+      try {
+        const res = await fetch('data/dashboard_data.json', { cache: 'no-store' });
+        if (res.ok) {
+          const remote = await res.json();
+          if (remote && remote.news && remote.papers) {
+            appData = remote;
+          }
+        }
+      } catch (e) {
+        // Fallback to localStorage or embedded data in Canvas/file://
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && parsed.news) appData = parsed;
+          }
+        } catch (err) {}
+      }
+      renderAll();
+      initCharts();
+    }
+
+    function saveData() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); } catch (e) {}
+    }
+
+    function renderAll() {
+      updateWeekDropdown();
+      renderOverviewInsights();
+      renderNews();
+      renderProcessMatrix();
+      renderPapers();
+      renderReliability();
+      renderFinancials();
+      document.getElementById('kpi-total-items').textContent = (appData.news.length + appData.papers.length);
+      document.getElementById('kpi-last-updated').textContent = (appData.lastUpdated || '2026-11-12').slice(0, 10);
+    }
+
+    function updateWeekDropdown() {
+      const sel = document.getElementById('week-selector');
+      sel.innerHTML = appData.weeks.map(w =>
+        `<option value="${w.code}" ${w.code === appData.currentWeek ? 'selected' : ''} class="bg-slate-900 text-white">${w.label} (${w.code})</option>`
+      ).join('');
+    }
+
+    function renderOverviewInsights() {
+      const code = appData.currentWeek;
+      const wObj = appData.weeks.find(w => w.code === code) || { label: code };
+      document.getElementById('overview-current-week-label').textContent = wObj.label;
+      const themes = (appData.weeklyThemes && appData.weeklyThemes[code]) || [];
+      document.getElementById('overview-insights-grid').innerHTML = themes.map(t => `
+        <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-1.5 font-bold ${t.color || 'text-blue-400'} mb-1.5">
+            <i class="fa-solid ${t.icon || 'fa-bolt'}"></i> ${t.title}
+          </div>
+          <p class="text-slate-300 leading-relaxed">${t.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderNews(filter = 'all', keyword = '') {
+      const container = document.getElementById('news-container');
+      const filtered = appData.news.filter(n => {
+        const mTag = filter === 'all' || n.tag === filter;
+        const mKey = !keyword || (n.title + n.company + n.desc + n.app).toLowerCase().includes(keyword.toLowerCase());
+        return mTag && mKey;
+      });
+      if (!filtered.length) {
+        container.innerHTML = '<div class="col-span-2 py-10 text-center text-slate-500 text-xs">일치하는 동향이 없습니다.</div>';
+        return;
+      }
+      container.innerHTML = filtered.map(n => {
+        let tc = 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+        if (n.tag === 'SiC') tc = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+        if (n.tag === 'SJ-MOS') tc = 'bg-indigo-500/20 text-indigo-400 border-indigo-500/30';
+        if (n.tag === 'SGT') tc = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+        return `
+          <div class="bg-slate-900 border ${n.week === appData.currentWeek ? 'border-blue-500/50' : 'border-slate-800'} rounded-2xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white px-2 py-0.5 rounded bg-slate-800">${n.company}</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${tc}">${n.tag}</span>
+                </div>
+                <span class="text-[11px] text-slate-400">${n.date || n.week}</span>
+              </div>
+              <h4 class="text-sm font-bold text-slate-100 mb-2 leading-snug">${n.title}</h4>
+              <p class="text-xs text-slate-300 leading-relaxed mb-3">${n.desc}</p>
+            </div>
+            <div class="pt-3 border-t border-slate-800 space-y-1 text-[11px]">
+              <div class="text-slate-400"><i class="fa-solid fa-crosshairs text-blue-400 mr-1"></i>응용처: <span class="text-slate-200">${n.app}</span></div>
+              <div class="text-emerald-400"><i class="fa-solid fa-lightbulb mr-1"></i>시사점: ${n.impact}</div>
+              ${n.url ? `<div><a href="${n.url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline inline-flex items-center gap-1 mt-1">원문 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a></div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderProcessMatrix() {
+      const body = document.getElementById('process-matrix-body');
+      body.innerHTML = (appData.processMatrix || []).map(m => `
+        <tr class="hover:bg-slate-800/40">
+          <td class="py-3 px-4 font-bold text-white">${m.device}</td>
+          <td class="py-3 px-4 text-cyan-300 font-medium">${m.wafer}</td>
+          <td class="py-3 px-4 text-slate-200">${m.architecture}</td>
+          <td class="py-3 px-4 text-amber-300/90">${m.bottleneck}</td>
+          <td class="py-3 px-4 font-mono text-[11px] text-emerald-400">${m.fom}</td>
+          <td class="py-3 px-4 text-slate-300">${m.trend}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPapers(filter = 'all') {
+      const tbody = document.getElementById('paper-table-body');
+      const filtered = appData.papers.filter(p => filter === 'all' || p.device === filter);
+      tbody.innerHTML = filtered.map(p => {
+        let tc = 'text-blue-400 bg-blue-500/10 border-blue-500/20';
+        if (p.device === 'SiC') tc = 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+        if (p.device === 'SJ-MOS') tc = 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20';
+        if (p.device === 'SGT') tc = 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+        return `
+          <tr class="hover:bg-slate-800/40">
+            <td class="py-3 px-4">
+              <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded border ${tc} mb-1">${p.device}</span>
+              <div class="text-[11px] text-slate-400">${p.conference}</div>
+            </td>
+            <td class="py-3 px-4 max-w-xs">
+              <div class="font-semibold text-slate-100 leading-snug mb-0.5">${p.title}</div>
+              <div class="text-[11px] text-slate-400">${p.authors}</div>
+            </td>
+            <td class="py-3 px-4 text-center font-bold text-slate-200">${p.bv}</td>
+            <td class="py-3 px-4 text-center font-bold text-emerald-400">${p.ron_sp}</td>
+            <td class="py-3 px-4 text-center font-mono text-[11px] text-slate-300">${p.fom}</td>
+            <td class="py-3 px-4 text-[11px] text-slate-300 max-w-sm leading-relaxed">${p.arch}</td>
+            <td class="py-3 px-4 text-[11px] text-amber-300/90">${p.reliability || '-'}</td>
+            <td class="py-3 px-4 text-center">
+              <a href="${p.link || '#'}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1">
+                링크 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderReliability() {
+      const grid = document.getElementById('reliability-grid');
+      grid.innerHTML = (appData.reliabilityPackaging || []).map(r => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30">${r.category}</span>
+            <span class="text-xs font-semibold text-cyan-400">${r.device}</span>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1.5">${r.title}</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">${r.detail}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderFinancials() {
+      const tbody = document.getElementById('financial-table-body');
+      tbody.innerHTML = appData.financials.map(f => {
+        const pos = f.yoy.startsWith('+');
+        return `
+          <tr class="hover:bg-slate-800/40">
+            <td class="py-3 px-4"><div class="font-bold text-white">${f.company}</div><div class="text-[10px] text-slate-400">${f.ticker}</div></td>
+            <td class="py-3 px-4 font-bold text-slate-100">${f.revenue}</td>
+            <td class="py-3 px-4 text-center font-semibold ${pos ? 'text-emerald-400' : 'text-rose-400'}">${f.yoy}</td>
+            <td class="py-3 px-4 text-center font-bold text-blue-400">${f.opm}</td>
+            <td class="py-3 px-4 text-center font-bold text-slate-200">${f.gpm}</td>
+            <td class="py-3 px-4 text-[11px] text-slate-300">${f.segment}</td>
+            <td class="py-3 px-4 text-[11px] text-slate-400">${f.rd_capex}</td>
+            <td class="py-3 px-4 text-center">
+              <a href="${f.url || '#'}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function initCharts() {
+      const qs = appData.quarterlySeries || FALLBACK_DATA.quarterlySeries;
+
+      // 1. OPM Multi-Quarter Trend
+      opmTrendChart = new Chart(document.getElementById('overviewOpmTrendChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: qs.labels,
+          datasets: [
+            { label: 'Infineon Seg. Margin (%)', data: qs.infineonOpm, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.15)', tension: 0.3, fill: true },
+            { label: 'STMicro Non-GAAP OPM (%)', data: qs.stOpm, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)', tension: 0.3, fill: true }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => v + '%' } },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+          }
+        }
+      });
+
+      // 2. Margin Comparison
+      marginChart = new Chart(document.getElementById('overviewMarginChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Infineon', 'onsemi', 'STMicro', 'Rohm'],
+          datasets: [
+            { label: 'GPM (%)', data: [41.8, 37.6, 37.3, 34.8], backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 5 },
+            { label: 'OPM (%)', data: [23.8, 13.2, 11.4, 12.4], backgroundColor: 'rgba(16, 185, 129, 0.85)', borderRadius: 5 }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            y: { beginAtZero: true, max: 50, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => v + '%' } },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+          }
+        }
+      });
+
+      // 3. Baliga Ron,sp vs BV Log-Log Scatter
+      const pts = appData.tradeoffPoints || FALLBACK_DATA.tradeoffPoints;
+      const siLimit = [50, 100, 200, 600, 1000, 2000].map(v => ({ x: v, y: 5.93e-7 * Math.pow(v, 2.5) }));
+      const sicLimit = [200, 600, 1200, 1700, 2500].map(v => ({ x: v, y: 3.0e-9 * Math.pow(v, 2.5) }));
+      const ganLimit = [100, 400, 650, 1200, 2000].map(v => ({ x: v, y: 1.5e-9 * Math.pow(v, 2.5) }));
+
+      const groupByTech = (tech) => pts.filter(p => p.tech === tech).map(p => ({ x: p.bv, y: p.ron_sp, label: p.label }));
+
+      baligaChart = new Chart(document.getElementById('baligaScatterChart').getContext('2d'), {
+        type: 'scatter',
+        data: {
+          datasets: [
+            { label: 'Si 1D Limit', data: siLimit, showLine: true, pointRadius: 0, borderColor: 'rgba(148,163,184,0.6)', borderDash: [5, 5], borderWidth: 1.5 },
+            { label: '4H-SiC Limit', data: sicLimit, showLine: true, pointRadius: 0, borderColor: 'rgba(16,185,129,0.6)', borderDash: [5, 5], borderWidth: 1.5 },
+            { label: 'GaN Limit', data: ganLimit, showLine: true, pointRadius: 0, borderColor: 'rgba(59,130,246,0.6)', borderDash: [5, 5], borderWidth: 1.5 },
+            { label: 'SJ MOSFET', data: groupByTech('SJ-MOS'), backgroundColor: '#818cf8', pointRadius: 6 },
+            { label: 'UD SGT', data: groupByTech('SGT'), backgroundColor: '#fbbf24', pointRadius: 6 },
+            { label: 'GaN', data: groupByTech('GaN'), backgroundColor: '#38bdf8', pointRadius: 7 },
+            { label: 'SiC', data: groupByTech('SiC'), backgroundColor: '#34d399', pointRadius: 7 }
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#cbd5e1', font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                label: ctx => ctx.raw.label ? `${ctx.raw.label}: ${ctx.raw.x}V, ${ctx.raw.y} mΩ·cm²` : `${ctx.dataset.label}: ${ctx.raw.x}V`
+              }
+            }
+          },
+          scales: {
+            x: { type: 'logarithmic', min: 40, max: 3000, title: { display: true, text: 'Breakdown Voltage BV (V)', color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8' } },
+            y: { type: 'logarithmic', min: 0.05, max: 100, title: { display: true, text: 'Specific On-Resistance Ron,sp (mΩ·cm²)', color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+
+      // 4. STMicro Revenue Series
+      stmRevChart = new Chart(document.getElementById('stmRevSeriesChart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: qs.labels,
+          datasets: [{
+            label: 'STMicro 분기 매출 ($B)',
+            data: qs.stmRevB,
+            borderColor: '#06b6d4',
+            backgroundColor: 'rgba(6,182,212,0.18)',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            y: { min: 2.0, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94a3b8', callback: v => '$' + v + 'B' } },
+            x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+          }
+        }
+      });
+    }
+
+    // Tab Switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-slate-400'); });
+        this.classList.add('active');
+        this.classList.remove('text-slate-400');
+        const target = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+        document.getElementById(target).classList.remove('hidden');
+        if (target === 'tab-benchmark' && baligaChart) baligaChart.resize();
+        if (target === 'tab-financials' && stmRevChart) stmRevChart.resize();
+      });
+    });
+
+    // Week Selector
+    document.getElementById('week-selector').addEventListener('change', function() {
+      appData.currentWeek = this.value;
+      saveData();
+      renderOverviewInsights();
+      renderNews();
+      showToast(`${this.options[this.selectedIndex].text}로 전환되었습니다.`);
+    });
+
+    // Filters
+    document.querySelectorAll('.news-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.news-filter-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white');
+        renderNews(this.getAttribute('data-filter'), document.getElementById('news-search-input').value);
+      });
+    });
+
+    document.getElementById('news-search-input').addEventListener('input', function() {
+      const active = document.querySelector('.news-filter-btn.bg-blue-600');
+      renderNews(active ? active.getAttribute('data-filter') : 'all', this.value);
+    });
+
+    document.querySelectorAll('.paper-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.paper-filter-btn').forEach(b => { b.classList.remove('bg-blue-600', 'text-white'); b.classList.add('bg-slate-800', 'text-slate-300'); });
+        this.classList.remove('bg-slate-800', 'text-slate-300');
+        this.classList.add('bg-blue-600', 'text-white');
+        renderPapers(this.getAttribute('data-filter'));
+      });
+    });
+
+    // Modal
+    const addModal = document.getElementById('add-modal');
+    document.getElementById('open-add-modal-btn').addEventListener('click', () => {
+      document.getElementById('modal-week').value = appData.currentWeek;
+      addModal.classList.remove('hidden');
+    });
+    const closeModal = () => addModal.classList.add('hidden');
+    document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+    document.getElementById('cancel-modal-btn').addEventListener('click', closeModal);
+
+    document.getElementById('modal-category').addEventListener('change', function() {
+      document.getElementById('modal-news-fields').classList.toggle('hidden', this.value !== 'news');
+      document.getElementById('modal-paper-fields').classList.toggle('hidden', this.value !== 'paper');
+    });
+
+    document.getElementById('add-item-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const weekCode = document.getElementById('modal-week').value.trim() || appData.currentWeek;
+      const cat = document.getElementById('modal-category').value;
+      const dev = document.getElementById('modal-device').value;
+      if (!appData.weeks.find(w => w.code === weekCode)) {
+        appData.weeks.unshift({ code: weekCode, label: `${weekCode} 주차` });
+        appData.currentWeek = weekCode;
+      }
+      if (cat === 'news') {
+        appData.news.unshift({
+          id: Date.now(), week: weekCode,
+          company: document.getElementById('modal-news-company').value.trim() || '선진사',
+          tag: dev,
+          title: document.getElementById('modal-news-title').value.trim() || '신규 동향',
+          date: new Date().toISOString().slice(0, 10),
+          app: document.getElementById('modal-news-app').value.trim() || '전력 변환',
+          desc: document.getElementById('modal-news-desc').value.trim() || '-',
+          impact: document.getElementById('modal-news-impact').value.trim() || '-'
+        });
+      } else {
+        appData.papers.unshift({
+          id: 'P_' + Date.now(), week: weekCode, device: dev,
+          conference: document.getElementById('modal-paper-conf').value.trim() || '학회',
+          title: document.getElementById('modal-paper-title').value.trim() || '신규 논문',
+          authors: document.getElementById('modal-paper-authors').value.trim() || '-',
+          bv: document.getElementById('modal-paper-bv').value.trim() || '-',
+          ron_sp: document.getElementById('modal-paper-ron').value.trim() || '-',
+          fom: document.getElementById('modal-paper-fom').value.trim() || '-',
+          arch: document.getElementById('modal-paper-arch').value.trim() || '-',
+          reliability: '-',
+          link: document.getElementById('modal-paper-link').value.trim() || '#'
+        });
+      }
+      saveData();
+      renderAll();
+      closeModal();
+      this.reset();
+      showToast('신규 항목이 저장되었습니다.');
+    });
+
+    // Copy Briefing, JSON Export/Import, CSV Export
+    document.getElementById('copy-weekly-summary-btn').addEventListener('click', () => {
+      const themes = (appData.weeklyThemes && appData.weeklyThemes[appData.currentWeek]) || [];
+      let text = `[전력반도체 Process Architecture 주간 브리핑 (${appData.currentWeek})]\n\n`;
+      themes.forEach(t => { text += `• ${t.title}\n  ${t.desc}\n`; });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast('브리핑이 복사되었습니다.')).catch(() => fallbackCopy(text));
+      } else fallbackCopy(text);
+    });
+
+    document.getElementById('export-json-btn').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(appData, null, 2));
+      a.download = `dashboard_data_${appData.currentWeek}.json`;
+      document.body.appendChild(a); a.click(); a.remove();
+      showToast('dashboard_data.json 백업이 다운로드되었습니다.');
+    });
+
+    document.getElementById('import-json-input').addEventListener('change', function(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = evt => {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          if (parsed.news && parsed.papers) {
+            appData = parsed;
+            saveData();
+            renderAll();
+            showToast('JSON 데이터를 불러왔습니다.');
+          }
+        } catch (err) { showToast('JSON 파일 형식 오류'); }
+      };
+      r.readAsText(f);
+    });
+
+    document.getElementById('export-csv-btn').addEventListener('click', () => {
+      let csv = "Week,Category,Source,Title,Device,Metric,Details\n";
+      appData.news.forEach(n => { csv += `"${n.week}","News","${n.company}","${n.title}","${n.tag}","${n.date}","${n.impact}"\n`; });
+      appData.papers.forEach(p => { csv += `"${p.week}","Paper","${p.conference}","${p.title}","${p.device}","${p.bv} / ${p.ron_sp}","${p.fom}"\n`; });
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `power_semi_${appData.currentWeek}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      showToast('CSV 파일이 다운로드되었습니다.');
+    });
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-999999px';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand('copy'); showToast('복사되었습니다.'); } catch (e) { showToast('복사 실패'); }
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      t.style.opacity = '1'; t.style.transform = 'translateY(0)';
+      setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(12px)'; }, 3000);
+    }
+
+    window.addEventListener('DOMContentLoaded', initData);
+  </script>
+</body>
+</html>
