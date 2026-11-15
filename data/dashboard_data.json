@@ -1,7 +1,11 @@
 {
-  "lastUpdated": "2026-11-13T19:30:44.712774+09:00",
-  "currentWeek": "2026-W46",
+  "lastUpdated": "2026-11-16T08:40:55.490797+09:00",
+  "currentWeek": "2026-W47",
   "weeks": [
+    {
+      "code": "2026-W47",
+      "label": "2026년 11월 3주차"
+    },
     {
       "code": "2026-W46",
       "label": "2026년 11월 2주차"
@@ -75,9 +79,77 @@
         "title": "3. 전장·산업용 수주잔고 회복",
         "desc": "선진사들의 재고회전일수(DOI)가 하락세로 전환되며 수주잔고(Backlog)가 5분기치 이상으로 회복되는 흐름이 포착되었습니다."
       }
+    ],
+    "2026-W47": [
+      {
+        "icon": "fa-robot",
+        "color": "text-blue-400",
+        "title": "1. 2026년 11월 3주차 자동 수집 완료 (Gemini AI 한국어 요약)",
+        "desc": "신규 선진사/산업 뉴스 4건과 arXiv 최신 논문 0건이 자동으로 아카이브되었습니다."
+      },
+      {
+        "icon": "fa-microchip",
+        "color": "text-indigo-400",
+        "title": "2. 소자별 핵심 검토 포인트",
+        "desc": "선진사 동향 및 논문 탭에서 이번 주 태그(GaN/SiC/SJ-MOS/SGT)별 신규 항목을 필터링해 팀 미팅 안건으로 활용하세요."
+      },
+      {
+        "icon": "fa-chart-line",
+        "color": "text-emerald-400",
+        "title": "3. 재무·시장 지표 점검",
+        "desc": "분기 실적 발표 시즌에는 data/dashboard_data.json의 financials 및 quarterlySeries 항목을 함께 업데이트할 수 있습니다."
+      }
     ]
   },
   "news": [
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "Cooling for High-Performance Modules, Hydrogen Plasma Passivation for GaN HEMTs, Why Application Fit Matters More than Technology: Power Electronics Week Insights",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "Here’s a RoundUp of this week’s must-read articles – we’ll delve into the latest developments on Cooling for High-Performance Modules, Hydrogen Plasma Passivation for GaN HEMTs, and Why Application Fit Matters More than Technology!\nThe post...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/cooling-for-high-performance-modules-hydrogen-plasma-passivation-for-gan-hemts-why-application-fit-matters-more-than-technology-power-electronics-week-insights/",
+      "id": 1794786056406,
+      "week": "2026-W47",
+      "date": "2026-11-16"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "e-peas Introduces PMICs for Energy Harvesting and 5-V Charging",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "The tree pin-compatible e-peas PMICs let manufacturers develop energy-harvesting and 5 V-charging products from a common PCB design.\nThe post e-peas Introduces PMICs for Energy Harvesting and 5-V Charging appeared first on Power Electronics...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/e-peas-introduces-pmics-for-energy-harvesting-and-5-v-charging/",
+      "id": 1794786056405,
+      "week": "2026-W47",
+      "date": "2026-11-16"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "ST Expands GANSPIN Family with 100V GaN Drivers",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "The new integrated GaN motor drivers deliver high power density, advanced protection and efficient operation for robotics and industrial systems.\nThe post ST Expands GANSPIN Family with 100V GaN Drivers appeared first on Power Electronics N...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/st-expands-ganspin-family-with-100v-gan-drivers/",
+      "id": 1794786056404,
+      "week": "2026-W47",
+      "date": "2026-11-16"
+    },
+    {
+      "company": "Power Electronics News",
+      "tag": "GaN",
+      "title": "Electronica 2026: Infineon’s Adam White on 800 VDC, Dresden, and 300-mm Wide Bandgap",
+      "app": "전력변환 · 전장 · AI 서버",
+      "desc": "Infineon’s Adam White on 800 VDC progress, DC protection hurdles, Dresden’s ramp, and 300-mm GaN and SiC.\nThe post Electronica 2026: Infineon’s Adam White on 800 VDC, Dresden, and 300-mm Wide Bandgap appeared first on Power Electronics News...",
+      "impact": "공정·소자 아키텍처 동향 트래킹 필요",
+      "url": "https://www.powerelectronicsnews.com/electronica-2026-infineons-adam-white-on-800-vdc-dresden-and-300-mm-wide-bandgap/",
+      "id": 1794786056403,
+      "week": "2026-W47",
+      "date": "2026-11-16"
+    },
     {
       "company": "Power Electronics News",
       "tag": "GaN",
